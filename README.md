@@ -23,3 +23,21 @@ npm run dev
 Notes:
 - Keep the video short and optimized (use H.264 or H.265 with a small bitrate) for better performance.
 - For accessibility, ensure text has sufficient contrast over the video or keep the overlay.
+
+## Recommended folder structure
+
+Suggested minimal structure for this repository:
+
+```
+.
+├─ package.json
+├─ public/
+│  ├─ videos/        # put bg.mp4 here
+│  └─ <images, icons>
+├─ src/
+│  ├─ app/           # Next.js App Router files (page.js, layout.js)
+│  ├─ components/    # reusable React components
+│  └─ styles/        # global and component styles (globals.css)
+```
+
+I moved the global stylesheet to `src/styles/globals.css` and added `public/videos/README.md` with instructions.
