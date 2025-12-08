@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "../styles/hero.module.css";
-
+import FloatingNav from "@/components/FloatingNav";
 import specLogo from "@/assets/images/spec-logo.png";
 
 export default function Home() {
@@ -24,15 +24,11 @@ export default function Home() {
       </div>
 
       <nav className={styles.navbar}>
-        <ul className={styles.centerNav}>
-          <li>SCHEDULE</li>
-          <li>SPONSORS</li>
-          <li>THEMES</li>
-          <li>PRIZES</li>
-          <li>FAQS</li>
-          <li>CONTACT US</li>
-        </ul>
-      </nav>
+  {/* <div className={styles.centerNav}> */}
+    <FloatingNav />
+  {/* </div> */}
+</nav>
+
 
       <div className={styles.centerText}>
         <h1 className={styles.title}>ELECTROTHON 8.0</h1>
