@@ -1,5 +1,5 @@
 "use client";
-import bg from "@/assets/videos/bg.mp4";
+
 import poster from "@/assets/videos/poster.jpg";
 
 export default function BackgroundVideo() {
@@ -14,7 +14,7 @@ export default function BackgroundVideo() {
         poster={poster}
         aria-hidden="true"
       >
-        <source src={bg} type="video/mp4" />
+        <source src="/videos/bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
