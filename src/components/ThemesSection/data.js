@@ -1,0 +1,62 @@
+import blockchain from "@/assets/ThemesSection/blockchain.webp";
+import Edtech from "@/assets/ThemesSection/Edtech.webp";
+import foodtech from "@/assets/ThemesSection/foodtech.webp"; 
+import health from "@/assets/ThemesSection/health.webp";
+import open_innov from "@/assets/ThemesSection/open_innov.webp";
+import climate from "@/assets/ThemesSection/climate.webp";
+
+export const tabData = [
+  {
+    id: "theme-1",
+    heading: "Travel and Tourism",
+    content:
+      "Across vast kingdoms and treacherous seas, the movement of people and goods faces many challenges. Knights and merchants alike seek safer passages, smarter travel systems, and better accommodations. Build innovations that redefine how the world travels.",
+    img1: foodtech,
+    prize_amt: "To be announced",
+  },
+
+  {
+    id: "theme-2",
+    heading: "Climate Emergency",
+    content:
+      "Our world faces rising temperatures, floods, droughts, and environmental imbalance. Innovators are needed to create sustainable technologies, track climate change, and protect the planet for future generations.",
+    img1: climate,
+    prize_amt: "To be announced",
+  },
+
+  {
+    id: "theme-3",
+    heading: "Healthcare",
+    content:
+      "From disease prediction to smart diagnostics and patient monitoring, healthcare innovation is more important than ever. Build solutions that save lives and make quality healthcare accessible to all.",
+    img1: health,
+    prize_amt: "To be announced",
+  },
+
+  {
+    id: "theme-4",
+    heading: "Cyber Security and Blockchain",
+    content:
+      "Protect digital assets, prevent cyber attacks, and build trust using blockchain technology. Create secure systems that defend data, networks, and financial infrastructure in the modern digital world.",
+    img1: blockchain,
+    prize_amt: "To be announced",
+  },
+
+  {
+    id: "theme-5",
+    heading: "EdTech",
+    content:
+      "Revolutionize education with smart platforms, adaptive learning systems, AI tutors, and digital classrooms. Make knowledge accessible, engaging, and powerful for learners everywhere.",
+    img1: Edtech,
+    prize_amt: "To be announced",
+  },
+
+  {
+    id: "theme-6",
+    heading: "Open Innovation",
+    content:
+      "No limits. No boundaries. If your idea solves a real problem and doesn’t fit into any category, this is your battlefield. Bring your most creative, bold, and powerful innovations here.",
+    img1: open_innov,
+    prize_amt: "To be announced",
+  },
+];

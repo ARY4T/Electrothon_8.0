@@ -120,3 +120,44 @@
     @apply bg-background text-foreground;
   }
 }
+
+.swiper-slide {
+  transition: transform 0.45s ease, opacity 0.45s ease;
+  transform: scale(0.9);
+  opacity: 0.9;
+}
+
+.swiper-slide-active {
+  transform: scale(1.04);
+  opacity: 1;
+  z-index: 10;
+}
+.flip-card {
+  perspective: 1200px;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+  transform: rotateY(0deg);
+}
+
+/* 🔥 Flip on hover OR when clicked */
+.flip-card:hover .flip-inner,
+.flip-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+}
