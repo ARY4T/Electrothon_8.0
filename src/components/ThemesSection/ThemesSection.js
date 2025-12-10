@@ -45,13 +45,13 @@ export default function ThemeSection() {
   return (
     <section
       id="themes"
-      className="relative py-28 w-screen h-screen pt-[18vh] text-white bg-cover bg-center"
+      className="relative py-28 w-screen min-h-[1000px] h-svh pt-[18vh] text-white bg-cover bg-center"
 
       style={{
-        backgroundImage: "url('/backgrounds/bg2.png')",
-        backgroundRepeat: "no-repeat",
+        backgroundImage: 'url("/backgrounds/bg2.png")',
+        backgroundSize: "cover",
         backgroundPosition: "top center",
-        backgroundSize: "100% 100%",
+        backgroundRepeat: "no-repeat",
       }}
     >
 
@@ -149,7 +149,7 @@ export default function ThemeSection() {
                   {/* Only on front */}
                   {flippedId !== theme.id && (
                     <>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
                       <div className="absolute inset-0 flex flex-col justify-end p-5 pointer-events-none">
                         <h3 className="text-xl font-semibold">
                           {theme.heading}
