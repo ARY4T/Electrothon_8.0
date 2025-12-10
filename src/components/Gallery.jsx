@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/styles/hero.module.css"; // Import the same CSS module
+import styles from "@/styles/gallery.module.css"; // Import the same CSS module
 import DomeGallery from "@/components/DomeGallery"; 
 import galleryImages from "@/data/galleryImages"; // Ensure curly braces if it's a named export
 
