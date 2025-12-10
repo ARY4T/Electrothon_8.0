@@ -50,14 +50,15 @@
   top: 60px;
   left: calc(50% + 40px);
   transform: translateX(-50%);
-  width: 72%;
+  width: 75%;
   height: 62px;
+  padding: 0 40px;
 
-  background: rgba(0, 0, 0, 0.42);
-  border: 2px solid rgba(255, 255, 255, 0.35);
+  background: rgba(34, 11, 65, 0.42);
+  /* border:  solid rgba(255, 255, 255, 0.35); */
   border-radius: 35px;
   backdrop-filter: blur(6px);
-
+  width: 77%;
   display: flex;
   justify-content: center;
   align-items: center;
