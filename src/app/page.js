@@ -1,9 +1,8 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import FloatingNav from "@/components/FloatingNav";
-
 import MainPage from "@/components/MainPage";
+import MissionBriefing from "@/components/MissionBriefing";
 
 const Themes = dynamic(
   () => import("@/components/ThemesSection/ThemesSection"),
@@ -13,8 +12,8 @@ const Themes = dynamic(
 export default function Page() {
   return (
     <>
-      <FloatingNav />
       <MainPage />
+      <MissionBriefing />
       <Themes />
     </>
   );
