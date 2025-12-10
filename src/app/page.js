@@ -2,6 +2,8 @@
 
 import dynamic from "next/dynamic";
 import MainPage from "@/components/MainPage";
+
+import Gallery from "@/components/Gallery";
 import MissionBriefing from "@/components/MissionBriefing";
 
 const Themes = dynamic(
@@ -14,7 +16,9 @@ export default function Page() {
     <>
       <MainPage />
       <MissionBriefing />
+      <Gallery />
       <Themes />
+      
     </>
   );
 }

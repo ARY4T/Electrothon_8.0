@@ -4,7 +4,7 @@
 .centerNav li,
 .ctaButton,
 .title,
-.subtitle {
+.subtitle{
   font-family: 'Press Start 2P', cursive !important;
 }
 
@@ -121,3 +121,4 @@
   background: #1f89ff;
   box-shadow: 0 0 12px #6ebbff;
 }
+
