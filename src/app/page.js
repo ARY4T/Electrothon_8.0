@@ -11,6 +11,7 @@ const Themes = dynamic(
   { ssr: false }
 );
 
+import Testimonials from "@/components/Testimonials/Testimonials";
 export default function Page() {
   return (
     <>
@@ -19,6 +20,7 @@ export default function Page() {
       <Gallery />
       <Themes />
       
+      <Testimonials />
     </>
   );
 }
