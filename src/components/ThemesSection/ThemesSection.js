@@ -14,17 +14,28 @@ const pressStart = Press_Start_2P({
 });
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFlip, EffectCoverflow, Navigation, Mousewheel, Pagination } from "swiper/modules";
+import {
+  Autoplay,
+  EffectFlip,
+  EffectCoverflow,
+  Navigation,
+  Mousewheel,
+  Pagination,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 
-//new
+// new
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import "swiper/css/effect-cards";
 import "swiper/css/pagination";
 import { cn } from "@/lib/utils";
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 50 },
+  show: { opacity: 1, y: 0, transition: { duration: 1 } },
+};
 
 export default function ThemeSection() {
   const [flippedId, setFlippedId] = React.useState(null);
@@ -42,8 +53,12 @@ export default function ThemeSection() {
 
       {/* Content wrapper */}
       <div className="relative z-10">
-        {/* Heading */}
-        <div
+        {/* Heading with animation */}
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
           className={`${pressStart.className} text-[40px] sm:text-[56px] md:text-[64px] text-center font-bold`}
           style={{
             textTransform: "uppercase",
@@ -52,7 +67,7 @@ export default function ThemeSection() {
           }}
         >
           Themes
-        </div>
+        </motion.div>
 
         {/* Slider */}
         <motion.div
@@ -62,14 +77,12 @@ export default function ThemeSection() {
           transition={{ duration: 0.6 }}
           className="mt-14 w-full"
         >
-          <Swiper      
+          <Swiper
             spaceBetween={30}
             slidesPerView={"auto"}
             centeredSlides={true}
             grabCursor={true}
             loop={true}
-            // Ensure Swiper duplicates the correct number of slides for looping
-            // Enable mutation observers so Swiper recalculates on resize/parent changes
             observer={true}
             observeParents={true}
             effect="coverflow"
@@ -77,7 +90,7 @@ export default function ThemeSection() {
               rotate: 0,
               stretch: 0,
               depth: 100,
-              modifier: 1.2,  // strength of the effect
+              modifier: 1.2, // strength of the effect
               slideShadows: false,
             }}
             mousewheel={{
@@ -85,11 +98,10 @@ export default function ThemeSection() {
               releaseOnEdges: false,
             }}
             modules={[EffectCoverflow, Navigation, Mousewheel]}
-            // Keep Swiper contained to the parent width so it calculates duplicates correctly
             className="w-full max-w-[1500px] px-[200px]"
-            // Keep `slidesPerView: 'auto'` and use fixed slide widths so
-            // exactly one slide is visually centered while neighbors fan out.
-            onSlideChange={(swiper) => setFocusedId(tabData[swiper.realIndex]?.id)}
+            onSlideChange={(swiper) =>
+              setFocusedId(tabData[swiper.realIndex]?.id)
+            }
           >
             {tabData.map((theme) => (
               <SwiperSlide
@@ -98,7 +110,9 @@ export default function ThemeSection() {
               >
                 <div
                   className="relative h-[460px] w-full rounded-3xl overflow-hidden border border-white/10 bg-black cursor-pointer"
-                  onMouseEnter={() => focusedId === theme.id && setFlippedId(theme.id)}
+                  onMouseEnter={() =>
+                    focusedId === theme.id && setFlippedId(theme.id)
+                  }
                   onMouseLeave={() => setFlippedId(null)}
                 >
                   <div
@@ -106,8 +120,9 @@ export default function ThemeSection() {
                     data-flipped={flippedId === theme.id}
                   >
                     <div
-                      className={`flip-inner ${flippedId === theme.id ? "is-flipped" : ""
-                        }`}
+                      className={`flip-inner ${
+                        flippedId === theme.id ? "is-flipped" : ""
+                      }`}
                     >
                       {/* FRONT */}
                       <div className="flip-front">
@@ -121,17 +136,21 @@ export default function ThemeSection() {
 
                       {/* BACK */}
                       <div className="flip-back flex items-center justify-center p-6 text-center bg-black text-white">
-                        <p className="text-sm leading-relaxed">{theme.content}</p>
+                        <p className="text-sm leading-relaxed">
+                          {theme.content}
+                        </p>
                       </div>
                     </div>
                   </div>
 
-                  {/* ✅ KEEP THESE ONLY ON FRONT */}
+                  {/* Only on front */}
                   {flippedId !== theme.id && (
                     <>
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                       <div className="absolute inset-0 flex flex-col justify-end p-5 pointer-events-none">
-                        <h3 className="text-xl font-semibold">{theme.heading}</h3>
+                        <h3 className="text-xl font-semibold">
+                          {theme.heading}
+                        </h3>
                       </div>
                     </>
                   )}
