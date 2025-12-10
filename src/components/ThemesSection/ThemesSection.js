@@ -45,11 +45,15 @@ export default function ThemeSection() {
   return (
     <section
       id="themes"
-      className="relative py-28 w-full text-white bg-cover bg-center"
-      style={{ backgroundImage: "url('/images/themes_bg.png')" }}
+      className="relative py-28 w-screen h-screen pt-[18vh] text-white bg-cover bg-center"
+
+      style={{
+        backgroundImage: "url('/backgrounds/bg2.png')",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "top center",
+        backgroundSize: "100% 100%",
+      }}
     >
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/70 z-0" />
 
       {/* Content wrapper */}
       <div className="relative z-10">
@@ -63,7 +67,6 @@ export default function ThemeSection() {
           style={{
             textTransform: "uppercase",
             letterSpacing: "2px",
-            textShadow: "-5px 8px 4px rgb(0, 0, 0)",
           }}
         >
           Themes
@@ -98,7 +101,7 @@ export default function ThemeSection() {
               releaseOnEdges: false,
             }}
             modules={[EffectCoverflow, Navigation, Mousewheel]}
-            className="w-full max-w-[1500px] px-[200px]"
+            className="w-full max-w-[1200px] mx-auto"
             onSlideChange={(swiper) =>
               setFocusedId(tabData[swiper.realIndex]?.id)
             }
