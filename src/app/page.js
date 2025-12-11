@@ -1,11 +1,14 @@
 import Image from "next/image";
 import styles from "../styles/hero.module.css";
 import FloatingNav from "@/components/FloatingNav";
+import FAQList from "@/components/FAQList";
+import Footer from "@/components/Footer";
 import specLogo from "@/assets/images/spec-logo.png";
 
 export default function Home() {
   return (
-    <div className={styles.heroWrapper}>
+    <>
+      <div className={styles.heroWrapper}>
 
       <video
   className={styles.backgroundVideo}
@@ -40,5 +43,8 @@ export default function Home() {
       </div>
 
     </div>
+    <FAQList />
+    <Footer />
+    </>
   );
 }
