@@ -4,7 +4,6 @@ import FloatingNav from "@/components/FloatingNav";
 import FAQList from "@/components/FAQList";
 import Footer from "@/components/Footer";
 import specLogo from "@/assets/images/spec-logo.png";
-import MainPage from "@/components/MainPage";
 import Gallery from "@/components/Gallery";
 import MissionBriefing from "@/components/MissionBriefing";
 import Themes from "@/components/ThemesSection/ThemesSection";
@@ -43,12 +42,11 @@ export default function Page() {
           </button>
         </div>
       </div>
-      <MainPage />
       <MissionBriefing />
-      <Gallery />
       <Themes />
-      <Timeline />        
       <Testimonials />
+      <Timeline />        
+      <Gallery />
       <FAQList />
       <Footer />
     </>
