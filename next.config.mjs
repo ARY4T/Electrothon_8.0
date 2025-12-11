@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  experimental: {
+    optimizePackageImports: ['framer-motion'],
+  },
+  turbopack: {},
 };
 
 export default nextConfig;
