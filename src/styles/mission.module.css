@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap');
+
+.missionSection {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    
+  }
+  
+  /* overlay + padding */
+  .missionOverlay {
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 7vw 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+  }
+  
+  /* MAIN TITLE */
+  .missionTitle {
+    font-family: "Press Start 2P", cursive;
+    font-size: 37px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 40px;
+    white-space: nowrap;
+    text-shadow: 
+    0 0 12px rgba(255, 255, 255, 0.9),
+    0 0 20px rgba(180, 140, 255, 0.6),
+    0 0 30px rgba(140, 90, 255, 0.4);
+  }
+  
+  /* TWO-COLUMN LAYOUT */
+  .missionContent {
+    display: flex;
+    gap: 100px;
+    width: 100%;
+    max-width: 1200px;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-inline: auto;
+  }
+  
+  /* LEFT COLUMN */
+  .leftColumn {
+    flex: 1.1;
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin-left: -50px;
+    gap: 24px;
+    align-items: center;
+  }
+  
+  .subheading {
+    font-family: "Press Start 2P", cursive;
+    font-size: 25px;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .subheading2 {
+    font-family: "Press Start 2P", cursive;
+    font-size: 25px;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    margin-left: 0px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .aboutText {
+    font-family: "Anonymous Pro", monospace;
+    font-size: 17px;
+    line-height: 1.5;
+    margin-left: 50px;
+    text-align: center;
+    max-width: 1100px;
+    color: #f3ebff;
+    margin: 0px auto 17px auto;   
+    text-shadow: 
+    0 0 15px rgb(255, 255, 255),
+    0 0 25px rgba(170, 120, 255, 0.25);
+  }
+  
+  .aboutText p + p {
+    margin-top: 11px;
+  }
+  
+  /* OUR ACHIEVEMENTS ke bilkul niche laane ke liye */
+.achievementsRow {
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 10px;
+    flex-wrap: nowrap;
+    margin-left: 30px;
+  }
+  
+  /*  Normal glass cards instead of image frames */
+  .achievementCard {
+    width: 150px;
+    height: 110px;
+    border-radius: 18px;
+  
+    /* blurred + transparent background */
+    background: rgba(51, 20, 112, 0.75);
+    border: 2px solid rgba(226, 188, 255, 0.8);
+    box-shadow: 0 0 20px rgba(190, 140, 255, 0.7);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .achievementFrame {
+    display: none;
+  }
+  
+  /* text centre me hi rahega */
+  .achievementContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px 12px;
+  }
+  
+  .achievementNumber {
+    font-family: "Press Start 2P", cursive;
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+  
+  .achievementLabel {
+    font-size: 14px;
+    text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.7),
+    0 0 22px rgba(180, 140, 255, 0.6);
+    font-family: "Anonymous Pro", monospace;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #e0c8ff;
+  }
+  
+  /* RIGHT COLUMN – ARCADE */
+  .rightColumn {
+    flex: none;                       /* thoda zyada space right ko  */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;          /* vertically center */
+  }
+  
+  .arcadeImage {
+    width: 440px; 
+    margin-top: -20px;                /*  yahi se size control hoga */
+    height: auto;
+    max-height: none;
+    image-rendering: pixelated;
+    transform: translateY(30px);
+    transform: translateX(50px);
+    filter: drop-shadow(0 0 20px rgba(161, 131, 255, 0.9));
+  }
+  
+  
+  /* RESPONSIVE */
+  @media (max-width: 1000px) {
+    .missionOverlay {
+      padding: 100px 5vw 80px;
+    }
+  
+    .missionContent {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .leftColumn {
+      align-items: center;
+      text-align: center;
+    }
+  
+    .aboutText {
+      text-align: left;
+    }
+  
+    .achievementsRow {
+      justify-content: center;
+    }
+  
+    .rightColumn {
+      margin-top: 32px;
+    }
+    .arcadeImage {
+        width: 380px;
+      }
+      
+  }
