@@ -42,10 +42,10 @@ export default function Page() {
         </div>
       </div>
       <MissionBriefing />
-      <Themes />
-      <Testimonials />
-      <Timeline />
       <GalleryPage />
+      <Themes />
+      <Timeline />
+      <Testimonials />
       <FAQList />
       <Footer />
     </>
