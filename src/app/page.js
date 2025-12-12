@@ -4,12 +4,11 @@ import FloatingNav from "@/components/FloatingNav";
 import FAQList from "@/components/FAQList";
 import Footer from "@/components/Footer";
 import specLogo from "@/assets/images/spec-logo.png";
-import Gallery from "@/components/Gallery";
 import MissionBriefing from "@/components/MissionBriefing";
 import Themes from "@/components/ThemesSection/ThemesSection";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import Timeline from "@/components/Timeline/timeline";
-
+import GalleryPage from "@/components/gallery/gallery";
 export default function Page() {
   return (
     <>
@@ -45,8 +44,8 @@ export default function Page() {
       <MissionBriefing />
       <Themes />
       <Testimonials />
-      <Timeline />        
-      <Gallery />
+      <Timeline />
+      <GalleryPage />
       <FAQList />
       <Footer />
     </>
