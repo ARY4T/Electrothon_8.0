@@ -1,3 +1,4 @@
+import TargetCursor from '@/components/TargetCursor';
 import MainPage from "@/components/MainPage";
 import MissionBriefing from "@/components/MissionBriefing";
 import Themes from "@/components/ThemesSection/ThemesSection";
@@ -7,6 +8,7 @@ import GalleryPage from "@/components/gallery/gallery";
 export default function Page() {
   return (
     <>
+      <TargetCursor />
       <MainPage />
       <MissionBriefing />
       <Themes />
