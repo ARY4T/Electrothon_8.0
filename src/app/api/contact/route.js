@@ -1,4 +1,5 @@
-import nodemailer from 'nodemailer';
+// Contact form is now handled by EmailJS client-side
+// No backend processing needed
 
 export async function POST(request) {
   try {
@@ -12,42 +13,19 @@ export async function POST(request) {
       );
     }
 
-    // Configure nodemailer transporter
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: process.env.SMTP_SECURE === 'true',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    // Email content
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: 'spec@nith.ac.in',
-      subject: `New Contact Form Submission from ${name}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `,
-    };
-
-    // Send email
-    await transporter.sendMail(mailOptions);
-
+    // EmailJS handles email sending on the client-side
+    // This endpoint is kept for future use or as a fallback
     return new Response(
-      JSON.stringify({ success: true, message: 'Email sent successfully' }),
+      JSON.stringify({ 
+        success: true, 
+        message: 'Contact form submission received. Please use the client-side EmailJS integration.' 
+      }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
   } catch (error) {
-    console.error('Email error:', error);
+    console.error('Error:', error);
     return new Response(
-      JSON.stringify({ error: 'Failed to send email', details: error.message }),
+      JSON.stringify({ error: 'Failed to process request', details: error.message }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
