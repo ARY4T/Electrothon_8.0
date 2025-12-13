@@ -5,7 +5,6 @@ import FAQList from "@/components/FAQList";
 import Footer from "@/components/Footer";
 import specLogo from "@/assets/images/spec-logo.png";
 import TargetCursor from '@/components/TargetCursor';
-import MainPage from "@/components/MainPage";
 import MissionBriefing from "@/components/MissionBriefing";
 import Themes from "@/components/ThemesSection/ThemesSection";
 import Testimonials from "@/components/Testimonials/Testimonials";
@@ -44,8 +43,6 @@ export default function Page() {
           </button>
         </div>
       </div>
-      <TargetCursor />
-      <MainPage />
       <MissionBriefing />
       <GalleryPage />
       <Themes />
