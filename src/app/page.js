@@ -4,6 +4,7 @@ import FloatingNav from "@/components/FloatingNav";
 import FAQList from "@/components/FAQList";
 import Footer from "@/components/Footer";
 import specLogo from "@/assets/images/spec-logo.png";
+import TargetCursor from '@/components/TargetCursor';
 import MissionBriefing from "@/components/MissionBriefing";
 import Themes from "@/components/ThemesSection/ThemesSection";
 import Testimonials from "@/components/Testimonials/Testimonials";
@@ -12,6 +13,7 @@ import GalleryPage from "@/components/gallery/gallery";
 export default function Page() {
   return (
     <>
+      <TargetCursor />
       <div className={styles.heroWrapper}>
         <video
           className={styles.backgroundVideo}
