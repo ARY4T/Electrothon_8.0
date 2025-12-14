@@ -12,6 +12,7 @@ const pressStart = Press_Start_2P({
   weight: "400",
   subsets: ["latin"],
 });
+
 const orbitron = Orbitron({
   weight: ["400", "700"],
   subsets: ["latin"],
@@ -33,33 +34,66 @@ export default function ThemeSection() {
     const check = () => {
       const w = window.innerWidth;
       setIsSmallScreen(w <= 640);
-      setIsMediumScreen(w > 640 && w <= 1024);
+      setIsMediumScreen(w > 640 && w <= 1100);
     };
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const expandedWidth = "46%";
-  const collapsedWidth = "9%";
+  const isDesktop = !isSmallScreen && !isMediumScreen;
+
+  // sizing
+  const expandedWidth = "34%";
+  const collapsedWidth = "11%";
   const idleWidth = "14%";
 
   const anyActive = lockedIndex !== null || activeIndex !== null;
   const mobileCardHeight = "260px";
 
+  // 🔽 dynamic spacing (THIS IS THE CHANGE YOU ASKED FOR)
+  const desktopGap = anyActive ? "gap-2" : "gap-3";
+  const gridGap = anyActive ? "gap-3" : "gap-4";
+  const mobileGap = anyActive ? "gap-3" : "gap-4";
+
   return (
     <section
       id="themes"
-      className="relative py-28 w-screen min-h-[1000px] pt-[18vh] text-white bg-cover bg-center overflow-hidden"
-      style={{
-        backgroundImage: 'url("/backgrounds/themes.png")',
-        backgroundSize: "cover",
-        backgroundPosition: "top center",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="relative py-28 w-screen min-h-screen lg:min-h-[1000px] pt-[18vh] text-white overflow-hidden"
+      style={
+        isSmallScreen
+          ? {}
+          : {
+              backgroundImage: 'url("/backgrounds/themes.png")',
+              backgroundSize: "cover",
+              backgroundPosition: "top center",
+              backgroundRepeat: "no-repeat",
+            }
+      }
     >
-      <div className="absolute inset-0 bg-black/20 z-0" />
+      {/* HEADER GLOW */}
+      <div
+        aria-hidden
+        className="absolute top-0 left-0 w-full h-[22vh] z-[1] pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(180,80,255,0.45), rgba(120,40,200,0.18), rgba(0,0,0,0))",
+        }}
+      />
 
+      {/* BOTTOM FADE */}
+      <div
+        aria-hidden
+        className="absolute bottom-0 left-0 w-full h-[22vh] z-[1] pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0))",
+        }}
+      />
+
+      <div className="absolute inset-0 bg-black/10 z-0" />
+
+      {/* ================= CONTENT ================= */}
       <div className="relative z-10 max-w-[1400px] mx-auto px-6">
         {/* Heading */}
         <motion.div
@@ -81,145 +115,143 @@ export default function ThemeSection() {
           transition={{ duration: 0.6 }}
           className="mt-12 w-full"
         >
-          <div className="relative w-full">
-            {/* Responsive layout switching */}
-            <div
-              className={
-                isMediumScreen
-                  ? "grid grid-cols-2 gap-6 place-items-center"
-                  : isSmallScreen
-                  ? "flex flex-col gap-6"
-                  : "flex gap-4 items-stretch justify-center"
-              }
-            >
-              {tabData.map((theme, idx) => {
-                let isActive = lockedIndex === idx || activeIndex === idx;
+          <div
+            className={
+              isSmallScreen
+                ? `flex flex-col ${mobileGap}`
+                : isMediumScreen
+                ? `grid grid-cols-3 ${gridGap} place-items-center`
+                : `flex ${desktopGap} items-stretch justify-center`
+            }
+          >
+            {tabData.map((theme, idx) => {
+              const isActive = lockedIndex === idx || activeIndex === idx;
 
-                if (isSmallScreen || isMediumScreen) {
-                  isActive = false;
-                }
-
-                const targetWidth = isSmallScreen
-                  ? "100%"
-                  : isMediumScreen
-                  ? "100%"
-                  : anyActive
+              const targetWidth = isDesktop
+                ? anyActive
                   ? isActive
                     ? expandedWidth
                     : collapsedWidth
-                  : idleWidth;
+                  : idleWidth
+                : "100%";
 
-                const forcedStyle = isSmallScreen
-                  ? { width: "100%", minWidth: "100%", height: mobileCardHeight }
-                  : isMediumScreen
-                  ? { width: "100%", minWidth: "100%" }
+              const forcedStyle =
+                !isDesktop
+                  ? {
+                      width: "100%",
+                      minWidth: "100%",
+                      height: isSmallScreen ? mobileCardHeight : "460px",
+                    }
                   : {};
 
-                return (
-                  <motion.div
-                    key={theme.id ?? idx}
-                    initial={false}
-                    animate={{ width: targetWidth }}
-                    transition={{ duration: 0.35, ease: "easeInOut" }}
-                    onMouseEnter={() => {
-                      if (!isSmallScreen && !isMediumScreen && lockedIndex === null)
-                        setActiveIndex(idx);
-                    }}
-                    onMouseLeave={() => {
-                      if (!isSmallScreen && !isMediumScreen && lockedIndex === null)
-                        setActiveIndex(null);
-                    }}
-                    onClick={() => {
-                      if (!isSmallScreen && !isMediumScreen)
-                        setLockedIndex((prev) => (prev === idx ? null : idx));
-                    }}
-                    className="relative h-[460px] min-w-[80px] flex-shrink-0 rounded-3xl overflow-hidden border border-white/10 bg-black cursor-pointer"
-                    style={forcedStyle}
-                  >
-                    {/* Image */}
-                    <div className="absolute inset-0">
-                      <Image
-                        src={theme.img1}
-                        alt={theme.heading}
-                        fill
-                        className="object-cover"
+              return (
+                <motion.div
+                  key={theme.id ?? idx}
+                  initial={false}
+                  animate={{ width: targetWidth }}
+                  transition={{ duration: 0.32, ease: "easeInOut" }}
+                  onMouseEnter={() => {
+                    if (isDesktop && lockedIndex === null) {
+                      setActiveIndex(idx);
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    if (isDesktop && lockedIndex === null) {
+                      setActiveIndex(null);
+                    }
+                  }}
+                  onClick={() => {
+                    setLockedIndex((prev) =>
+                      prev === idx ? null : idx
+                    );
+                  }}
+                  className="relative h-[460px] min-w-[80px] flex-shrink-0 rounded-3xl overflow-hidden border border-white/10 bg-black cursor-pointer"
+                  style={forcedStyle}
+                >
+                  {/* Image */}
+                  <div className="absolute inset-0">
+                    <Image
+                      src={theme.img1}
+                      alt={theme.heading}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  {/* Collapsed overlay */}
+                  <AnimatePresence>
+                    {!isActive && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"
                       />
-                    </div>
+                    )}
+                  </AnimatePresence>
 
-                    {/* Gradient overlay for collapsed cards */}
-                    <AnimatePresence>
-                      {!isActive && (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"
+                  {/* Text */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-6 z-10">
+                    {!isActive ? (
+                      <div className="w-full flex justify-center items-center">
+                        <h3
+                          className={`
+                            ${orbitron.className}
+                            ${
+                              anyActive && isDesktop
+                                ? "text-xs md:text-sm"
+                                : "text-base md:text-lg"
+                            }
+                            font-semibold text-white/95 text-center
+                          `}
+                        >
+                          {theme.heading}
+                        </h3>
+                      </div>
+                    ) : (
+                      <motion.div
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.28 }}
+                        className="absolute inset-x-0 bottom-0 rounded-b-3xl overflow-hidden"
+                        style={{ maxHeight: "60%" }}
+                      >
+                        {/* BLUR + GRADIENT */}
+                        <div
+                          className="
+                            absolute inset-0
+                            backdrop-blur-2xl
+                            bg-gradient-to-t
+                            from-black/85
+                            via-black/45
+                            to-transparent
+                          "
                         />
-                      )}
-                    </AnimatePresence>
 
-                    {/* Text container */}
-                    <div
-                      className={`absolute inset-0 flex flex-col justify-end p-6 z-10 ${
-                        isActive ? "pointer-events-auto" : "pointer-events-none"
-                      }`}
-                    >
-                      {/* COLLAPSED TITLE (always centered even on small screens) */}
-                      {!isActive ? (
-                        <div className="w-full flex justify-center items-center">
+                        {/* CONTENT */}
+                        <div className="relative z-10 p-5 overflow-auto">
                           <h3
-                            className={`${orbitron.className} text-base md:text-lg font-semibold text-white/95 text-center w-full`}
+                            className={`${orbitron.className} text-xl md:text-2xl font-bold text-center mb-2`}
                           >
                             {theme.heading}
                           </h3>
+
+                          <p className="text-sm text-white/90 leading-relaxed">
+                            {theme.content}
+                          </p>
+
+                          {theme.prize_amt && (
+                            <p className="mt-3 text-sm text-white/80">
+                              Prize: {theme.prize_amt}
+                            </p>
+                          )}
                         </div>
-                      ) : (
-                        <>
-                          {/* EXPANDED CONTENT (bottom gradient + blur) */}
-                          <div className="expanded-card-wrapper w-full pointer-events-auto">
-                            <motion.div
-                              initial={{ opacity: 0, y: 12 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: 12 }}
-                              transition={{ duration: 0.28 }}
-                              className="
-                                absolute inset-x-0 bottom-0 p-5 backdrop-blur-xl
-                                bg-gradient-to-t from-black/75 via-black/40 to-transparent
-                                rounded-b-3xl
-                              "
-                              style={{
-                                maxHeight: "55%",
-                                overflow: "auto",
-                                maskImage:
-                                  "linear-gradient(to top, black 60%, rgba(0,0,0,0.7) 80%, transparent 100%)",
-                                WebkitMaskImage:
-                                  "linear-gradient(to top, black 60%, rgba(0,0,0,0.7) 80%, transparent 100%)",
-                              }}
-                            >
-                              <h3
-                                className={`${orbitron.className} text-2xl font-bold text-center mb-2`}
-                              >
-                                {theme.heading}
-                              </h3>
-
-                              <p className="text-sm text-white/90 leading-relaxed">
-                                {theme.content}
-                              </p>
-
-                              {theme.prize_amt && (
-                                <p className="mt-3 text-sm text-white/80">
-                                  Prize: {theme.prize_amt}
-                                </p>
-                              )}
-                            </motion.div>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
+                      </motion.div>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
       </div>

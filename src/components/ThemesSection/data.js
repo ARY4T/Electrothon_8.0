@@ -1,10 +1,10 @@
-import blockchain from "@/assets/ThemesSection/blockchain.jpeg";
+import blockchain from "@/assets/ThemesSection/cyber.jpeg";
 import Edtech from "@/assets/ThemesSection/edtech.jpeg";
-import foodtech from "@/assets/ThemesSection/travel.png";
-import health from "@/assets/ThemesSection/healthcare.png";
-import open_innov from "@/assets/ThemesSection/open_innov.jpeg";
+import foodtech from "@/assets/ThemesSection/travel.jpeg";
+import health from "@/assets/ThemesSection/health.jpeg";
+import open_innov from "@/assets/ThemesSection/open.jpeg";
 import climate from "@/assets/ThemesSection/climate.jpg";
-import ai from "@/assets/ThemesSection/ai.jpeg";
+import ai from "@/assets/ThemesSection/aii.jpeg";
 
 export const tabData = [
   {
