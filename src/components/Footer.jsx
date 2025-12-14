@@ -108,7 +108,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="/codeofconduct"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="cursor-target hover:text-gray-300"
@@ -119,7 +119,7 @@ export default function Footer() {
                   {/* NEW LINK ADDED HERE */}
                   <li>
                     <a
-                      href="#" 
+                      href="/hackersguide" 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="cursor-target hover:text-gray-300"
