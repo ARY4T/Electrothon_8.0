@@ -3,9 +3,14 @@
 import React from 'react';
 import Dropdown from './ui/Dropdown';
 import TargetCursor from './TargetCursor';
+import { Anonymous_Pro } from "next/font/google";
 
 // Import the font
 import '@/styles/hero.module.css';
+const anonymousPro = Anonymous_Pro({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
 
 // Official FAQ questions from Electrothon 8.0 (spec-nith/Electrothon_8.0_dummy)
 // added `category` field for grouping
@@ -134,14 +139,14 @@ const FAQList = () => {
       : questions.filter((q) => q.category === activeCategory);
 
   return (
-    <section 
+    <section
       className="relative w-full py-24 min-h-screen flex items-center justify-center"
       id="faqs"
     >
       <TargetCursor targetSelector=".cursor-target" />
-      
+
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: 'url(/bg_img.jpg)',
@@ -159,22 +164,41 @@ const FAQList = () => {
       <div className="relative z-10 w-full flex flex-col items-center">
         <div className="w-full max-w-6xl mt-8">
           <div className="flex flex-col items-center text-center">
-            <h2 className="text-white font-extrabold text-4xl md:text-5xl leading-tight" style={{ fontFamily: "'Press Start 2P', cursive" }}>
+            <h2
+              className="text-white font-extrabold text-[clamp(1.6rem,5vw,3.75rem)] leading-tight"
+              style={{ fontFamily: "'Press Start 2P', cursive" }}
+            >
               Frequently asked questions
             </h2>
 
+            {/* Category Tabs centered */}
+
+
+            {/* Category Tabs centered */}
             {/* Category Tabs centered */}
             <div className="mt-8 mb-6 flex flex-wrap justify-center gap-3">
               {categories.map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`cursor-target rounded-full px-4 py-2 text-sm font-medium transition-all ${activeCategory === cat.id ? 'bg-blue-600 text-white' : 'bg-white/5 text-gray-300 hover:bg-white/6'}`}
+                  // 1. Apply the pixel font family explicitly
+                  style={{ fontFamily: "'Press Start 2P', cursive" }}
+                  // 2. Removed ${anonymousPro.className}
+                  // 3. Changed text-sm to text-[10px] (Pixel fonts need to be smaller)
+                  className={`cursor-target rounded-full px-4 py-3 text-[10px] md:text-xs leading-none transition-all 
+        ${activeCategory === cat.id ? 'bg-blue-600 text-white' : 'bg-white/5 text-gray-300 hover:bg-white/6'}
+      `}
                 >
                   {cat.label}
                 </button>
               ))}
             </div>
+
+
+            {/* Questions grid */}
+
+
+
 
             {/* Questions grid */}
             <div className="w-full grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -186,9 +210,12 @@ const FAQList = () => {
                   finalHeightAnswer={question.answerStyle}
                   finalHeightQuestion={question.questionStyle}
                   fontSizeScaling={question.fontSizeScaling}
+                  answerFontClass={anonymousPro.className}
                 />
               ))}
             </div>
+
+
           </div>
         </div>
 

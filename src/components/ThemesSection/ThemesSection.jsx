@@ -119,7 +119,7 @@ export default function ThemeSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
-          className={`${pressStart.className} text-[40px] sm:text-[56px] md:text-[64px] text-center font-bold`}
+       className={`${pressStart.className} text-[clamp(1.6rem,5vw,3.75rem)] text-center font-bold`}
           style={{ letterSpacing: "2px" }}
         >
           THEMES

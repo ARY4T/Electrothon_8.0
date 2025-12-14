@@ -180,9 +180,18 @@
   text-transform: uppercase; margin: 0 0 5px 0; letter-spacing: 1px;
 }
 
-.card-date {
-  color: #00f3ff; font-size: 16px; font-weight: 500; font-family: 'Rajdhani', monospace;
+
+ .card-date {
+    /* Use a color that contrasts well with the card background */
+    color: #ffd700; /* Gold/Yellow for a retro/game feel */
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    letter-spacing: 0.05em;
+    /* You might use a retro font here if you want it to match the title */
+    /* font-family: 'Press Start 2P', cursive, monospace; */
 }
+
 
 /* --- RESPONSIVENESS --- */
 @media (max-width: 900px) {
