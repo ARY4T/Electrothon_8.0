@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <footer 
       id="contact" 
-      className="relative w-full py-24 min-h-screen flex items-center justify-center text-gray-800"
+      className="relative w-full py-24 flex items-center justify-center text-gray-800 overflow-hidden"
     >
       <TargetCursor targetSelector=".cursor-target" />
       
@@ -21,7 +21,7 @@ export default function Footer() {
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url(/bg_img.jpg)',
+          backgroundImage: 'url(/bg_img_footer.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -36,15 +36,15 @@ export default function Footer() {
       <div className="relative z-10 w-full flex flex-col items-center px-4">
         {/* Footer Title */}
         <div className="flex items-center justify-center p-8 w-full text-center mb-16">
-          <h1 
-            className="font-normal text-white text-[clamp(2.5rem,5vw,4rem)]"
+          <h1
+            className="font-normal text-white text-[clamp(1.6rem,4.5vw,3.2rem)] whitespace-normal break-words max-w-[700px] px-4"
             style={{ fontFamily: "'Press Start 2P', cursive" }}
           >
             Let&apos;s talk about everything!
           </h1>
         </div>
 
-        <div className="flex flex-col items-center justify-center w-full max-w-6xl space-y-10">
+  <div className="flex flex-col items-center justify-center w-full max-w-6xl space-y-10 px-4">
           {/* Contact component (adapted ContactUs1) */}
           <div className="w-full flex items-center justify-center">
             <ContactUs1 />
@@ -52,9 +52,9 @@ export default function Footer() {
 
           {/* Social Links and Info Section */}
           <div className="w-full border-t border-gray-600 pt-12 mt-6">
-            <div className="md:flex justify-center gap-5 lg:gap-40">
+            <div className="flex flex-col md:flex-row flex-wrap md:flex-nowrap justify-center gap-5 lg:gap-12 items-center md:items-start">
               {/* Logo */}
-              <div className="flex justify-center mb-6 md:mb-0">
+              <div className="flex justify-center mb-6 md:mb-0 min-w-0 w-full md:w-auto">
                 <a
                   href="https://spec.nith.ac.in/"
                   target="_blank"
@@ -69,18 +69,19 @@ export default function Footer() {
                     alt="SPEC NITH Logo"
                     width={160}
                     height={160}
+                    className="w-40 h-auto max-w-[160px]"
                   />
                 </a>
               </div>
               {/* Resources */}
-              <div className="text-center md:text-left mb-6 md:mb-0">
+              <div className="text-center mb-6 md:mb-0 min-w-0 w-full md:w-auto">
                 <p 
                   className="text-white font-bold mb-4 text-sm"
                   style={{ fontFamily: "'Press Start 2P', cursive" }}
                 >
                   LINKS
                 </p>
-                <ul className="space-y-3 text-gray-400 text-xs">
+                <ul className="space-y-3 text-gray-400 text-xs whitespace-normal break-words">
                   <li>
                     <a
                       href="https://electrothon-7-0.vercel.app/"
@@ -105,14 +106,14 @@ export default function Footer() {
               </div>
 
               {/* Address */}
-              <div className="text-center md:text-left mb-6 md:mb-0">
+              <div className="text-center mb-6 md:mb-0 min-w-0 w-full md:w-auto">
                 <p 
                   className="text-white font-bold mb-4 text-sm"
                   style={{ fontFamily: "'Press Start 2P', cursive" }}
                 >
                   ADDRESS
                 </p>
-                <ul className="space-y-3 text-gray-400 text-xs">
+                <ul className="space-y-3 text-gray-400 text-xs whitespace-normal break-words">
                   <li>
                     <a
                       href="https://www.google.com/maps/place/NIT+Hamirpur/@31.6750134,76.5271587,13z"
@@ -129,14 +130,14 @@ export default function Footer() {
               </div>
 
               {/* Stay Connected */}
-              <div className="text-center md:text-left">
+              <div className="text-center min-w-0 w-full md:w-auto">
                 <p 
                   className="text-white font-bold mb-4 text-sm"
                   style={{ fontFamily: "'Press Start 2P', cursive" }}
                 >
                   CONNECT
                 </p>
-                <div className="flex justify-center md:justify-start gap-5 opacity-80">
+                <div className="flex justify-center gap-5 opacity-80">
                   <a
                     href="https://github.com/spec-nith"
                     target="_blank"
@@ -179,14 +180,14 @@ export default function Footer() {
                 </div>
 
                 {/* CTA Button - Below Connect */}
-                <div className="flex justify-center md:justify-start mt-6">
+                <div className="flex justify-center mt-6">
                   <button
                     type="button"
                     onClick={() => window.open('https://electrothon-7-0.vercel.app/', '_blank')}
-                    className="cursor-target relative text-white font-bold bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg transition-all duration-300 px-4 py-2 sm:px-6 sm:py-3 rounded-lg border-2 border-blue-500"
+                    className="cursor-target relative text-white font-bold bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg transition-all duration-300 px-4 py-2 sm:px-6 sm:py-3 rounded-lg border-2 border-blue-500 whitespace-nowrap"
                     style={{ fontFamily: "'Press Start 2P', cursive", fontSize: '0.65rem' }}
                   >
-                    Visit Electrothon
+                      Electrothon 7.0
                   </button>
                 </div>
               </div>

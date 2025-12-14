@@ -109,7 +109,7 @@ const ContactUs1 = () => {
   };
 
   return (
-    <section className="relative w-full py-12">
+    <section className="relative w-full py-12 overflow-hidden">
       {/* decorative blurred circles */}
       <div
         className="absolute -top-16 -left-16 h-72 w-72 rounded-full opacity-20 blur-3xl"
@@ -121,11 +121,11 @@ const ContactUs1 = () => {
       />
 
       <div className="relative z-10 mx-auto max-w-5xl rounded-2xl border border-white/6 bg-secondary/10 p-6 md:p-8">
-  <div className="grid md:grid-cols-2 gap-6 items-center">
-          <div ref={formRef} className={`transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            <div className="relative flex items-baseline gap-3">
-              <h2 className="text-white font-extrabold text-4xl md:text-5xl leading-tight" style={{ fontFamily: "'Press Start 2P', cursive" }}>Contact</h2>
-              <span className="text-white font-extrabold text-4xl md:text-5xl leading-tight" style={{ fontFamily: "'Press Start 2P', cursive" }}>Us</span>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <div ref={formRef} className={`transition-all duration-700 min-w-0 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            <div className="relative flex items-baseline gap-3 justify-center">
+              <h2 className="text-white font-extrabold text-[clamp(1.2rem,4vw,2.2rem)] md:text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight" style={{ fontFamily: "'Press Start 2P', cursive" }}>Contact</h2>
+              <span className="text-white font-extrabold text-[clamp(1.2rem,4vw,2.2rem)] md:text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight" style={{ fontFamily: "'Press Start 2P', cursive" }}>Us</span>
               {/* static decorative accent (no animation) */}
               <div className="absolute inset-0 h-24 w-full pointer-events-none" aria-hidden>
                 <div style={{ background: 'radial-gradient(circle at 60% 30%, rgba(255,159,184,0.15), transparent 40%)' }} className="h-full w-full" />
@@ -201,14 +201,14 @@ const ContactUs1 = () => {
 
           <div className={`flex items-center justify-center ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-6'} transition-all duration-700`}> 
             {/* Render the globe in a circular, transparent container so there's no colored rectangular frame */}
-            <div className="relative mx-auto h-[320px] w-[320px] max-w-[420px] overflow-hidden rounded-full bg-transparent p-0 md:h-[420px] md:w-[420px]">
+            <div className="relative mx-auto w-[80vw] max-w-[420px] h-[80vw] max-h-[420px] overflow-hidden rounded-full bg-transparent p-0 md:h-[420px] md:w-[420px]">
               <div className="w-full h-full">
-                <GlobeDemo embedded={true} />
+                  <GlobeDemo embedded={true} />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };
