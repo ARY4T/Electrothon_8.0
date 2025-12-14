@@ -35,13 +35,13 @@ export default function Testimonials() {
       <div
         className="
       pointer-events-none
-      absolute top-0 left-0 w-full
+      absolute -top-[1px] left-0 w-full
       h-[12vh] sm:h-[14vh] md:h-[16vh]
       z-[1]
     "
         style={{
           background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0))",
+            "linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0))",
         }}
       />
 
@@ -49,13 +49,12 @@ export default function Testimonials() {
       <div
         className="
       pointer-events-none
-      absolute bottom-0 left-0 w-full
+      absolute -bottom-[1px] left-0 w-full
       h-[14vh] sm:h-[16vh] md:h-[18vh]
       z-[1]
     "
         style={{
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0))",
+          background: "linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0))",
         }}
       />
       {/* HEADING */}
@@ -64,16 +63,17 @@ export default function Testimonials() {
           y: headingY,
           opacity: headingOpacity,
           position: "sticky",
-          top: "10vh",
           zIndex: 5,
           fontFamily: '"Press Start 2P", cursive',
         }}
         className="
+        top-[8vh] sm:top-[9vh] md:top-[10vh]
           text-white
-          text-4xl sm:text-5xl md:text-6xl
+          text-[clamp(1.6rem,5vw,3.75rem)]
           font-extrabold tracking-wider
-          text-center
+          text-center break-words
           mb-[20vh] sm:mb-[22vh] md:mb-[24vh]
+          max-w-[100vw] overflow-hidden text-ellipsis whitespace-nowrap
         "
       >
         TESTIMONIALS
