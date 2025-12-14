@@ -16,7 +16,7 @@ const Data = [
     profilepic: "/testimonials/pfp1.jpeg",
     date: "6mo",
     content:
-      "✨ Thrilled to share this achievement! ✨ My team and I participated in Electrothon 8.0, organized by SPEC, NIT Hamirpur, in association with Major League Hacking (MLH), where we built DecentraVault—a decentralized file management system focused on security and decentralization...",
+      "✨ Thrilled to share this achievement! ✨ My team and I participated in Electrothon 7.0, organized by SPEC, NIT Hamirpur, in association with Major League Hacking (MLH), where we built DecentraVault—a decentralized file management system focused on security and decentralization...",
     postpic: "/testimonials/first.jpeg",
   },
   {
@@ -25,7 +25,7 @@ const Data = [
     profilepic: "/testimonials/pfp2.jpeg",
     date: "6mo",
     content:
-      "⚡ Electrothon 8.0 – The Colosseum of Code ⚡ Nestled in the serene yet electrifying aura of NIT Hamirpur, I embarked on an odyssey where logic met creativity, and caffeine-fueled perseverance sculpted innovation...",
+      "⚡ Electrothon 7.0 – The Colosseum of Code ⚡ Nestled in the serene yet electrifying aura of NIT Hamirpur, I embarked on an odyssey where logic met creativity, and caffeine-fueled perseverance sculpted innovation...",
     postpic: "/testimonials/second.jpeg",
   },
   {
@@ -34,7 +34,7 @@ const Data = [
     profilepic: "/testimonials/pfp3.jpeg",
     date: "5mo",
     content:
-      "Thrilled to have participated in the electrifying Electrothon 8.0 organized by SPEC_NITH at our college! It was my first hackathon and the experience was exhilarating 🔥 We participated in this prestigious hackathon where sponsors posed diverse track challenges for participants...",
+      "Thrilled to have participated in the electrifying Electrothon 7.0 organized by SPEC_NITH at our college! It was my first hackathon and the experience was exhilarating 🔥 We participated in this prestigious hackathon where sponsors posed diverse track challenges for participants...",
     postpic: "/testimonials/third.jpeg",
   },
   {
@@ -43,7 +43,7 @@ const Data = [
     profilepic: "/testimonials/pfp4.jpeg",
     date: "6mo",
     content:
-      "🚀 TheObsidian at Electrothon 8.0 – NIT Hamirpur Hackathon! Our team, TheObsidian, had an incredible experience at Electrothon 8.0, the hackathon hosted by NIT Hamirpur! We built a project focused on web scraping, pushing our skills to the next level...",
+      "🚀 TheObsidian at Electrothon 7.0 – NIT Hamirpur Hackathon! Our team, TheObsidian, had an incredible experience at Electrothon 7.0, the hackathon hosted by NIT Hamirpur! We built a project focused on web scraping, pushing our skills to the next level...",
     postpic: "/testimonials/fourth.jpeg",
   },
   {
@@ -52,7 +52,7 @@ const Data = [
     profilepic: "/testimonials/pfp5.jpeg",
     date: "6mo",
     content:
-      "✨ Electrothon 8.0 – A 36-Hour Journey of Innovation & Learning! ✨ This weekend, I had the incredible opportunity to participate in Electrothon 8.0 at NIT Hamirpur...",
+      "✨ Electrothon 7.0 – A 36-Hour Journey of Innovation & Learning! ✨ This weekend, I had the incredible opportunity to participate in Electrothon 7.0 at NIT Hamirpur...",
     postpic: "/testimonials/fifth.jpeg",
   },
   /*{
@@ -61,7 +61,7 @@ const Data = [
     profilepic: "/testimonials/pfp6.jpeg",
     date: "6mo",
     content:
-      "💙 Proud to have built AnnSetu as our project for Electrothon 8.0 – Colosseum Of Code at NIT Hamirpur...",
+      "💙 Proud to have built AnnSetu as our project for Electrothon 7.0 – Colosseum Of Code at NIT Hamirpur...",
     postpic: "/testimonials/sixth.jpeg",
   },
   {
@@ -70,7 +70,7 @@ const Data = [
     profilepic: "/testimonials/pfp7.jpeg",
     date: "6mo",
     content:
-      "Thrilled to share an incredible achievement! 🏆 Track prizes winner at Electrothon 8.0 🏆 I had the amazing opportunity to participate in Electrothon 8.0 — a national-level hackathon organized by MLH and NIT Hamirpur...",
+      "Thrilled to share an incredible achievement! 🏆 Track prizes winner at Electrothon 7.0 🏆 I had the amazing opportunity to participate in Electrothon 8.0 — a national-level hackathon organized by MLH and NIT Hamirpur...",
     postpic: "/testimonials/seventh.jpeg",
   },
   {
@@ -79,7 +79,7 @@ const Data = [
     profilepic: "/testimonials/pfp8.jpeg",
     date: "6mo",
     content:
-      "Our team, La Casa De Code, which I had the privilege to lead, recently participated in Electrothon 8.0 ⚡ A National Level Hackathon hosted by NIT Hamirpur, with over 100 teams and 1,500+ participants from across the country...",
+      "Our team, La Casa De Code, which I had the privilege to lead, recently participated in Electrothon 7.0 ⚡ A National Level Hackathon hosted by NIT Hamirpur, with over 100 teams and 1,500+ participants from across the country...",
     postpic: "/testimonials/eighthh.jpeg",
   },
   {
@@ -88,7 +88,7 @@ const Data = [
     profilepic: "/testimonials/pfp9.jpeg",
     date: "6mo",
     content:
-      "Dear readers, I am humbled to share that Team Innovation Station has won the MLH TRACK PRIZE for Best Build Using Streamlit at Electrothon 8.0, organized by NIT Hamirpur, while competing against 99 talented teams from across India...",
+      "Dear readers, I am humbled to share that Team Innovation Station has won the MLH TRACK PRIZE for Best Build Using Streamlit at Electrothon 7.0, organized by NIT Hamirpur, while competing against 99 talented teams from across India...",
     postpic: "/testimonials/ninth.jpeg",
   },
   {
@@ -97,7 +97,7 @@ const Data = [
     profilepic: "/testimonials/pfp10.jpeg",
     date: "6mo",
     content:
-      "🏆 MLH Track Prize Winners at Electrothon 8.0! 🏆 A dream becomes reality through the magic of determination, hard work, and an incredible team...",
+      "🏆 MLH Track Prize Winners at Electrothon 7.0! 🏆 A dream becomes reality through the magic of determination, hard work, and an incredible team...",
     postpic: "/testimonials/tenth.jpeg",
   },
   {
@@ -106,7 +106,7 @@ const Data = [
     profilepic: "/testimonials/pfp11.jpeg",
     date: "6mo",
     content:
-      "At Electrothon 8.0, we dived into challenges headfirst—ideating, building, and refining our solution in a race against time. Every bug fixed was a step closer to something bigger, and every roadblock was an opportunity to think differently...",
+      "At Electrothon 7.0, we dived into challenges headfirst—ideating, building, and refining our solution in a race against time. Every bug fixed was a step closer to something bigger, and every roadblock was an opportunity to think differently...",
     postpic: "/testimonials/eleven.jpeg",
   },
   */
