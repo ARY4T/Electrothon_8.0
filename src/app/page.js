@@ -1,6 +1,6 @@
 import Image from "next/image";
-import styles from "../styles/hero.module.css";
-import FloatingNav from "@/components/FloatingNav";
+import styles from "@/styles/hero.module.css";
+import Navbar from "@/components/Navbar";
 import FAQList from "@/components/FAQList";
 import Footer from "@/components/Footer";
 import specLogo from "@/assets/images/spec-logo.png";
@@ -10,6 +10,7 @@ import Themes from "@/components/ThemesSection/ThemesSection";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import Timeline from "@/components/Timeline/timeline";
 import GalleryPage from "@/components/gallery/gallery";
+
 export default function Page() {
   return (
     <>
@@ -30,9 +31,8 @@ export default function Page() {
           <Image src={specLogo} alt="SPEC Logo" width={150} height={150} />
         </div>
 
-        <nav className={styles.navbar}>
-          <FloatingNav />
-        </nav>
+        {/* NEW NAVBAR */}
+        <Navbar />
 
         <div className={styles.centerText}>
           <h1 className={styles.title}>ELECTROTHON 8.0</h1>
@@ -43,6 +43,7 @@ export default function Page() {
           </button>
         </div>
       </div>
+
       <MissionBriefing />
       <GalleryPage />
       <Themes />
@@ -53,5 +54,4 @@ export default function Page() {
     </>
   );
 }
-
 
