@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -8,8 +9,6 @@ import ContactUs1 from '@/components/ui/ContactUs1';
 import TargetCursor from './TargetCursor';
 
 export default function Footer() {
-  
-
   return (
     <footer 
       id="contact" 
@@ -34,17 +33,17 @@ export default function Footer() {
 
       {/* Content */}
       <div className="relative z-10 w-full flex flex-col items-center px-4">
-        {/* Footer Title */}
-        <div className="flex items-center justify-center p-8 w-full text-center mb-16">
+        {/* Footer Title - KEPT AS IS (Pixel Font) */}
+        <div className="flex items-center justify-center p-8 w-full text-center mb-6">
           <h1
-            className="font-normal text-white text-[clamp(1.6rem,4.5vw,3.2rem)] whitespace-normal break-words max-w-[700px] px-4"
+            className="font-normal text-white text-[clamp(1.6rem,5vw,3.75rem)] whitespace-normal break-words max-w-[700px] px-4"
             style={{ fontFamily: "'Press Start 2P', cursive" }}
           >
-            Let&apos;s talk about everything!
+            Let's talk about everything!
           </h1>
         </div>
 
-  <div className="flex flex-col items-center justify-center w-full max-w-6xl space-y-10 px-4">
+        <div className="flex flex-col items-center justify-center w-full max-w-6xl space-y-6 px-4">
           {/* Contact component (adapted ContactUs1) */}
           <div className="w-full flex items-center justify-center">
             <ContactUs1 />
@@ -73,7 +72,9 @@ export default function Footer() {
                   />
                 </a>
               </div>
-              {/* Resources */}
+              
+           {/* Resources */}
+{/* Resources / LINKS */}
               <div className="text-center mb-6 md:mb-0 min-w-0 w-full md:w-auto">
                 <p 
                   className="text-white font-bold mb-4 text-sm"
@@ -81,7 +82,10 @@ export default function Footer() {
                 >
                   LINKS
                 </p>
-                <ul className="space-y-3 text-gray-400 text-xs whitespace-normal break-words">
+                <ul 
+                  className="space-y-4 text-gray-400 text-[10px] leading-relaxed whitespace-normal break-words"
+                  style={{ fontFamily: "'Press Start 2P', cursive" }}
+                >
                   <li>
                     <a
                       href="https://electrothon-7-0.vercel.app/"
@@ -102,6 +106,27 @@ export default function Footer() {
                       SPEC NITH
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="/codeofconduct"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-target hover:text-gray-300"
+                    >
+                      Code of Conduct
+                    </a>
+                  </li>
+                  {/* NEW LINK ADDED HERE */}
+                  <li>
+                    <a
+                      href="/hackersguide" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-target hover:text-gray-300"
+                    >
+                      Hacker Guide
+                    </a>
+                  </li>
                 </ul>
               </div>
 
@@ -113,7 +138,11 @@ export default function Footer() {
                 >
                   ADDRESS
                 </p>
-                <ul className="space-y-3 text-gray-400 text-xs whitespace-normal break-words">
+                {/* APPLIED PIXEL FONT HERE */}
+                <ul 
+                  className="space-y-4 text-gray-400 text-[10px] leading-relaxed whitespace-normal break-words"
+                  style={{ fontFamily: "'Press Start 2P', cursive" }}
+                >
                   <li>
                     <a
                       href="https://www.google.com/maps/place/NIT+Hamirpur/@31.6750134,76.5271587,13z"
@@ -194,8 +223,11 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Copyright */}
-          <div className="text-center text-gray-400 text-xs mt-8">
+          {/* Copyright - APPLIED PIXEL FONT HERE */}
+          <div 
+            className="text-center text-gray-400 text-[10px] mt-8"
+            style={{ fontFamily: "'Press Start 2P', cursive" }}
+          >
             © 2025, SPEC NITH. All rights reserved.
           </div>
         </div>

@@ -22,12 +22,11 @@ export default function MissionBriefing() {
        
       <div className="w-full min-h-screen flex flex-col items-center px-6 sm:px-10 lg:px-20 py-24">
         {/* MAIN TITLE */}
-        <h2
-  className={`${styles.missionTitle} text-center 
-  text-[16px] sm:text-[18px] md:text-[28px] lg:text-[37px]`}>
-
-          MISSION BRIEFING
-        </h2>
+    <h2
+  className={`${styles.missionTitle} text-center text-[clamp(1.6rem,5vw,3.75rem)]`}
+>
+  MISSION BRIEFING
+</h2>
 
         {/* CONTENT */}
         <div className="w-full max-w-[1200px] mx-auto flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-20 mt-10">

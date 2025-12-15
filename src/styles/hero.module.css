@@ -91,10 +91,13 @@
 .subtitle {
   font-size: clamp(18px, 3.5vw, 32px);
   margin-top: 20px;
-  color: #2b195d;
+  
+  /* UPDATED: Match .title color and glow */
+  color: white; 
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+
   line-height: 1.4;
 }
-
 /* ================= CTA ================= */
 
 .ctaButton {

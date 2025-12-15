@@ -65,12 +65,12 @@ export default function GalleryPage() {
           <div className="gallery-decor" aria-hidden />
           {/* Blend: gradient to mix header with gallery section beneath */}
           <div className="header-blend" aria-hidden />
-          <h1 
-            className="text-3xl md:text-5xl lg:text-6xl text-white drop-shadow-[0_4px_0_rgba(0,0,0,1)]"
-            style={{ fontFamily: "'Press Start 2P', cursive" }}
-          >
-            EVENTS GALLERY
-          </h1>
+         <h2
+  className="text-[clamp(1.6rem,5vw,3.75rem)] text-white drop-shadow-[0_4px_0_rgba(0,0,0,1)]"
+  style={{ fontFamily: "'Press Start 2P', cursive" }}
+>
+  EVENTS GALLERY
+</h2>
         </div>
 
         {/* SECTION 2: GALLERY SCROLL (Background: gallerybgmain.png) */}

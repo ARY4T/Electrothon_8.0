@@ -6,8 +6,6 @@ import { Check, Loader2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 // A simplified, dependency-light adaptation of the provided ContactUs1
-// It uses plain inputs and CSS transitions instead of framer-motion and
-// substitutes decorative components with CSS backgrounds to match the look.
 const ContactUs1 = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -18,9 +16,9 @@ const ContactUs1 = () => {
 
   const formRef = useRef(null);
   const [inView, setInView] = useState(false);
-  const hasAnimatedRef = useRef(false); // Track if animation has already happened
+  const hasAnimatedRef = useRef(false); 
 
-  // Initialize EmailJS once on component mount
+  // Initialize EmailJS
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY) {
       emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
@@ -35,7 +33,6 @@ const ContactUs1 = () => {
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          // Only trigger animation once
           if (e.isIntersecting && !hasAnimatedRef.current) {
             setInView(true);
             hasAnimatedRef.current = true;
@@ -54,47 +51,31 @@ const ContactUs1 = () => {
     setError('');
     
     try {
-      // Validate inputs
       if (!name || !email || !message) {
         setError('Please fill in all fields');
         setIsSubmitting(false);
         return;
       }
 
-      // Check if EmailJS is properly configured
-      if (!process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID) {
-        setError('EmailJS service ID not configured');
-        console.error('Missing NEXT_PUBLIC_EMAILJS_SERVICE_ID');
-        setIsSubmitting(false);
-        return;
-      }
-      
-      if (!process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID) {
-        setError('EmailJS template ID not configured');
-        console.error('Missing NEXT_PUBLIC_EMAILJS_TEMPLATE_ID');
+      if (!process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID) {
+        setError('EmailJS configuration missing');
         setIsSubmitting(false);
         return;
       }
 
-      // Send email using EmailJS
       const templateParams = {
         from_name: name,
         from_email: email,
         message: message,
-        to_email: 'community.spec@gmail.com', // Your recipient email
+        to_email: 'community.spec@gmail.com',
       };
 
-      console.log('Sending email with params:', templateParams);
-
-      const response = await emailjs.send(
+      await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         templateParams
       );
 
-      console.log('Email sent successfully:', response);
-
-      // Clear form
       setName('');
       setEmail('');
       setMessage('');
@@ -107,6 +88,9 @@ const ContactUs1 = () => {
       setIsSubmitting(false);
     }
   };
+
+  // Shared style object for the pixel font
+  const pixelFontStyle = { fontFamily: "'Press Start 2P', cursive" };
 
   return (
     <section className="relative w-full py-12 overflow-hidden">
@@ -121,12 +105,12 @@ const ContactUs1 = () => {
       />
 
       <div className="relative z-10 mx-auto max-w-5xl rounded-2xl border border-white/6 bg-secondary/10 p-6 md:p-8">
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div ref={formRef} className={`transition-all duration-700 min-w-0 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
             <div className="relative flex items-baseline gap-3 justify-center">
-              <h2 className="text-white font-extrabold text-[clamp(1.2rem,4vw,2.2rem)] md:text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight" style={{ fontFamily: "'Press Start 2P', cursive" }}>Contact</h2>
-              <span className="text-white font-extrabold text-[clamp(1.2rem,4vw,2.2rem)] md:text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight" style={{ fontFamily: "'Press Start 2P', cursive" }}>Us</span>
-              {/* static decorative accent (no animation) */}
+              <h2 className="text-white font-extrabold text-[clamp(1.2rem,4vw,2.2rem)] md:text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight" style={pixelFontStyle}>Contact</h2>
+              <span className="text-white font-extrabold text-[clamp(1.2rem,4vw,2.2rem)] md:text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight" style={pixelFontStyle}>Us</span>
+              {/* static decorative accent */}
               <div className="absolute inset-0 h-24 w-full pointer-events-none" aria-hidden>
                 <div style={{ background: 'radial-gradient(circle at 60% 30%, rgba(255,159,184,0.15), transparent 40%)' }} className="h-full w-full" />
               </div>
@@ -134,44 +118,68 @@ const ContactUs1 = () => {
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-4">
               {error && (
-                <div className="p-3 rounded-md bg-red-500/10 border border-red-500/50 text-red-400 text-sm">
+                <div className="p-3 rounded-md bg-red-500/10 border border-red-500/50 text-red-400 text-xs" style={pixelFontStyle}>
                   {error}
                 </div>
               )}
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm text-gray-300 mb-1">Name</label>
+                  {/* Name Label */}
+                  <label 
+                    className="block text-[10px] text-gray-300 mb-2" 
+                    style={pixelFontStyle}
+                  >
+                    Name
+                  </label>
+                  {/* Name Input */}
                   <input 
                     required
                     value={name} 
                     onChange={(e) => setName(e.target.value)} 
-                    className="w-full rounded-md bg-transparent border border-dashed border-gray-500 px-3 py-2 text-white focus:outline-none" 
+                    className="w-full rounded-md bg-transparent border border-dashed border-gray-500 px-3 py-3 text-white focus:outline-none text-[10px]" 
                     placeholder="Enter your name" 
+                    style={pixelFontStyle}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-300 mb-1">Email</label>
+                  {/* Email Label */}
+                  <label 
+                    className="block text-[10px] text-gray-300 mb-2"
+                    style={pixelFontStyle}
+                  >
+                    Email
+                  </label>
+                  {/* Email Input */}
                   <input 
                     required
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)} 
                     type="email" 
-                    className="w-full rounded-md bg-transparent border border-dashed border-gray-500 px-3 py-2 text-white focus:outline-none" 
+                    className="w-full rounded-md bg-transparent border border-dashed border-gray-500 px-3 py-3 text-white focus:outline-none text-[10px]" 
                     placeholder="Enter your email" 
+                    style={pixelFontStyle}
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm text-gray-300 mb-1">Message</label>
+                {/* Message Label */}
+                <label 
+                  className="block text-[10px] text-gray-300 mb-2"
+                  style={pixelFontStyle}
+                >
+                  Message
+                </label>
+                {/* Message Textarea */}
                 <textarea 
                   required
                   value={message} 
                   onChange={(e) => setMessage(e.target.value)} 
                   rows={5} 
-                  className="w-full rounded-md bg-transparent border border-dashed border-gray-500 px-3 py-2 text-white focus:outline-none resize-none" 
+                  className="w-full rounded-md bg-transparent border border-dashed border-gray-500 px-3 py-3 text-white focus:outline-none resize-none text-[10px]" 
                   placeholder="Enter your message" 
+                  style={{ ...pixelFontStyle, lineHeight: '1.5' }}
                 />
               </div>
 
@@ -179,16 +187,17 @@ const ContactUs1 = () => {
                 <button
                   disabled={isSubmitting}
                   type="submit"
-                  className="cursor-target inline-flex items-center justify-center gap-2 rounded-md text-white font-semibold border border-dashed border-gray-500 px-4 py-2"
+                  className="cursor-target inline-flex items-center justify-center gap-2 rounded-md text-white font-semibold border border-dashed border-gray-500 px-6 py-3 text-[10px]"
+                  style={pixelFontStyle}
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      <Loader2 className="mr-2 h-3 w-3 animate-spin" />
                       Sending...
                     </>
                   ) : isSubmitted ? (
                     <>
-                      <Check className="mr-2 h-4 w-4" />
+                      <Check className="mr-2 h-3 w-3" />
                       Message Sent!
                     </>
                   ) : (
@@ -200,7 +209,6 @@ const ContactUs1 = () => {
           </div>
 
           <div className={`flex items-center justify-center ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-6'} transition-all duration-700`}> 
-            {/* Render the globe in a circular, transparent container so there's no colored rectangular frame */}
             <div className="relative mx-auto w-[80vw] max-w-[420px] h-[80vw] max-h-[420px] overflow-hidden rounded-full bg-transparent p-0 md:h-[420px] md:w-[420px]">
               <div className="w-full h-full">
                   <GlobeDemo embedded={true} />

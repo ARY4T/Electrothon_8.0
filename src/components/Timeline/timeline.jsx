@@ -4,6 +4,8 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import "./timeline.css"; 
+import { Orbitron } from "next/font/google";
+import { Press_Start_2P } from "next/font/google";
 
 /* --- ASSETS --- */
 const GhostIcon = ({ color, isEaten }) => {
@@ -20,7 +22,14 @@ const GhostIcon = ({ color, isEaten }) => {
         </div>
     );
 };
-
+const orbitron = Orbitron({
+    weight: ["400", "700"],
+    subsets: ["latin"],
+});
+const pressStart = Press_Start_2P({
+    weight: "400",
+    subsets: ["latin"],
+});
 const PacmanIcon = () => (
     <div className="entity-wrapper">
         <div className="pacman-body"></div>
@@ -29,10 +38,10 @@ const PacmanIcon = () => (
 
 /* --- DATA --- */
 const events = [
-    { id: 1, title: "REGISTRATION", subtitle: "Portal Opens", date: "", ghost: "#ff0055" }, 
-    { id: 2, title: "SHORTLIST", subtitle: "Teams Selected", date: "", ghost: "#bd00ff" }, 
-    { id: 3, title: "HACKATHON", subtitle: "48H Coding", date: "", ghost: "#00f3ff" }, 
-    { id: 4, title: "FINALE", subtitle: "Prize Ceremony", date: "", ghost: "#ff9100" }, 
+    { id: 1, title: "REGISTRATION", subtitle: "Portal Opens", date: "15 December 2025", ghost: "#ff0055" }, 
+    { id: 2, title: "SHORTLIST", subtitle: "Teams Selected", date: "20 February 2026", ghost: "#bd00ff" }, 
+    { id: 3, title: "HACKATHON", subtitle: "48HR Coding", date: "13 March 2026", ghost: "#00f3ff" }, 
+    { id: 4, title: "FINALE", subtitle: "Prize Ceremony", date: "15 March 2026", ghost: "#ff9100" }, 
 ];
 
 const PacmanTimeline = () => {
@@ -97,11 +106,14 @@ const PacmanTimeline = () => {
             ref={containerRef} 
             style={{ height: `${totalHeight}px` }}
         >
-            <div className="header-section" style={{ height: `${HEADER_HEIGHT}px` }}>
-                <h1 className="modern-title" style={{ fontFamily: '"Press Start 2P", cursive, monospace' }}>
-                    TIMELINE
-                </h1>
-            </div>
+           <div className="header-section" style={{ height: `${HEADER_HEIGHT}px` }}>
+  <h1 
+    className="modern-title text-[clamp(1.6rem,5vw,3.75rem)]" 
+    style={{ fontFamily: '"Press Start 2P", cursive, monospace' }}
+  >
+    TIMELINE
+  </h1>
+</div>
 
             <div className="game-layout">
                 <div 
@@ -160,8 +172,8 @@ const PacmanTimeline = () => {
                             >
                                 <div className="connector-arm"><div className="connector-dot"></div></div>
                                 <div className="holo-card">
-                                    <div className="card-content">
-                                        <h3 className="card-title">{ev.title}</h3>
+                                    <div className={`card-content ${orbitron.className}`}>
+                                        <h3 className={`card-title ${pressStart.className}`}>{ev.title}</h3>
                                         <div className="card-divider"></div>
                                         <h4 className="card-subtitle">{ev.subtitle}</h4>
                                         <p className="card-date">{ev.date}</p>
