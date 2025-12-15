@@ -40,9 +40,7 @@ export default function Page() {
           <h1 className={styles.title}>ELECTROTHON 8.0</h1>
           <h2 className={styles.subtitle}>LABYRINTH OF ETERNUM</h2>
 
-          <button>
-            <Devfolio_Button />
-          </button>
+          <Devfolio_Button />
         </div>
       </div>
 

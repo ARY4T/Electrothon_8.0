@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       >
         <Script 
           src="https://apply.devfolio.co/v2/sdk.js" 
-          strategy="lazyOnload"
+          strategy="beforeInteractive"
         />
         {children}
       </body>
