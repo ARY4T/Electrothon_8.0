@@ -13,11 +13,12 @@ const Devfolio_Button = () => {
     };
   }, []);
   return (
-    <div className="cursor-target text-white p-1 flex justify-center items-center">
+    <div className="flex justify-center items-center p-1">
       <div
-        className="apply-button w-52 h-12 md:w-80 "
+        className="apply-button"
         data-hackathon-slug="electrothon-8"
         data-button-theme="light"
+        style={{ height: "44px", width: "312px" }}
       >
       </div>
     </div>
