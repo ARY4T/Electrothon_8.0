@@ -1,5 +1,4 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,10 +23,6 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
         suppressHydrationWarning
       >
-        <Script 
-          src="https://apply.devfolio.co/v2/sdk.js" 
-          strategy="beforeInteractive"
-        />
         {children}
       </body>
     </html>
