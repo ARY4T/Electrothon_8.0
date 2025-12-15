@@ -5,96 +5,33 @@
   top: 52px;
   left: 50%;
   transform: translateX(-50%);
-
   display: flex;
   gap: 18px;
-  align-items: center;
-  justify-content: center;
-
-  max-width: 95vw;          /* prevent overflow */
-  overflow-x: auto;         /* allow safe horizontal scroll if needed */
-
   z-index: 30;
   font-family: "Press Start 2P", cursive;
-  white-space: nowrap;
 }
 
-/* =========================
-   Navigation pill
-========================= */
 .pill {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   padding: 10px 20px;
   border-radius: 999px;
-
-  color: white;
   font-size: 11px;
   letter-spacing: 0.14em;
-  line-height: 1;
-
+  color: white;
   text-decoration: none;
-  user-select: none;
-
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(6px);
-
-  transition:
-    background 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.2s ease;
+  transition: 0.25s ease;
 }
 
 .pill:hover {
   background: rgba(213, 139, 255, 0.22);
   box-shadow: 0 0 10px rgba(213, 139, 255, 0.7);
-  transform: translateY(-1px);
 }
 
-/* =========================
-   Medium screens (tablets / small laptops)
-========================= */
-@media (max-width: 900px) {
-  .navbar {
-    gap: 14px;
-  }
-
-  .pill {
-    font-size: 10px;
-    padding: 9px 16px;
-    letter-spacing: 0.12em;
-  }
-}
-
-/* =========================
-   Small–medium screens
-========================= */
-@media (max-width: 780px) {
-  .navbar {
-    gap: 12px;
-  }
-
-  .pill {
-    font-size: 9px;
-    padding: 8px 12px;
-    letter-spacing: 0.1em;
-  }
-}
-
-/* =========================
-   Mobile phones
-========================= */
+/* hide desktop navbar on phones */
 @media (max-width: 600px) {
   .navbar {
-    gap: 10px;
-  }
-
-  .pill {
-    font-size: 8px;
-    padding: 7px 10px;
-    letter-spacing: 0.08em;
+    display: none;
   }
 }

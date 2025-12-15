@@ -8,7 +8,7 @@ const navItems = [
   { label: "Themes", href: "#themes" },
   { label: "Prizes", href: "#prizes" },
   { label: "FAQs", href: "#faqs" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -26,4 +26,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
