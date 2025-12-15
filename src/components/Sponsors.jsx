@@ -7,8 +7,8 @@ import devfolioLogo from '@/assets/images/Devfolio_Logo-White.png';
 import ethLogo from '@/assets/images/ethindia-light.png';
 
 const sponsorsList = [
-  { name: 'Devfolio', logo: devfolioLogo, url: 'https://devfolio.co' },
-  { name: 'EthIndia', logo: ethLogo, url: 'https://ethindia.co' },
+  { name: 'Devfolio', logo: devfolioLogo, url: 'https://devfolio.co', alt: 'DEVFOLIO LOGO' },
+  { name: 'EthIndia', logo: ethLogo, url: 'https://ethindia.co', alt: 'ETHINDIA LOGO' },
 ];
 
 export default function Sponsors() {
@@ -30,7 +30,7 @@ export default function Sponsors() {
               style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className={styles.tileLogo}>
-                <Image src={s.logo} alt={`${s.name} LOGO`} width={260} height={120} className={styles.tileImage} />
+                <Image src={s.logo} alt={s.alt} width={260} height={120} className={styles.tileImage} />
               </div>
             </a>
           ))}
