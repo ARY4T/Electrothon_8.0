@@ -10,6 +10,7 @@ import Themes from "@/components/ThemesSection/ThemesSection";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import Timeline from "@/components/Timeline/timeline";
 import GalleryPage from "@/components/gallery/gallery";
+import Devfolio_Button from "../components/Main Page/DevfolioButton";
 
 export default function Page() {
   return (
@@ -38,8 +39,8 @@ export default function Page() {
           <h1 className={styles.title}>ELECTROTHON 8.0</h1>
           <h2 className={styles.subtitle}>LABYRINTH OF ETERNUM</h2>
 
-          <button className={styles.ctaButton}>
-            Register Here
+          <button>
+            <Devfolio_Button />
           </button>
         </div>
       </div>
