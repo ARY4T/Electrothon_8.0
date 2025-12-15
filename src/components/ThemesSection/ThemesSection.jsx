@@ -41,7 +41,8 @@ export default function ThemeSection() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const isDesktop = !isSmallScreen && !isMediumScreen;
+  // hover allowed on medium + desktop
+  const canHover = !isSmallScreen;
 
   const expandedWidth = "34%";
   const collapsedWidth = "11%";
@@ -62,11 +63,11 @@ export default function ThemeSection() {
         backgroundImage: 'url("/backgrounds/themes.png")',
       }}
     >
-      {/* ========= SMALL SCREEN OVERRIDE GRADIENT (COVERS IMAGE) ========= */}
+      {/* ===== SMALL SCREEN GRADIENT OVERRIDE ===== */}
       {isSmallScreen && (
         <div
           aria-hidden
-          className="absolute inset-0 z-[0]"
+          className="absolute inset-0 z-0"
           style={{
             background: `
               radial-gradient(circle at 20% 15%, rgba(180,0,255,0.28), transparent 42%),
@@ -84,7 +85,7 @@ export default function ThemeSection() {
         />
       )}
 
-      {/* HEADER GLOW */}
+      {/* ===== TOP HEADER BLEND (RESTORED) ===== */}
       <div
         aria-hidden
         className="absolute top-0 left-0 w-full h-[22vh] z-[1] pointer-events-none"
@@ -94,7 +95,7 @@ export default function ThemeSection() {
         }}
       />
 
-      {/* BOTTOM FADE */}
+      {/* ===== BOTTOM DARK FADE (RESTORED) ===== */}
       <div
         aria-hidden
         className="absolute bottom-0 left-0 w-full h-[22vh] z-[1] pointer-events-none"
@@ -104,7 +105,7 @@ export default function ThemeSection() {
         }}
       />
 
-      {/* BASE OVERLAY */}
+      {/* ===== BASE OVERLAY (RESTORED) ===== */}
       <div
         className={`absolute inset-0 z-[0] ${
           isSmallScreen ? "bg-black/5" : "bg-black/10"
@@ -119,7 +120,7 @@ export default function ThemeSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
-       className={`${pressStart.className} text-[clamp(1.6rem,5vw,3.75rem)] text-center font-bold`}
+          className={`${pressStart.className} text-[clamp(1.6rem,5vw,3.75rem)] text-center font-bold`}
           style={{ letterSpacing: "2px" }}
         >
           THEMES
@@ -144,21 +145,29 @@ export default function ThemeSection() {
             {tabData.map((theme, idx) => {
               const isActive = lockedIndex === idx || activeIndex === idx;
 
-              const targetWidth = isDesktop
-                ? anyActive
-                  ? isActive
-                    ? expandedWidth
-                    : collapsedWidth
-                  : idleWidth
-                : "100%";
+              const targetWidth =
+                canHover && !isMediumScreen
+                  ? anyActive
+                    ? isActive
+                      ? expandedWidth
+                      : collapsedWidth
+                    : idleWidth
+                  : "100%";
 
-              const forcedStyle = !isDesktop
-                ? {
-                    width: "100%",
-                    minWidth: "100%",
-                    height: isSmallScreen ? mobileCardHeight : "460px",
-                  }
-                : {};
+              const forcedStyle =
+                !canHover
+                  ? {
+                      width: "100%",
+                      minWidth: "100%",
+                      height: mobileCardHeight,
+                    }
+                  : isMediumScreen
+                  ? {
+                      width: "100%",
+                      minWidth: "100%",
+                      height: "460px",
+                    }
+                  : {};
 
               return (
                 <motion.div
@@ -166,10 +175,10 @@ export default function ThemeSection() {
                   animate={{ width: targetWidth }}
                   transition={{ duration: 0.32, ease: "easeInOut" }}
                   onMouseEnter={() =>
-                    isDesktop && lockedIndex === null && setActiveIndex(idx)
+                    canHover && lockedIndex === null && setActiveIndex(idx)
                   }
                   onMouseLeave={() =>
-                    isDesktop && lockedIndex === null && setActiveIndex(null)
+                    canHover && lockedIndex === null && setActiveIndex(null)
                   }
                   onClick={() =>
                     setLockedIndex((prev) => (prev === idx ? null : idx))
@@ -177,6 +186,7 @@ export default function ThemeSection() {
                   className="relative h-[460px] rounded-3xl overflow-hidden border border-white/10 bg-black cursor-pointer"
                   style={forcedStyle}
                 >
+                  {/* IMAGE */}
                   <Image
                     src={theme.img1}
                     alt={theme.heading}
@@ -184,12 +194,44 @@ export default function ThemeSection() {
                     className="object-cover"
                   />
 
-                  <div className="absolute inset-0 flex items-end p-6 z-10">
-                    <h3
-                      className={`${orbitron.className} text-base md:text-lg font-semibold text-white/95 text-center w-full`}
-                    >
-                      {theme.heading}
-                    </h3>
+                  {/* BLUR + FEATHERED GRADIENT */}
+                  {isActive && (
+                    <div
+                      className="absolute inset-x-0 bottom-0 h-[60%] z-[1]"
+                      style={{
+                        backdropFilter: "blur(8px)",
+                        WebkitBackdropFilter: "blur(8px)",
+                        background:
+                          "linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.35), rgba(0,0,0,0))",
+                        maskImage:
+                          "linear-gradient(to top, black 65%, rgba(0,0,0,0.6) 85%, transparent 100%)",
+                        WebkitMaskImage:
+                          "linear-gradient(to top, black 65%, rgba(0,0,0,0.6) 85%, transparent 100%)",
+                      }}
+                    />
+                  )}
+
+                  {/* TEXT (SHARP) */}
+                  <div className="absolute inset-0 z-[2] flex flex-col justify-end p-6">
+                    {!isActive ? (
+                      <h3
+                        className={`${orbitron.className} text-base md:text-lg font-semibold text-white/95 text-center`}
+                      >
+                        {theme.heading}
+                      </h3>
+                    ) : (
+                      <>
+                        <h3
+                          className={`${orbitron.className} text-xl md:text-2xl font-bold text-center mb-2`}
+                        >
+                          {theme.heading}
+                        </h3>
+
+                        <p className="text-sm text-white/90 leading-relaxed">
+                          {theme.content}
+                        </p>
+                      </>
+                    )}
                   </div>
                 </motion.div>
               );

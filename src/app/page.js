@@ -10,7 +10,7 @@ import Themes from "@/components/ThemesSection/ThemesSection";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import Timeline from "@/components/Timeline/timeline";
 import GalleryPage from "@/components/gallery/gallery";
-import Devfolio_Button from "../components/Main Page/DevfolioButton";
+import Devfolio_Button from "@/components/Main Page/DevfolioButton";
 import Sponsors from "@/components/Sponsors";
 
 export default function Page() {
@@ -39,8 +39,10 @@ export default function Page() {
         <div className={styles.centerText}>
           <h1 className={styles.title}>ELECTROTHON 8.0</h1>
           <h2 className={styles.subtitle}>LABYRINTH OF ETERNUM</h2>
+          <button>
+            <Devfolio_Button />
+          </button>
 
-          <Devfolio_Button />
         </div>
       </div>
 

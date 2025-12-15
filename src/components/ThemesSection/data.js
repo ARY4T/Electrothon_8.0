@@ -11,62 +11,55 @@ export const tabData = [
     id: "theme-1",
     heading: "Travel & Tourism",
     content:
-      "Across vast kingdoms and treacherous seas, the movement of people and goods faces many challenges. Knights and merchants alike seek safer passages, smarter travel systems, and better accommodations. Build innovations that redefine how the world travels.",
+      "Travel and tourism are evolving rapidly with technology shaping how people plan, move, and experience journeys. Build solutions that improve navigation, safety, accessibility, personalization, and efficiency across the travel ecosystem.",
     img1: foodtech,
-
   },
 
   {
     id: "theme-2",
     heading: "Climate Emergency",
     content:
-      "Our world faces rising temperatures, floods, droughts, and environmental imbalance. Innovators are needed to create sustainable technologies, track climate change, and protect the planet for future generations.",
+      "Climate change presents urgent challenges including rising temperatures, extreme weather, and resource scarcity. Develop technologies that promote sustainability, monitor environmental impact, optimize energy usage, and support data driven climate action.",
     img1: climate,
-
   },
 
   {
     id: "theme-3",
     heading: "Healthcare",
     content:
-      "From disease prediction to smart diagnostics and patient monitoring, healthcare innovation is more important than ever. Build solutions that save lives and make quality healthcare accessible to all.",
+      "Healthcare innovation can transform diagnosis, treatment, and patient care. Create solutions focused on smart diagnostics, health monitoring, data analysis, accessibility, and improving outcomes for both patients and providers.",
     img1: health,
-
   },
 
   {
     id: "theme-4",
     heading: "Cyber Security & Blockchain",
     content:
-      "Protect digital assets, prevent cyber attacks, and build trust using blockchain technology. Create secure systems that defend data, networks, and financial infrastructure in the modern digital world.",
+      "As digital systems grow, securing data and building trust becomes critical. Design solutions that prevent cyber threats, protect privacy, strengthen digital identities, and leverage blockchain for transparency and secure transactions.",
     img1: blockchain,
-
   },
 
   {
     id: "theme-5",
     heading: "EdTech",
     content:
-      "Revolutionize education with smart platforms, adaptive learning systems, AI tutors, and digital classrooms. Make knowledge accessible, engaging, and powerful for learners everywhere.",
+      "Education is becoming more interactive, adaptive, and technology driven. Build platforms that enhance learning through personalization, accessibility, analytics, and engaging digital experiences for students and educators.",
     img1: Edtech,
-
   },
 
   {
     id: "theme-6",
     heading: "Open Innovation",
     content:
-      "No limits. No boundaries. If your idea solves a real problem and doesn’t fit into any category, this is your battlefield. Bring your most creative, bold, and powerful innovations here.",
+      "Some ideas do not fit neatly into predefined categories. If your solution tackles a real world problem with creativity and impact, this theme gives you the freedom to explore bold concepts across any domain.",
     img1: open_innov,
-
   },
 
   {
     id: "theme-7",
     heading: "AI & Agentic Systems",
     content:
-      "From intelligent decision-making to predictive systems and autonomous agents, Artificial Intelligence is reshaping every domain. Build solutions that learn from data, assist humans, automate complex tasks, and push the boundaries of what machines can achieve responsibly.",
+      "Artificial Intelligence is driving smarter systems that can learn, adapt, and act with minimal intervention. Build intelligent solutions using machine learning, automation, and agent based approaches to solve complex problems responsibly.",
     img1: ai,
   },
-
 ];
