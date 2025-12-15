@@ -1,0 +1,45 @@
+.sponsorGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  align-items: center;
+  justify-items: center;
+}
+
+.tile {
+  background: rgba(10, 15, 30, 0.88);
+  border: 1px solid rgba(59, 93, 201, 0.9);
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+  transition: transform 0.28s cubic-bezier(.2,.9,.2,1), box-shadow 0.28s ease, border-color 0.28s ease;
+  cursor: pointer;
+  will-change: transform, box-shadow;
+  animation: popIn 420ms ease both;
+  opacity: 0;
+}
+
+.tile:hover {
+  transform: translateY(-10px) scale(1.06);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  border-color: #00f3ff;
+}
+
+.tileLogo {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.tileName { font-weight: 700; color: #fff; font-size: 20px; }
+.tileLevel { color: #a0a0ff; font-size: 14px; }
+
+.tileImage { max-width: 220px; max-height: 100px; object-fit: contain; }
+
+@keyframes popIn {
+  0% { transform: translateY(8px) scale(0.98); opacity: 0; }
+  60% { transform: translateY(-4px) scale(1.02); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}

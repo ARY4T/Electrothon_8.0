@@ -11,6 +11,7 @@ import Testimonials from "@/components/Testimonials/Testimonials";
 import Timeline from "@/components/Timeline/timeline";
 import GalleryPage from "@/components/gallery/gallery";
 import Devfolio_Button from "../components/Main Page/DevfolioButton";
+import Sponsors from "@/components/Sponsors";
 
 export default function Page() {
   return (
@@ -48,6 +49,7 @@ export default function Page() {
       <MissionBriefing />
       <GalleryPage />
       <Themes />
+      <Sponsors />
       <Timeline />
       <Testimonials />
       <FAQList />
