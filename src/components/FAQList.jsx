@@ -149,7 +149,8 @@ const FAQList = () => {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url(/bg_img.jpg)',
+          // use the requested image from public
+          backgroundImage: 'url(/bg_img_old.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -158,10 +159,11 @@ const FAQList = () => {
       ></div>
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/40 z-5"></div>
+  {/* overlay: ensure a valid Tailwind z-index class so it sits above the bg */}
+  <div className="absolute inset-0 bg-black/40 z-10"></div>
 
       {/* Content */}
-      <div className="relative z-10 w-full flex flex-col items-center">
+  <div className="relative z-20 w-full flex flex-col items-center">
         <div className="w-full max-w-6xl mt-8">
           <div className="flex flex-col items-center text-center">
             <h2

@@ -34,7 +34,7 @@ export default function Footer() {
       {/* Content */}
       <div className="relative z-10 w-full flex flex-col items-center px-4">
         {/* Footer Title - KEPT AS IS (Pixel Font) */}
-        <div className="flex items-center justify-center p-8 w-full text-center mb-6">
+  <div className="flex items-center justify-center p-8 w-full text-center mb-3">
           <h1
             className="font-normal text-white text-[clamp(1.6rem,5vw,3.75rem)] whitespace-normal break-words max-w-[700px] px-4"
             style={{ fontFamily: "'Press Start 2P', cursive" }}
@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
 
           {/* Social Links and Info Section */}
-          <div className="w-full border-t border-gray-600 pt-12 mt-6">
+          <div className="w-full pt-12 mt-6">
             <div className="flex flex-col md:flex-row flex-wrap md:flex-nowrap justify-center gap-5 lg:gap-12 items-center md:items-start">
               {/* Logo */}
               <div className="flex justify-center mb-6 md:mb-0 min-w-0 w-full md:w-auto">
