@@ -4,7 +4,7 @@ import styles from "@/styles/navbar.module.css";
 
 const navItems = [
   { label: "Schedule", href: "#schedule" },
-  { label: "Sponsors", href: "#sponsors" },
+  { label: "Sponsors", href: "/#sponsors" },
   { label: "Themes", href: "#themes" },
   { label: "Prizes", href: "#prizes" },
   { label: "FAQs", href: "#faqs" },
