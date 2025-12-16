@@ -105,7 +105,7 @@ const questions = [
   },
   {
     question: 'What if I have more queries?',
-    answer: 'You can contact us on our social media handles, or email us at spec@nith.ac.in for more efficiency and detailed information.',
+  answer: 'You can contact us on our social media handles, or email us at community.spec@gmail.com for more efficiency and detailed information.',
     category: 'support',
     answerStyle: 'h-28',
     questionStyle: 'h-40',
@@ -211,7 +211,8 @@ const FAQList = () => {
                   answer={question.answer}
                   finalHeightAnswer={question.answerStyle}
                   finalHeightQuestion={question.questionStyle}
-                  fontSizeScaling={question.fontSizeScaling}
+                  // Increase the FAQ question font size: base on small screens, larger on md+
+                  fontSizeScaling={"text-base md:text-lg"}
                   answerFontClass={anonymousPro.className}
                 />
               ))}
