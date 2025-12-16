@@ -2,7 +2,11 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useId } from 'react'; // 1. Import useId
+import { Rajdhani } from 'next/font/google';
 import { ChevronDown } from 'lucide-react';
+
+// Initialize Rajdhani once at module scope to avoid calling the loader inside JSX
+const rajdhani = Rajdhani({ weight: ['500', '700'], subsets: ['latin'] });
 
 const Dropdown = ({
   question,
@@ -52,7 +56,8 @@ const Dropdown = ({
             style={{ fontFamily: "'Press Start 2P', cursive" }}
           >
             <div className={`flex items-center justify-between gap-4`}>
-              <div className={`text-left ${fontSizeScaling} font-bold`}>{question}</div>
+              {/* Apply Rajdhani font (matches Timeline "Portal Opens" subtitle) */}
+              <div className={`text-left ${fontSizeScaling} font-bold ${rajdhani.className}`}>{question}</div>
               <div className="flex items-center justify-center w-8 h-8">
                 <ChevronDown
                   size={20}

@@ -34,12 +34,14 @@ export default function Footer() {
       {/* Content */}
       <div className="relative z-10 w-full flex flex-col items-center px-4">
         {/* Footer Title - KEPT AS IS (Pixel Font) */}
-        <div className="flex items-center justify-center p-8 w-full text-center mb-6">
+  <div className="flex items-center justify-center p-8 w-full text-center mb-8">
           <h1
-            className="font-normal text-white text-[clamp(1.6rem,5vw,3.75rem)] whitespace-normal break-words max-w-[700px] px-4"
+            className="font-normal text-white text-[clamp(1.4rem,4vw,3.5rem)] leading-tight break-words max-w-[90%] sm:max-w-[700px] mx-auto flex flex-col items-center text-center"
             style={{ fontFamily: "'Press Start 2P', cursive" }}
           >
-            Let's talk about everything!
+            {/* allow wrap on very small screens, but keep on one line from sm+ */}
+            <span className="block sm:whitespace-nowrap">Let's talk about</span>
+            <span className="block">everything!</span>
           </h1>
         </div>
 
@@ -50,7 +52,7 @@ export default function Footer() {
           </div>
 
           {/* Social Links and Info Section */}
-          <div className="w-full border-t border-gray-600 pt-12 mt-6">
+          <div className="w-full pt-12 mt-6">
             <div className="flex flex-col md:flex-row flex-wrap md:flex-nowrap justify-center gap-5 lg:gap-12 items-center md:items-start">
               {/* Logo */}
               <div className="flex justify-center mb-6 md:mb-0 min-w-0 w-full md:w-auto">
@@ -80,7 +82,7 @@ export default function Footer() {
                   className="text-white font-bold mb-4 text-sm"
                   style={{ fontFamily: "'Press Start 2P', cursive" }}
                 >
-                  LINKS
+                  RESOURCES
                 </p>
                 <ul 
                   className="space-y-4 text-gray-400 text-[10px] leading-relaxed whitespace-normal break-words"
@@ -88,7 +90,7 @@ export default function Footer() {
                 >
                   <li>
                     <a
-                      href="https://electrothon-7-0.vercel.app/"
+                      href="https://electrothon-8-0-32d6.vercel.app/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="cursor-target hover:text-gray-300"
@@ -200,7 +202,7 @@ export default function Footer() {
                     <Instagram className="text-pink-600 text-xl" />
                   </a>
                   <a
-                    href="mailto:spec@nith.ac.in"
+                    href="mailto:community.spec@gmail.com"
                     rel="noreferrer noopener"
                     className="cursor-target hover:opacity-100"
                   >
@@ -212,7 +214,7 @@ export default function Footer() {
                 <div className="flex justify-center mt-6">
                   <button
                     type="button"
-                    onClick={() => window.open('https://electrothon-7-0.vercel.app/', '_blank')}
+                    onClick={() => window.open('https://electrothon-8-0-32d6.vercel.app/', '_blank')}
                     className="cursor-target relative text-white font-bold bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg transition-all duration-300 px-4 py-2 sm:px-6 sm:py-3 rounded-lg border-2 border-blue-500 whitespace-nowrap"
                     style={{ fontFamily: "'Press Start 2P', cursive", fontSize: '0.65rem' }}
                   >

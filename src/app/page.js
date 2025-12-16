@@ -10,6 +10,7 @@ import Themes from "@/components/ThemesSection/ThemesSection";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import Timeline from "@/components/Timeline/timeline";
 import GalleryPage from "@/components/gallery/gallery";
+import ComingSoon from "@/components/ComingSoon";
 import Devfolio_Button from "@/components/MainPage/DevfolioButton";
 import Sponsors from "@/components/Sponsors";
 
@@ -43,11 +44,12 @@ export default function Page() {
         </div>
       </div>
 
-      <MissionBriefing />
+  <MissionBriefing />
       <GalleryPage />
       <Themes />
       <Sponsors />
       <Timeline />
+  <ComingSoon />
       <Testimonials />
       <FAQList />
       <Footer />

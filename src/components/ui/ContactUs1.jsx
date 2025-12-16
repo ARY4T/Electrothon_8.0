@@ -93,7 +93,7 @@ const ContactUs1 = () => {
   const pixelFontStyle = { fontFamily: "'Press Start 2P', cursive" };
 
   return (
-    <section className="relative w-full py-12 overflow-hidden">
+    <section className="relative w-full py-6 overflow-hidden">
       {/* decorative blurred circles */}
       <div
         className="absolute -top-16 -left-16 h-72 w-72 rounded-full opacity-20 blur-3xl"

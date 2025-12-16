@@ -5,7 +5,7 @@ import styles from "../styles/mission.module.css";
 
 const achievements = [
   { number: "85+", labelTop: "TEAMS", labelBottom: "" },
-  { number: "2500+", labelTop: "REGISTRATIONS", labelBottom: "" },
+  { number: "3500+", labelTop: "REGISTRATIONS", labelBottom: "" },
   { number: "60+", labelTop: "SOFTWARE", labelBottom: "PROJECTS" },
   { number: "25+", labelTop: "HARDWARE", labelBottom: "PROJECTS" },
 ]; 

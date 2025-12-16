@@ -93,7 +93,7 @@ export default function ContactBlocks() {
       <div className="flex flex-col justify-between h-full">
         <div>
           <h4 className="text-white font-extrabold text-lg mb-2" style={{ fontFamily: "'Press Start 2P', cursive" }}>Contact information</h4>
-          <p className="text-gray-300 mb-4">Prefer email? Reach out at <a href="mailto:spec@nith.ac.in" className="underline">spec@nith.ac.in</a></p>
+          <p className="text-gray-300 mb-4">Prefer email? Reach out at <a href="mailto:community.spec@gmail.com" className="underline">community.spec@gmail.com</a></p>
 
           <div className="mb-4">
             <p className="text-gray-300 font-medium">Address</p>
@@ -103,7 +103,7 @@ export default function ContactBlocks() {
           <div className="flex gap-4 mt-4">
             <a href="https://github.com/spec-nith" target="_blank" rel="noreferrer" className="text-white hover:opacity-90"><Github /></a>
             <a href="https://www.linkedin.com/company/s-p-e-c-nith/posts/?feedView=all" target="_blank" rel="noreferrer" className="text-blue-400 hover:opacity-90"><Linkedin /></a>
-            <a href="mailto:spec@nith.ac.in" className="text-white hover:opacity-90"><Mail /></a>
+            <a href="mailto:community.spec@gmail.com" className="text-white hover:opacity-90"><Mail /></a>
             <a href="https://instagram.com/s.p.e.c_nith" target="_blank" rel="noreferrer" className="text-pink-500 hover:opacity-90"><Instagram /></a>
           </div>
         </div>

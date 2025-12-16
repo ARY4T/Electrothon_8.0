@@ -1,0 +1,58 @@
+.comingSoon {
+  /* make section taller so more of the background image is visible */
+  min-height: 60vh;
+  padding: 6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* background image from public folder with a dark overlay for readability */
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/bg_img_old.jpg') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  font-family: inherit; /* use the same font as the rest of the site */
+  background-attachment: scroll;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2rem;
+  letter-spacing: 2px;
+  margin-bottom: 0.75rem;
+}
+
+.description {
+  /* Match Mission Briefing content font and glow */
+  @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap');
+
+  font-family: "Anonymous Pro", monospace;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 1.25rem 0;
+  color: #f3ebff;
+  text-shadow:
+    0 0 15px rgb(255, 255, 255),
+    0 0 25px rgba(170, 120, 255, 0.25);
+}
+
+/* CTA styles removed (no notify button needed) */
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  .description {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .comingSoon {
+    min-height: 50vh;
+    padding: 4rem 1rem;
+  }
+}

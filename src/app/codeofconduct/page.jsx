@@ -118,9 +118,9 @@ export default function CodeOfConduct() {
               <ContactCard name="Soham Juneja" phone="+91 70181 33694" email="23bcs110@nith.ac.in" />
             </div>
 
-            <div className="mt-10 p-6 bg-white/5 rounded-lg border border-purple-500/20 text-xs md:text-sm text-center leading-loose">
-               General Email: <a href="mailto:spec@nith.ac.in" className="text-purple-400 hover:text-purple-300 transition-colors ml-2">spec@nith.ac.in</a>
-            </div>
+        <div className="mt-10 p-6 bg-white/5 rounded-lg border border-purple-500/20 text-xs md:text-sm text-center leading-loose">
+          General Email: <a href="mailto:community.spec@gmail.com" className="text-purple-400 hover:text-purple-300 transition-colors ml-2">community.spec@gmail.com</a>
+        </div>
           </section>
 
           {/* Footer Note */}
