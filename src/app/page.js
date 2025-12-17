@@ -11,7 +11,6 @@ import Testimonials from "@/components/Testimonials/Testimonials";
 import Timeline from "@/components/Timeline/timeline";
 import GalleryPage from "@/components/gallery/gallery";
 import ComingSoon from "@/components/ComingSoon";
-import Devfolio_Button from "@/components/MainPage/DevfolioButton";
 import Sponsors from "@/components/Sponsors";
 
 export default function Page() {
@@ -40,17 +39,16 @@ export default function Page() {
         <div className={styles.centerText}>
           <h1 className={styles.title}>ELECTROTHON 8.0</h1>
           <h2 className={styles.subtitle}>LABYRINTH OF ETERNUM</h2>
-            <Devfolio_Button />
         </div>
       </div>
 
   <MissionBriefing />
-      <GalleryPage />
-      <Themes />
-      <Sponsors />
-      <Timeline />
+    <GalleryPage />
+    <Themes />
   <ComingSoon />
-      <Testimonials />
+    <Sponsors />
+    <Timeline />
+    <Testimonials />
       <FAQList />
       <Footer />
     </>

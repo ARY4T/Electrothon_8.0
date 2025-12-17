@@ -137,7 +137,7 @@ const ContactUs1 = () => {
                     required
                     value={name} 
                     onChange={(e) => setName(e.target.value)} 
-                    className="w-full rounded-md bg-transparent border border-dashed border-gray-500 px-3 py-3 text-white focus:outline-none text-[10px]" 
+                    className="w-full rounded-md bg-transparent border border-dashed border-gray-500 px-3 py-3 text-white focus:outline-none text-[10px] cursor-target" 
                     placeholder="Enter your name" 
                     style={pixelFontStyle}
                   />
@@ -156,7 +156,7 @@ const ContactUs1 = () => {
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)} 
                     type="email" 
-                    className="w-full rounded-md bg-transparent border border-dashed border-gray-500 px-3 py-3 text-white focus:outline-none text-[10px]" 
+                    className="w-full rounded-md bg-transparent border border-dashed border-gray-500 px-3 py-3 text-white focus:outline-none text-[10px] cursor-target" 
                     placeholder="Enter your email" 
                     style={pixelFontStyle}
                   />
@@ -177,7 +177,7 @@ const ContactUs1 = () => {
                   value={message} 
                   onChange={(e) => setMessage(e.target.value)} 
                   rows={5} 
-                  className="w-full rounded-md bg-transparent border border-dashed border-gray-500 px-3 py-3 text-white focus:outline-none resize-none text-[10px]" 
+                  className="w-full rounded-md bg-transparent border border-dashed border-gray-500 px-3 py-3 text-white focus:outline-none resize-none text-[10px] cursor-target" 
                   placeholder="Enter your message" 
                   style={{ ...pixelFontStyle, lineHeight: '1.5' }}
                 />
