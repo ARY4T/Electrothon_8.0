@@ -88,16 +88,7 @@ export default function Footer() {
                   className="space-y-4 text-gray-400 text-[10px] leading-relaxed whitespace-normal break-words"
                   style={{ fontFamily: "'Press Start 2P', cursive" }}
                 >
-                  <li>
-                    <a
-                      href="https://electrothon-8-0-32d6.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="cursor-target hover:text-gray-300"
-                    >
-                      Official Website
-                    </a>
-                  </li>
+                  {/* Official Website removed per request */}
                   <li>
                     <a
                       href="https://spec.nith.ac.in/"
