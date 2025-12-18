@@ -1,4 +1,4 @@
-import MainPage from "@/components/MainPage";
+import MainPage from "../components/MainPage/MainPage";
 import MissionBriefing from "@/components/MissionBriefing";
 import GalleryPage from "@/components/gallery/gallery";
 import Themes from "@/components/ThemesSection/ThemesSection";

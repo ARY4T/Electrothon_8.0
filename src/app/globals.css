@@ -204,3 +204,19 @@
   justify-content: center;
   z-index: 6;
 }
+
+.topCenter {
+  position: absolute;
+  top: 40px;              /* adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 24px;              /* space between logo & navbar */
+  z-index: 10;
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+}

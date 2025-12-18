@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+
 
 /* ================= GLOBAL FONT ================= */
 
 .heroWrapper,
 .ctaButton,
-.title,
-.subtitle {
+.title {
   font-family: "Press Start 2P", cursive !important;
 }
 
@@ -14,7 +15,7 @@
 .heroWrapper {
   position: relative;
   width: 100%;
-  max-width: 100vw;   /* 🔴 IMPORTANT */
+  max-width: 100vw;
   min-height: 100svh;
 
   display: flex;
@@ -23,7 +24,6 @@
 
   overflow-x: hidden;
 }
-
 
 /* ================= BACKGROUND ================= */
 
@@ -43,18 +43,39 @@
   z-index: 1;
 }
 
-/* ================= LOGO ================= */
+/* ================= LOGO (UNCHANGED) ================= */
 
 .logoWrapper {
   position: absolute;
-  top: calc(env(safe-area-inset-top, 0px) + 48px);
-  left: 45px;
+  top: calc(env(safe-area-inset-top, 0px) + 12px);
+  left: 16px;
   z-index: 30;
 }
 
 .logoWrapper img {
-  width: 150px;
-  filter: drop-shadow(0 0 10px white);
+  width: 90px;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+
+@media (min-width: 640px) {
+  .logoWrapper {
+    left: 24px;
+  }
+
+  .logoWrapper img {
+    width: 110px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logoWrapper {
+    left: 45px;
+  }
+
+  .logoWrapper img {
+    width: 150px;
+  }
 }
 
 /* ================= CENTER TEXT ================= */
@@ -70,34 +91,48 @@
   justify-content: center;
 
   text-align: center;
-  padding: 0 16px;
-  overflow: visible;
+  padding: 0 1rem;
 }
 
+/* ================= TITLE (FIXED) ================= */
+
 .title {
-  font-size: clamp(36px, 6vw, 70px);
+  font-size: 70px; /* desktop default */
   color: white;
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
 
-  line-height: 1.35;
-  padding-top: 0.25em;
+  line-height: 1.2;
+  margin-top: 1rem;
 
-  display: inline-block;     /* 🔴 IMPORTANT */
-  max-width: 100%;           /* 🔴 IMPORTANT */
-  overflow-wrap: break-word; /* 🔴 IMPORTANT */
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.35em;
+
+  white-space: nowrap;
 }
 
+.version {
+  white-space: nowrap;
+}
+
+/* ================= SUBTITLE (FIXED) ================= */
 
 .subtitle {
-  font-size: clamp(18px, 3.5vw, 32px);
-  margin-top: 20px;
-  
-  /* UPDATED: Match .title color and glow */
-  color: white; 
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+  font-family: "Orbitron", sans-serif;
+  font-weight: 800;
 
-  line-height: 1.4;
+  font-size: 40px;   /* visually same as Press Start @ 28px */
+  margin-top: 1.25rem;
+
+  color: rgb(243, 232, 255);
+
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 0.8);
+  line-height: 1.35;
+  letter-spacing: 1.2px;
 }
+
 /* ================= CTA ================= */
 
 .ctaButton {
@@ -112,65 +147,39 @@
   transition: 0.2s ease;
 }
 
-.ctaButton:hover {
-  background: #1f89ff;
-  box-shadow: 0 0 12px #6ebbff;
-}
+/* ================= RESPONSIVE TEXT ================= */
 
-/* ================= RESPONSIVE ================= */
-
+/* Tablets */
 @media (max-width: 1024px) {
-  .logoWrapper img {
-    width: 120px;
-  }
-
   .title {
-    font-size: 54px;
-  }
-
-  .subtitle {
-    font-size: 26px;
-  }
-}
-
-@media (max-width: 768px) {
-  .logoWrapper {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .logoWrapper img {
-    width: 100px;
-  }
-
-  .title {
-    font-size: 44px;
+    font-size: 48px;
   }
 
   .subtitle {
     font-size: 22px;
   }
-
-  .ctaButton {
-    font-size: 16px;
-    padding: 14px 28px;
-  }
 }
 
-@media (max-width: 480px) {
+/* Phones */
+@media (max-width: 640px) {
   .title {
     font-size: 36px;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+
+  .version {
+    display: block;
+    margin-top: 0.25em;
   }
 
   .subtitle {
     font-size: 18px;
-    letter-spacing: 1px;
+    margin-top: 1rem;
   }
 
   .ctaButton {
-    width: 100%;
-    max-width: 260px;
-    font-size: 15px;
-    padding: 12px 24px;
+    font-size: 16px;
+    padding: 14px 28px;
   }
 }
