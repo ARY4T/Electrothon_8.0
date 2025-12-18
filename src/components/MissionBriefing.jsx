@@ -19,7 +19,6 @@ export default function MissionBriefing() {
         backgroundImage: 'url("/sections/mission-briefing-bg.png")',
       }}
     >
-
       <div className="w-full min-h-screen flex flex-col items-center px-6 sm:px-10 lg:px-20 py-24">
         {/* MAIN TITLE */}
         <h2
@@ -34,38 +33,42 @@ export default function MissionBriefing() {
           <div className="flex flex-col items-center lg:items-start w-full lg:w-[60%] gap-6">
             {/* ABOUT US */}
             <div className="w-full flex flex-col items-center">
-              <h3 className={`${styles.subheading} 
-  text-[16px] sm:text-[20px] md:text-[22px] lg:text-[25px]`}>
-                ABOUT US</h3>
+              <h3
+                className={`${styles.subheading} 
+  text-[16px] sm:text-[20px] md:text-[22px] lg:text-[25px]`}
+              >
+                ABOUT US
+              </h3>
 
               <div className={`${styles.aboutText} text-center lg:text-left`}>
                 <p>
-                  Step into the Arcade of Innovation as Electrothon returns for
-                  another electrifying in-person edition! This year, we dive
-                  into a neon-soaked retro realm where every team is a player,
-                  every idea a power-up, and every project a shot at the
-                  ultimate high score.
+                  In the neon glow of Eternum’s endless corridors, a new era of
+                  Electrothon powers up. The screens flicker, the circuits hum,
+                  and the pixelated gates of the Labyrinth swing open for those
+                  daring enough to enter. Here, every coder is a player, every
+                  idea a power-up, and every challenge a boss fight waiting to
+                  be conquered.
                 </p>
                 <p>
-                  Powered by SPEC and the energy of NIT Hamirpur, Electrothon
-                  continues to inspire students to build, create, and push the
-                  boundaries of tech.
-                </p>
-                <p>
-                  From past editions where ideas became game-changing projects
-                  to this year’s turbocharged arena — everything is leveled up.
-                  More players, more action, more legendary builds. Gear up,
-                  press start, and code your way into the Arcade era of
-                  Electrothon.
+                  Within the Hall of Circuits, echoes of past champions still
+                  pulse like 8-bit heartbeats. They navigated every twist,
+                  cracked every code, and pushed the machine to its very limit.
+                  This spring, join North India's biggest hackathon as the
+                  Labyrinth of Eternum is set to be bigger, brighter, and far
+                  more unpredictable. Once again, we call upon the next
+                  generation of builders, breakers, dreamers, and doers.
                 </p>
               </div>
             </div>
 
             {/* OUR ACHIEVEMENTS */}
             <div className="w-full flex flex-col items-center">
-              <h3 className={`${styles.subheading2} 
-  text-[16px] sm:text-[20px] md:text-[22px] lg:text-[25px]`}>
-                OUR ACHIEVEMENTS</h3>
+              <h3
+                className={`${styles.subheading2} 
+  text-[16px] sm:text-[20px] md:text-[22px] lg:text-[25px]`}
+              >
+                OUR ACHIEVEMENTS
+              </h3>
             </div>
 
             {/* Cards */}
