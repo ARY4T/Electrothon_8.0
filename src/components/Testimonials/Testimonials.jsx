@@ -21,7 +21,7 @@ export default function Testimonials() {
     <section
       ref={sectionRef}
       className="
-        relative w-screen
+        relative w-full 
         min-h-[260vh] sm:min-h-[280vh] md:min-h-[300vh]
         pt-[14vh] sm:pt-[16vh] md:pt-[18vh]
       "
