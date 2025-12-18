@@ -20,7 +20,7 @@ export default function Navbar() {
       items={navItems}
       activeHref="/"            // optional, can be dynamic later
       baseColor="#753AB3"
-      pillColor="#361359"
+      pillColor="#4c1a7d"
       hoveredPillTextColor="#fff"
       pillTextColor="#fff"
       initialLoadAnimation={true}
