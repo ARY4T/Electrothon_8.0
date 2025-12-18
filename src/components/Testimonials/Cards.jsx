@@ -43,6 +43,7 @@ export default function Cards({ data, index }) {
         sticky
         top-[26vh] sm:top-[28vh] md:top-[30vh]
         w-full flex justify-center
+        px-3 sm:px-0
       "
       style={{
         transform: `translateY(${yOffset}px)`,
@@ -51,13 +52,15 @@ export default function Cards({ data, index }) {
     >
       <div
         className="
-          w-[92vw] sm:w-[88vw] md:w-[74vw] lg:w-[56vw]
+          w-[80vw] sm:w-[88vw] md:w-[74vw] lg:w-[56vw]
           max-w-lg
           rounded-2xl
           p-4 sm:p-5 md:p-6
           bg-white border border-gray-200 shadow-xl
         "
-        style={{ transform: `scale(${scale}) rotate(${rotation}deg)` }}
+        style={{
+          transform: `scale(${scale}) rotate(${rotation}deg)`,
+       clipPath: "inset(0 0 0 0)"  }}
       >
         {/* Header */}
         <div className="flex items-center gap-3 mb-3">
