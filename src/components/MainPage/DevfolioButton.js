@@ -14,7 +14,7 @@ const Devfolio_Button = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center p-1">
+    <div className="cursor-target flex justify-center items-center p-1">
       <div
         className="apply-button"
         data-hackathon-slug="electrothon-8"

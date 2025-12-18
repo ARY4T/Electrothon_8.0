@@ -3,9 +3,9 @@
 import Image from "next/image";
 import styles from "@/styles/hero.module.css";
 import Navbar from "@/components/Navbar";
-import MobileDockNav from "@/components/MobileDockNav";
 import TargetCursor from "@/components/TargetCursor";
 import specLogo from "@/assets/images/spec-logo.png";
+import Devfolio_Button from "./MainPage/DevfolioButton";
 
 export default function MainPage() {
   return (
@@ -33,15 +33,9 @@ export default function MainPage() {
         <div className={styles.centerText}>
           <h1 className={styles.title}>ELECTROTHON 8.0</h1>
           <h2 className={styles.subtitle}>LABYRINTH OF ETERNUM</h2>
-
-          <button className={`${styles.ctaButton} cursor-target`}>
-            Register Here
-          </button>
+          <Devfolio_Button />
         </div>
       </div>
-
-      {/* MOBILE ONLY */}
-      <MobileDockNav />
     </>
   );
 }

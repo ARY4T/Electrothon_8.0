@@ -192,3 +192,15 @@
     rgba(0, 0, 0, 0)
   );
 }
+
+.centerText {
+  position: relative;
+  z-index: 5;
+}
+
+.devfolioWrapper {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  z-index: 6;
+}
