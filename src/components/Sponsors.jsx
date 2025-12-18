@@ -14,8 +14,13 @@ const sponsorsList = [
 export default function Sponsors() {
   return (
     <div id="sponsors" className="timeline-container">
-      <div className="header-section" style={{ position: 'relative', paddingTop: 90 }}>
-        <h1 className="modern-title">OUR SPONSORS</h1>
+      <div
+        className="header-section flex justify-center"
+        style={{ position: "relative", paddingTop: 90 }}
+      >
+        <h1 className="modern-title text-center">
+          OUR SPONSORS
+        </h1>
       </div>
 
       <div className="game-layout" style={{ padding: '3rem 1rem 4rem' }}>
