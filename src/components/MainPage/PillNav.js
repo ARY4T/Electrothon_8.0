@@ -237,10 +237,10 @@ const PillNav = ({
     return (
         <div
             className="
-    absolute top-[16px] sm:top-[24px] md:top-[34px]
-    z-[1000] w-full left-0 md:w-auto md:left-auto
+    fixed top-[16px] sm:top-[24px] md:top-[34px]
+left-1/2 -translate-x-1/2 z-[1000] w-full md:w-auto
         [--nav-h:36px] sm:[--nav-h:38px] md:[--nav-h:42px]
-        [--pill-pad-x:12px] sm:[--pill-pad-x:14px] md:[--pill-pad-x:18px]
+        [--pill-pad-x:12px] sm:[--pill-pad-x:14px] md:[--pill-pad-x:12px] lg:[--pill-pad-x:18px]
       "
         >
             <nav
@@ -315,10 +315,12 @@ const PillNav = ({
                             const isActive = activeHref === item.href;
 
                             const pillStyle = {
-                                background: "var(--pill-bg, #fff)",
+                                background: "var(--pill-bg)",
                                 color: "var(--pill-text, var(--base, #000))",
                                 paddingLeft: "var(--pill-pad-x)",
                                 paddingRight: "var(--pill-pad-x)",
+                                backdropFilter: "blur(5px)",
+                                WebkitBackdropFilter: "blur(5px)",
                             };
 
                             const PillContent = (
@@ -346,18 +348,18 @@ const PillNav = ({
                                             {item.label}
                                         </span>
                                     </span>
-                                    {isActive && (
+                                    {/* {isActive && (
                                         <span
                                             className="absolute left-1/2 -bottom-[6px] -translate-x-1/2 w-3 h-3 rounded-full z-[4]"
                                             style={{ background: "var(--base, #000)" }}
                                             aria-hidden="true"
                                         />
-                                    )}
+                                    )} */}
                                 </>
                             );
 
                             const basePillClasses =
-                                "relative overflow-hidden inline-flex items-center justify-center h-full no-underline rounded-full box-border font-semibold text-[16px] leading-[0] uppercase tracking-[0.2px] whitespace-nowrap cursor-pointer px-0";
+                                "relative overflow-hidden inline-flex items-center justify-center h-full no-underline rounded-full box-border font-semibold text-[12px] md:text-[13px] lg:text-[14px] leading-[0] uppercase tracking-[0.2px] whitespace-nowrap cursor-pointer px-0";
 
                             return (
                                 <li key={item.href} role="none" className="cursor-target flex h-full">
@@ -446,7 +448,7 @@ const PillNav = ({
                                 {isRouterLink(item.href) ? (
                                     <Link
                                         href={item.href}
-                                        className="block py-3 px-4 text-[16px] font-medium rounded-[50px]"
+                                        className="block py-2.5 px-4 text-[13px] font-medium rounded-[50px]"
                                         style={defaultStyle}
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
@@ -455,7 +457,7 @@ const PillNav = ({
                                 ) : (
                                     <a
                                         href={item.href}
-                                        className="block py-3 px-4 text-[16px] font-medium rounded-[50px]"
+                                        className="block py-2.5 px-4 text-[13px] font-medium rounded-[50px]"
                                         style={defaultStyle}
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
