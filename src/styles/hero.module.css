@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
 
-
 /* ================= GLOBAL FONT ================= */
 
 .heroWrapper,
@@ -43,7 +42,7 @@
   z-index: 1;
 }
 
-/* ================= LOGO (UNCHANGED) ================= */
+/* ================= LOGO ================= */
 
 .logoWrapper {
   position: absolute;
@@ -92,45 +91,51 @@
 
   text-align: center;
   padding: 0 1rem;
+  max-width: 100%;
 }
 
-/* ================= TITLE (FIXED) ================= */
+/* ================= TITLE ================= */
 
 .title {
-  font-size: 70px; /* desktop default */
   color: white;
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
 
   line-height: 1.2;
   margin-top: 1rem;
 
-  display: inline-flex;
-  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: baseline;
   gap: 0.35em;
 
-  white-space: nowrap;
+  max-width: 100%;
+  word-break: break-word;
+
+  font-size: clamp(2.2rem, 6vw, 4.4rem);
 }
 
 .version {
   white-space: nowrap;
 }
 
-/* ================= SUBTITLE (FIXED) ================= */
+/* ================= SUBTITLE ================= */
 
 .subtitle {
   font-family: "Orbitron", sans-serif;
   font-weight: 800;
 
-  font-size: 40px;   /* visually same as Press Start @ 28px */
+  font-size: clamp(1rem, 3.5vw, 2.5rem);
   margin-top: 1.25rem;
 
   color: rgb(243, 232, 255);
 
-  text-shadow:
-    0 0 12px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+
   line-height: 1.35;
   letter-spacing: 1.2px;
+  text-align: center;
+  max-width: 100%;
 }
 
 /* ================= CTA ================= */
@@ -147,39 +152,29 @@
   transition: 0.2s ease;
 }
 
-/* ================= RESPONSIVE TEXT ================= */
+/* ================= MOBILE ================= */
 
-/* Tablets */
-@media (max-width: 1024px) {
-  .title {
-    font-size: 48px;
-  }
-
-  .subtitle {
-    font-size: 22px;
-  }
-}
-
-/* Phones */
 @media (max-width: 640px) {
   .title {
-    font-size: 36px;
-    flex-wrap: wrap;
-    white-space: normal;
+    font-size: 2rem;   /* smaller title on mobile */
+    line-height: 1.35;
+    gap: 0.25em;
   }
 
   .version {
     display: block;
-    margin-top: 0.25em;
+    margin-top: 0.15em;
+    font-size: 2rem;
   }
 
   .subtitle {
-    font-size: 18px;
-    margin-top: 1rem;
+    font-size: 1.20rem;   /* smaller subtitle */
+    margin-top: 0.7rem;
+    letter-spacing: 0.8px;
   }
 
   .ctaButton {
-    font-size: 16px;
-    padding: 14px 28px;
+    font-size: 14px;
+    padding: 11px 24px;
   }
 }
