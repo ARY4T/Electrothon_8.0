@@ -123,7 +123,22 @@
     background-color: #000000 !important; 
   }
 }
+img {
+  /* Prevents a 'snap' or 'shiver' when the scaling starts */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  
+  /* Forces the browser to use the GPU for all images */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
 
+.group {
+  /* Ensures the container doesn't jitter when the child scales */
+  isolation: isolate;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
 .swiper-slide {
   transition: transform 0.45s ease, opacity 0.45s ease;
   transform: scale(0.9);
