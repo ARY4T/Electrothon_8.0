@@ -18,13 +18,15 @@ const ContactUs1 = () => {
   const [inView, setInView] = useState(false);
   const hasAnimatedRef = useRef(false); 
 
-  // Initialize EmailJS
+  // Initialize EmailJS with hardcoded values for static deployment
   useEffect(() => {
-    if (process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY) {
-      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+    // Replace with your actual EmailJS public key
+    const publicKey = 'YOUR_EMAILJS_PUBLIC_KEY';
+    if (publicKey && publicKey !== 'YOUR_EMAILJS_PUBLIC_KEY') {
+      emailjs.init(publicKey);
       console.log('EmailJS initialized successfully');
     } else {
-      console.warn('EmailJS public key not found in environment variables');
+      console.warn('EmailJS public key not configured');
     }
   }, []);
 
@@ -57,8 +59,12 @@ const ContactUs1 = () => {
         return;
       }
 
-      if (!process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID) {
-        setError('EmailJS configuration missing');
+      // Replace with your actual EmailJS service and template IDs
+      const serviceId = 'YOUR_EMAILJS_SERVICE_ID';
+      const templateId = 'YOUR_EMAILJS_TEMPLATE_ID';
+      
+      if (!serviceId || serviceId === 'YOUR_EMAILJS_SERVICE_ID' || !templateId || templateId === 'YOUR_EMAILJS_TEMPLATE_ID') {
+        setError('EmailJS configuration missing - please configure service and template IDs');
         setIsSubmitting(false);
         return;
       }
@@ -71,8 +77,8 @@ const ContactUs1 = () => {
       };
 
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         templateParams
       );
 
