@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import GlobeDemo from './GlobeDemo';
 import { Check, Loader2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '@/lib/emailjs-config';
 
 // A simplified, dependency-light adaptation of the provided ContactUs1
 const ContactUs1 = () => {
@@ -18,16 +19,9 @@ const ContactUs1 = () => {
   const [inView, setInView] = useState(false);
   const hasAnimatedRef = useRef(false); 
 
-  // Initialize EmailJS with hardcoded values for static deployment
+  // Initialize EmailJS
   useEffect(() => {
-    // Replace with your actual EmailJS public key
-    const publicKey = 'YOUR_EMAILJS_PUBLIC_KEY';
-    if (publicKey && publicKey !== 'YOUR_EMAILJS_PUBLIC_KEY') {
-      emailjs.init(publicKey);
-      console.log('EmailJS initialized successfully');
-    } else {
-      console.warn('EmailJS public key not configured');
-    }
+    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
   }, []);
 
   useEffect(() => {
@@ -59,21 +53,14 @@ const ContactUs1 = () => {
         return;
       }
 
-      // Replace with your actual EmailJS service and template IDs
-      const serviceId = 'YOUR_EMAILJS_SERVICE_ID';
-      const templateId = 'YOUR_EMAILJS_TEMPLATE_ID';
-      
-      if (!serviceId || serviceId === 'YOUR_EMAILJS_SERVICE_ID' || !templateId || templateId === 'YOUR_EMAILJS_TEMPLATE_ID') {
-        setError('EmailJS configuration missing - please configure service and template IDs');
-        setIsSubmitting(false);
-        return;
-      }
+      const serviceId = EMAILJS_CONFIG.SERVICE_ID;
+      const templateId = EMAILJS_CONFIG.TEMPLATE_ID;
 
       const templateParams = {
         from_name: name,
         from_email: email,
         message: message,
-        to_email: 'community.spec@gmail.com',
+        reply_to: email,
       };
 
       await emailjs.send(
