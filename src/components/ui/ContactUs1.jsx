@@ -53,19 +53,27 @@ const ContactUs1 = () => {
         return;
       }
 
-      const serviceId = EMAILJS_CONFIG.SERVICE_ID;
-      const templateId = EMAILJS_CONFIG.TEMPLATE_ID;
+      // Check if EmailJS is properly configured
+      if (EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY' || 
+          EMAILJS_CONFIG.SERVICE_ID === 'YOUR_SERVICE_ID' || 
+          EMAILJS_CONFIG.TEMPLATE_ID === 'YOUR_TEMPLATE_ID') {
+        setError('EmailJS not configured. Please set up your EmailJS account first.');
+        setIsSubmitting(false);
+        return;
+      }
 
       const templateParams = {
         from_name: name,
         from_email: email,
         message: message,
         reply_to: email,
+        to_name: 'SPEC Team',
+        to_email: 'community.spec@gmail.com'
       };
 
       await emailjs.send(
-        serviceId,
-        templateId,
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
         templateParams
       );
 
