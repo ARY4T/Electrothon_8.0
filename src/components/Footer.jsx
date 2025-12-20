@@ -36,7 +36,7 @@ export default function Footer() {
         {/* Footer Title - KEPT AS IS (Pixel Font) */}
   <div className="flex items-center justify-center p-8 w-full text-center mb-8">
           <h1
-            className="font-normal text-white text-[clamp(1.4rem,4vw,3.5rem)] leading-tight break-words max-w-[90%] sm:max-w-[700px] mx-auto flex flex-col items-center text-center"
+            className="font-normal text-white text-[clamp(1.6rem,5vw,3.75rem)] leading-tight break-words max-w-[90%] sm:max-w-[700px] mx-auto flex flex-col items-center text-center"
             style={{ fontFamily: "'Press Start 2P', cursive" }}
           >
             {/* allow wrap on very small screens, but keep on one line from sm+ */}

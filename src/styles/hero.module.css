@@ -112,7 +112,7 @@
   max-width: 100%;
   word-break: break-word;
 
-  font-size: clamp(2.2rem, 6vw, 4.4rem);
+  font-size: clamp(1.6rem, 5vw, 3.37rem);
 }
 
 .version {

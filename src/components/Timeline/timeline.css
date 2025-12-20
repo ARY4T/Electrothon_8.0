@@ -44,6 +44,7 @@
 }
 
 .modern-title {
+  font-size: clamp(1.6rem, 5vw, 3.75rem);
   font-family: 'Press Start 2P', cursive;
   color: #ffffff;
   font-size: var(--title-size);
