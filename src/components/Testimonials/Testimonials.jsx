@@ -1,7 +1,7 @@
 "use client";
 
 import Cards from "./Cards";
-import Data from "@/assets/testimonials_data/testimonials_data";
+import Data from "@/components/Testimonials/testimonials_data";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
@@ -29,7 +29,7 @@ export default function Testimonials() {
         backgroundImage: "url('/backgrounds/bg3.jpg')",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "top center",
-        backgroundSize: "100% calc(100% + 11vh)",
+        backgroundSize: "cover",
       }}
     >
       <div
