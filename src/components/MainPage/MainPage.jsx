@@ -53,6 +53,11 @@ export default function MainPage() {
               ELECTROTHON 
             </span>
 
+            <span className="block sm:inline">
+            </span>
+            <span className="block sm:inline">
+            </span>
+
             {/* 8.0 */}
             <span className="block sm:inline">
               8.0
