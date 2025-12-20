@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+
+
 .comingSoon {
   /* make section taller so more of the background image is visible */
   min-height: 60vh;
@@ -20,11 +24,29 @@
 }
 
 .title {
-  font-size: 2rem;
-  letter-spacing: 2px;
-  margin-bottom: 0.75rem;
+  font-family: "Press Start 2P", cursive !important;
+  color: white;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+  line-height: 1.2;
+  text-transform: uppercase;
+  
+  /* Size for PRIZES AND CHALLENGES */
+  font-size: clamp(1.5rem, 4vw, 2.8rem); 
+  margin-bottom: 1rem;
 }
 
+.comingSoonSubtitle {
+  font-family: "Press Start 2P", cursive !important;
+  color: white;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+  display: block;
+  
+  /* COMING SOON - Sized to be a bit smaller than the main title */
+  font-size: clamp(1rem, 3vw, 1.8rem); 
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
 .description {
   /* Match Mission Briefing content font and glow */
   @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap');
@@ -43,16 +65,13 @@
 
 @media (min-width: 640px) {
   .title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+  }
+  .comingSoonSubtitle {
+    font-size: 2.2rem; /* Larger on desktop */
   }
   .description {
     font-size: 1.125rem;
   }
 }
 
-@media (max-width: 640px) {
-  .comingSoon {
-    min-height: 50vh;
-    padding: 4rem 1rem;
-  }
-}

@@ -38,19 +38,19 @@ export default function MainPage() {
         <PillNav />
 
         {/* Center Text */}
-        <div className="relative z-25 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-full">
+        <div className="relative z-30 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-full">
 
           {/* Title */}
           <h1
             className="text-white drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]
                        flex flex-col sm:flex-row flex-wrap
-                       justify-center items-center gap-x-[5pt]
+                       justify-center items-center gap-x-6
                        text-[30px] sm:text-[36px] md:text-[50px] lg:text-[64px] xl:text-[70px]
                        leading-tight mt-4"
           >
             {/* ELECTROTHON */}
             <span className="px-[2pt] whitespace-nowrap">
-              ELECTROTHON
+              ELECTROTHON 
             </span>
 
             {/* 8.0 */}

@@ -7,7 +7,16 @@ export default function ComingSoon() {
   return (
     <section className={styles.comingSoon} id="coming-soon">
       <div className={styles.container}>
-  <h2 className={`${styles.title} ${heroStyles.title}`}>COMING SOON</h2>
+
+
+      <h2 className={`${styles.title} ${heroStyles.title}`}>
+          PRIZES AND CHALLENGES
+        </h2>
+
+        {/* Coming Soon Subtitle */}
+        <span className={styles.comingSoonSubtitle}>
+          COMING SOON
+        </span>
 
         <p className={styles.description}>
           We're making this iteration much better and bigger than last year — new

@@ -33,7 +33,7 @@ export default function FloatingNav() {
     },
     {
       title: "Prizes",
-      href: "#prizes",
+      href: "#coming-soon",
       icon: (
         <span className="whitespace-nowrap text-[14px] font-semibold tracking-[0.25em] text-white transition group-hover:text-[#D58BFF] group-hover:[text-shadow:0_0_10px_#D58BFF]">
           PRIZES
