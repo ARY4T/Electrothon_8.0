@@ -5,6 +5,8 @@ import PillNav from "@/components/MainPage/Navbar";
 import TargetCursor from "@/components/TargetCursor";
 import specLogo from "@/assets/images/spec-logo.png";
 import Devfolio_Button from "./DevfolioButton";
+import Countdown from "@/components/MainPage/Countdown";
+
 
 export default function MainPage() {
   return (
@@ -12,7 +14,6 @@ export default function MainPage() {
       <TargetCursor targetSelector=".cursor-target" />
 
       <div className="relative w-full min-h-[100svh] flex flex-col items-center overflow-x-hidden font-['Press_Start_2P']">
-
         {/* Background video */}
         <video
           className="absolute inset-0 w-full h-full object-cover z-0"
@@ -39,7 +40,6 @@ export default function MainPage() {
 
         {/* Center Text */}
         <div className="relative z-30 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-full">
-
           {/* Title */}
           <h1
             className="text-white drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]
@@ -49,19 +49,13 @@ export default function MainPage() {
                        leading-tight mt-4"
           >
             {/* ELECTROTHON */}
-            <span className="px-[2pt] whitespace-nowrap">
-              ELECTROTHON 
-            </span>
+            <span className="px-[2pt] whitespace-nowrap">ELECTROTHON</span>
 
-            <span className="block sm:inline">
-            </span>
-            <span className="block sm:inline">
-            </span>
+            <span className="block sm:inline"></span>
+            <span className="block sm:inline"></span>
 
             {/* 8.0 */}
-            <span className="block sm:inline">
-              8.0
-            </span>
+            <span className="block sm:inline">8.0</span>
           </h1>
 
           {/* Subtitle */}
@@ -76,6 +70,9 @@ export default function MainPage() {
 
           <Devfolio_Button />
         </div>
+
+        {/* Countdown HUD */}
+        <Countdown targetDate="2026-01-31T23:59:59+05:30" />
       </div>
     </>
   );
