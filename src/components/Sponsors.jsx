@@ -1,21 +1,54 @@
 "use client";
 
 import Image from 'next/image';
-import './Timeline/timeline.css';
+import './Timeline/timeline.css'; 
 import styles from './Sponsors.module.css';
+
+// --- LOGOS ---
 import devfolioLogo from '@/assets/images/Devfolio_Logo-White.png';
 import ethLogo from '@/assets/images/ethindia-light.png';
+import balsamiqLogo from '@/assets/images/balsamiq.png'; 
+import insforgeLogo from '@/assets/images/insforge.png';
 
 const sponsorsList = [
-  { name: 'Devfolio', logo: devfolioLogo, url: 'https://devfolio.co', alt: 'DEVFOLIO LOGO' },
-  { name: 'EthIndia', logo: ethLogo, url: 'https://ethindia.co', alt: 'ETHINDIA LOGO' },
+  { 
+    name: 'Devfolio', 
+    logo: devfolioLogo, 
+    url: 'https://devfolio.co', 
+    alt: 'Devfolio Logo',
+    scale: 1 
+  },
+  { 
+    name: 'EthIndia', 
+    logo: ethLogo, 
+    url: 'https://ethindia.co', 
+    alt: 'EthIndia Logo',
+    scale: 1 
+  },
+  { 
+    name: 'Balsamiq', 
+    logo: balsamiqLogo, 
+    url: 'https://balsamiq.com', 
+    alt: 'Balsamiq Logo',
+    scale: 1.35,
+    // This turns the dark logo WHITE so it is visible
+    invert: true 
+  },
+  { 
+    name: 'InsForge', 
+    logo: insforgeLogo, 
+    url: 'https://insforge.dev', 
+    alt: 'InsForge Logo',
+    // Increased from 1.75 to 1.9 to match Devfolio's size
+    scale: 1.9  
+  },
 ];
 
 export default function Sponsors() {
   return (
     <div id="sponsors" className="timeline-container">
       <div
-        className="header-section flex justify-center"
+        className="header-section flex flex-col items-center justify-center"
         style={{ position: "relative", paddingTop: 90 }}
       >
         <h1 className="modern-title text-center">
@@ -35,7 +68,18 @@ export default function Sponsors() {
               style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className={styles.tileLogo}>
-                <Image src={s.logo} alt={s.alt} width={260} height={120} className={styles.tileImage} />
+                <Image 
+                  src={s.logo} 
+                  alt={s.alt} 
+                  width={300} 
+                  height={150} 
+                  className={styles.tileImage}
+                  style={{ 
+                    transform: `scale(${s.scale || 1})`,
+                    // If 'invert' is true, we force the color to white using CSS filters
+                    filter: s.invert ? 'brightness(0) invert(1)' : 'none'
+                  }}
+                />
               </div>
             </a>
           ))}
