@@ -8,6 +8,8 @@ import { Orbitron } from "next/font/google";
 
 import { tabData } from "./data";
 
+import TargetCursor from "../TargetCursor";
+
 const pressStart = Press_Start_2P({
   weight: "400",
   subsets: ["latin"],
@@ -62,6 +64,9 @@ export default function ThemeSection() {
         backgroundImage: 'url("/backgrounds/themes.png")',
       }}
     >
+      {/* 👇 NEW: Initialize Cursor */}
+      <TargetCursor targetSelector=".cursor-target" />
+
       {/* ========= SMALL SCREEN OVERRIDE GRADIENT (COVERS IMAGE) ========= */}
       {isSmallScreen && (
         <div
@@ -119,7 +124,8 @@ export default function ThemeSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
-       className={`${pressStart.className} text-[clamp(1.8rem,5vw,4.4rem)] text-center font-bold`}
+          // 👇 NEW: Added 'cursor-target'
+          className={`${pressStart.className} cursor-target text-[clamp(1.8rem,5vw,4.4rem)] text-center font-bold`}
           style={{ letterSpacing: "2px" }}
         >
           THEMES
@@ -174,7 +180,7 @@ export default function ThemeSection() {
                   onClick={() =>
                     setLockedIndex((prev) => (prev === idx ? null : idx))
                   }
-                  className="relative h-[460px] rounded-3xl overflow-hidden border border-white/10 bg-black cursor-pointer"
+                  className="cursor-target relative h-[460px] rounded-3xl overflow-hidden border border-white/10 bg-black cursor-pointer"
                   style={forcedStyle}
                 >
                   <Image

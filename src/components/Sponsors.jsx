@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import './Timeline/timeline.css'; 
 import styles from './Sponsors.module.css';
+import TargetCursor from './TargetCursor';
 
 // --- LOGOS ---
 import devfolioLogo from '@/assets/images/Devfolio_Logo-White.png';
@@ -10,6 +11,7 @@ import ethLogo from '@/assets/images/ethindia-light.png';
 import balsamiqLogo from '@/assets/images/balsamiq.png'; 
 import insforgeLogo from '@/assets/images/insforge.svg';
 import interviewcakeLogo from '@/assets/images/interviewcake.png';
+
 const sponsorsList = [
   { 
     name: 'Devfolio', 
@@ -26,13 +28,13 @@ const sponsorsList = [
     scale: 1 ,
   },
   {
-  name: 'Balsamiq', 
-  logo: balsamiqLogo, 
-  url: 'https://balsamiq.com', 
-  alt: 'Balsamiq Logo',
-  scale: 1.12,
-  invert: true 
-},
+    name: 'Balsamiq', 
+    logo: balsamiqLogo, 
+    url: 'https://balsamiq.com', 
+    alt: 'Balsamiq Logo',
+    scale: 1.12,
+    invert: true 
+  },
   { 
     name: 'InsForge', 
     logo: insforgeLogo, 
@@ -52,6 +54,8 @@ const sponsorsList = [
 export default function Sponsors() {
   return (
     <div id="sponsors" className="timeline-container">
+      <TargetCursor targetSelector=".cursor-target" />
+
       <div
         className="header-section flex flex-col items-center justify-center"
         style={{ position: "relative", paddingTop: 90 }}
@@ -69,7 +73,7 @@ export default function Sponsors() {
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`holo-card ${styles.tile}`}
+              className={`cursor-target holo-card ${styles.tile}`}
               style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className={styles.tileLogo}>
@@ -81,7 +85,7 @@ export default function Sponsors() {
                   className={styles.tileImage}
                   style={{ 
                     transform: `scale(${s.scale || 1})`,
-                    // If 'invert' is true, we force the color to white using CSS filters
+                    // Your existing fix for the Balsamiq logo color
                     filter: s.invert ? 'brightness(0) invert(1)' : 'none'
                   }}
                 />
