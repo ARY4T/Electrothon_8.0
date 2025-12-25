@@ -1,4 +1,4 @@
-// src/components/TargetCursor.jsx  (GSAP refined)
+// src/components/TargetCursor.jsx  (GSAP refined & Dynamic Size Fix)
 "use client";
 import { useEffect, useRef, useCallback, useState } from "react";
 import { gsap } from "gsap";
@@ -16,7 +16,7 @@ const TargetCursor = ({
   const dotRef = useRef(null);
 
   const isActiveRef = useRef(false);
-  const targetCornerPositionsRef = useRef(null);
+  const activeTargetRef = useRef(null); // Changed from local var to Ref for the ticker
   const tickerFnRef = useRef(null);
   const activeStrengthRef = useRef(0);
 
@@ -24,7 +24,7 @@ const TargetCursor = ({
 
   const constants = {
     borderWidth: 3,
-    cornerSize: 18 // a bit bigger so corners are visible
+    cornerSize: 18 
   };
 
   const moveCursor = useCallback((x, y) => {
@@ -42,10 +42,8 @@ const TargetCursor = ({
       setIsMobile(true);
       return;
     }
-    // Simple check: only hide cursor on actual mobile devices
     const userAgent = (navigator.userAgent || "").toLowerCase();
     const isMobileUA = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
-    console.log("TargetCursor: userAgent check - isMobileUA:", isMobileUA);
     setIsMobile(isMobileUA);
   }, []);
 
@@ -54,15 +52,12 @@ const TargetCursor = ({
     if (isMobile) return;
     if (!cursorRef.current) return;
 
-    console.log("TargetCursor: Initializing cursor - isMobile:", isMobile);
-
     const originalCursor = document.body.style.cursor;
     if (hideDefaultCursor) document.body.style.cursor = "none";
 
     const cursor = cursorRef.current;
     cornersRef.current = cursor.querySelectorAll(".target-cursor-corner");
 
-    let activeTarget = null;
     let currentLeaveHandler = null;
     let resumeTimeout = null;
 
@@ -75,7 +70,6 @@ const TargetCursor = ({
       currentLeaveHandler = null;
     };
 
-    // make the visible size and default opacity; center transform in CSS via translate
     gsap.set(cursor, {
       xPercent: -50,
       yPercent: -50,
@@ -96,22 +90,51 @@ const TargetCursor = ({
 
     createSpinTimeline();
 
+    // --- THE FIX: Calculate Size Inside the Loop ---
     const tickerFn = () => {
-      if (!targetCornerPositionsRef.current || !cursorRef.current || !cornersRef.current) return;
+      if (!cursorRef.current || !cornersRef.current) return;
+      
       const strength = activeStrengthRef.current || 0;
       if (strength === 0) return;
 
+      // 1. Get current Cursor Position
       const cursorX = gsap.getProperty(cursorRef.current, "x");
       const cursorY = gsap.getProperty(cursorRef.current, "y");
+
+      // 2. Dynamic Measurement: Calculate target position FRESH every frame
+      let targetPositions = null;
+      
+      if (activeTargetRef.current) {
+         const rect = activeTargetRef.current.getBoundingClientRect();
+         const { borderWidth, cornerSize } = constants;
+         
+         // Calculate the 4 corner coordinates based on the current RECT
+         targetPositions = [
+            { x: rect.left - borderWidth, y: rect.top - borderWidth },
+            { x: rect.right + borderWidth - cornerSize, y: rect.top - borderWidth },
+            { x: rect.right + borderWidth - cornerSize, y: rect.bottom + borderWidth - cornerSize },
+            { x: rect.left - borderWidth, y: rect.bottom + borderWidth - cornerSize }
+         ];
+      }
+
+      if (!targetPositions) return;
+
+      // 3. Move corners
       const corners = Array.from(cornersRef.current);
       corners.forEach((corner, i) => {
         const currentX = gsap.getProperty(corner, "x");
         const currentY = gsap.getProperty(corner, "y");
-        const targetX = targetCornerPositionsRef.current[i].x - cursorX;
-        const targetY = targetCornerPositionsRef.current[i].y - cursorY;
+        
+        // Calculate where the corner should be relative to the cursor center
+        const targetX = targetPositions[i].x - cursorX;
+        const targetY = targetPositions[i].y - cursorY;
+        
+        // Interpolate
         const finalX = currentX + (targetX - currentX) * strength;
         const finalY = currentY + (targetY - currentY) * strength;
+        
         const duration = strength >= 0.99 ? (parallaxOn ? 0.2 : 0) : 0.05;
+        
         gsap.to(corner, {
           x: finalX,
           y: finalY,
@@ -128,13 +151,15 @@ const TargetCursor = ({
     window.addEventListener("mousemove", moveHandler);
 
     const scrollHandler = () => {
-      if (!activeTarget || !cursorRef.current) return;
+      if (!activeTargetRef.current || !cursorRef.current) return;
       const mouseX = gsap.getProperty(cursorRef.current, "x");
       const mouseY = gsap.getProperty(cursorRef.current, "y");
       const elementUnderMouse = document.elementFromPoint(mouseX, mouseY);
+      
       const isStillOverTarget =
         elementUnderMouse &&
-        (elementUnderMouse === activeTarget || elementUnderMouse.closest(targetSelector) === activeTarget);
+        (elementUnderMouse === activeTargetRef.current || elementUnderMouse.closest(targetSelector) === activeTargetRef.current);
+      
       if (!isStillOverTarget && currentLeaveHandler) currentLeaveHandler();
     };
     window.addEventListener("scroll", scrollHandler, { passive: true });
@@ -161,42 +186,51 @@ const TargetCursor = ({
         current = current.parentElement;
       }
       const target = allTargets[0] || null;
+      
       if (!target || !cursorRef.current || !cornersRef.current) return;
-      if (activeTarget === target) return;
-      if (activeTarget) cleanupTarget(activeTarget);
+      if (activeTargetRef.current === target) return;
+      if (activeTargetRef.current) cleanupTarget(activeTargetRef.current);
+      
       if (resumeTimeout) {
         clearTimeout(resumeTimeout);
         resumeTimeout = null;
       }
 
-      activeTarget = target;
+      activeTargetRef.current = target; // Set ref for ticker
+      
       const corners = Array.from(cornersRef.current);
       corners.forEach((corner) => gsap.killTweensOf(corner));
+      
+      // Pause spin and reset rotation
       gsap.killTweensOf(cursorRef.current, "rotation");
       spinTl.current?.pause();
       gsap.set(cursorRef.current, { rotation: 0 });
 
+      // Start the loop
+      isActiveRef.current = true;
+      gsap.ticker.add(tickerFnRef.current);
+
+      // Fade in the magnetism strength
+      gsap.to(activeStrengthRef, { current: 1, duration: hoverDuration, ease: "power2.out" });
+
+      // Initial Snap (Optional, helps it start closer to the right spot)
       const rect = target.getBoundingClientRect();
-      const { borderWidth, cornerSize } = constants;
       const cursorX = gsap.getProperty(cursorRef.current, "x");
       const cursorY = gsap.getProperty(cursorRef.current, "y");
-
-      targetCornerPositionsRef.current = [
+      const { borderWidth, cornerSize } = constants;
+      
+      // Calculate initial positions just to start the tween in the right direction
+      const initialTargets = [
         { x: rect.left - borderWidth, y: rect.top - borderWidth },
         { x: rect.right + borderWidth - cornerSize, y: rect.top - borderWidth },
         { x: rect.right + borderWidth - cornerSize, y: rect.bottom + borderWidth - cornerSize },
         { x: rect.left - borderWidth, y: rect.bottom + borderWidth - cornerSize }
       ];
 
-      isActiveRef.current = true;
-      gsap.ticker.add(tickerFnRef.current);
-
-      gsap.to(activeStrengthRef, { current: 1, duration: hoverDuration, ease: "power2.out" });
-
       corners.forEach((corner, i) => {
         gsap.to(corner, {
-          x: targetCornerPositionsRef.current[i].x - cursorX,
-          y: targetCornerPositionsRef.current[i].y - cursorY,
+          x: initialTargets[i].x - cursorX,
+          y: initialTargets[i].y - cursorY,
           duration: 0.2,
           ease: "power2.out"
         });
@@ -205,12 +239,14 @@ const TargetCursor = ({
       const leaveHandler = () => {
         gsap.ticker.remove(tickerFnRef.current);
         isActiveRef.current = false;
-        targetCornerPositionsRef.current = null;
+        activeTargetRef.current = null;
+        
         gsap.set(activeStrengthRef, { current: 0, overwrite: true });
-        activeTarget = null;
+        
         if (cornersRef.current) {
           const corners = Array.from(cornersRef.current);
           const { cornerSize } = constants;
+          // Return to small square shape
           const positions = [
             { x: -cornerSize * 1.2, y: -cornerSize * 1.2 },
             { x: cornerSize * 0.5, y: -cornerSize * 1.2 },
@@ -222,8 +258,9 @@ const TargetCursor = ({
             tl.to(corner, { x: positions[index].x, y: positions[index].y, duration: 0.3, ease: "power3.out" }, 0);
           });
         }
+
         resumeTimeout = setTimeout(() => {
-          if (!activeTarget && cursorRef.current && spinTl.current) {
+          if (!activeTargetRef.current && cursorRef.current && spinTl.current) {
             const currentRotation = gsap.getProperty(cursorRef.current, "rotation");
             const normalizedRotation = currentRotation % 360;
             spinTl.current.kill();
@@ -241,6 +278,7 @@ const TargetCursor = ({
           }
           resumeTimeout = null;
         }, 50);
+        
         cleanupTarget(target);
       };
 
@@ -257,15 +295,14 @@ const TargetCursor = ({
       window.removeEventListener("scroll", scrollHandler);
       window.removeEventListener("mousedown", mouseDownHandler);
       window.removeEventListener("mouseup", mouseUpHandler);
-      if (activeTarget) cleanupTarget(activeTarget);
+      if (activeTargetRef.current) cleanupTarget(activeTargetRef.current);
       spinTl.current?.kill();
       document.body.style.cursor = originalCursor;
       isActiveRef.current = false;
-      targetCornerPositionsRef.current = null;
+      activeTargetRef.current = null;
       activeStrengthRef.current = 0;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetSelector, spinDuration, moveCursor, hideDefaultCursor, hoverDuration, parallaxOn]);
+  }, [targetSelector, spinDuration, moveCursor, hideDefaultCursor, hoverDuration, parallaxOn, isMobile]); // Added isMobile to deps
 
   useEffect(() => {
     if (isMobile === null || isMobile) return;
@@ -281,11 +318,8 @@ const TargetCursor = ({
   }, [spinDuration, isMobile]);
 
   if (isMobile) {
-    console.log("TargetCursor: Hidden on mobile device");
     return null;
   }
-
-  // Always render on desktop (for now, testing)
 
   return (
     <div
@@ -313,7 +347,7 @@ const TargetCursor = ({
           boxShadow: "0 0 8px rgba(255,255,255,0.9)"
         }}
       />
-      {/* 4 corners — bigger so visible */}
+      {/* 4 corners */}
       <div
         className="target-cursor-corner"
         style={{

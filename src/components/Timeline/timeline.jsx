@@ -1,11 +1,10 @@
-// PacmanTimeline.jsx - Fixed Direction Logic using useRef
-
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
 import "./timeline.css"; 
 import { Orbitron } from "next/font/google";
 import { Press_Start_2P } from "next/font/google";
+import TargetCursor from '../TargetCursor'; 
 
 /* --- ASSETS --- */
 const GhostIcon = ({ color, isEaten }) => {
@@ -46,17 +45,14 @@ const events = [
 
 const PacmanTimeline = () => {
     const [scrollDistance, setScrollDistance] = useState(0);
-    // 1. Use State for Rotation to trigger re-renders only when direction changes
     const [rotation, setRotation] = useState(90); 
     const containerRef = useRef(null);
-    
-    // 2. Use Ref for 'Last Scroll Position' so updates are INSTANT (no lag)
     const lastScrollY = useRef(0);
 
     // --- CONFIGURATION ---
     const HEADER_HEIGHT = 180; 
     const BLOCK_SPACING = 220; 
-    const TOP_OFFSET = 80;    
+    const TOP_OFFSET = 80;    
     const totalHeight = HEADER_HEIGHT + (events.length * BLOCK_SPACING) + 150;
     const lastBlockY = ((events.length - 1) * BLOCK_SPACING) + TOP_OFFSET;
     const trackHeight = lastBlockY + 60; 
@@ -70,30 +66,24 @@ const PacmanTimeline = () => {
           const windowHeight = window.innerHeight;
           const eaterPositionOnScreen = windowHeight * 0.4;
           
-          // Calculate current scroll position
           const currentScrolled = (rect.top * -1) + eaterPositionOnScreen;
 
-          // 3. Direction Logic: Compare current vs last ref
           if (currentScrolled > lastScrollY.current) {
-             setRotation(90); // Scrolling DOWN -> Face DOWN (+90)
+             setRotation(90); 
           } else if (currentScrolled < lastScrollY.current) {
-             setRotation(-90); // Scrolling UP -> Face UP (-90)
+             setRotation(-90); 
           }
 
-          // Update the ref for the next event loop
           lastScrollY.current = currentScrolled;
-          
           setScrollDistance(Math.max(0, currentScrolled));
         };
     
         window.addEventListener("scroll", handleScroll);
-        // Call once on mount to set initial position
         handleScroll();
         
         return () => window.removeEventListener("scroll", handleScroll);
     }, []); 
 
-    // Calculate Clamped Position for Translation
     const MAX_PACMAN_POSITION = trackHeight - 25; 
     const clampedPacmanPosition = Math.max(
         0, 
@@ -106,14 +96,18 @@ const PacmanTimeline = () => {
             ref={containerRef} 
             style={{ height: `${totalHeight}px` }}
         >
-           <div className="header-section" style={{ height: `${HEADER_HEIGHT}px` }}>
-  <h1 
-    className="modern-title text-[clamp(1.6rem,5vw,3.75rem)]" 
-    style={{ fontFamily: '"Press Start 2P", cursive, monospace' }}
-  >
-    TIMELINE
-  </h1>
-</div>
+           
+            <TargetCursor targetSelector=".cursor-target" />
+
+            <div className="header-section" style={{ height: `${HEADER_HEIGHT}px` }}>
+                <h1 
+                  
+                    className="modern-title cursor-target text-[clamp(1.6rem,5vw,3.75rem)]" 
+                    style={{ fontFamily: '"Press Start 2P", cursive, monospace' }}
+                >
+                    TIMELINE
+                </h1>
+            </div>
 
             <div className="game-layout">
                 <div 
@@ -147,11 +141,9 @@ const PacmanTimeline = () => {
                         );
                     })}
 
-                    {/* PACMAN MOVER */}
                     <div 
                         className="entity-anchor pacman-mover" 
                         style={{ 
-                            // transform: X-Center | Y-Position | Rotation Direction
                             transform: `translateX(-50%) translateY(${clampedPacmanPosition}px) rotate(${rotation}deg)`,
                             transition: 'none'
                         }} 
@@ -171,7 +163,9 @@ const PacmanTimeline = () => {
                                 style={{ top: `${relativeY}px` }}
                             >
                                 <div className="connector-arm"><div className="connector-dot"></div></div>
-                                <div className="holo-card">
+                                
+                                {/* 👇 NEW: Added 'cursor-target' to the card wrapper */}
+                                <div className="holo-card cursor-target">
                                     <div className={`card-content ${orbitron.className}`}>
                                         <h3 className={`card-title ${pressStart.className}`}>{ev.title}</h3>
                                         <div className="card-divider"></div>
