@@ -8,30 +8,29 @@ import styles from './Sponsors.module.css';
 import devfolioLogo from '@/assets/images/Devfolio_Logo-White.png';
 import ethLogo from '@/assets/images/ethindia-light.png';
 import balsamiqLogo from '@/assets/images/balsamiq.png'; 
-import insforgeLogo from '@/assets/images/insforge.png';
-
+import insforgeLogo from '@/assets/images/insforge.svg';
+import interviewcakeLogo from '@/assets/images/interviewcake.png';
 const sponsorsList = [
   { 
     name: 'Devfolio', 
     logo: devfolioLogo, 
     url: 'https://devfolio.co', 
     alt: 'Devfolio Logo',
-    scale: 1 
+    scale: 0.9
   },
   { 
     name: 'EthIndia', 
     logo: ethLogo, 
     url: 'https://ethindia.co', 
     alt: 'EthIndia Logo',
-    scale: 1 
+    scale: 1 ,
   },
   { 
     name: 'Balsamiq', 
     logo: balsamiqLogo, 
     url: 'https://balsamiq.com', 
     alt: 'Balsamiq Logo',
-    scale: 1.35,
-    // This turns the dark logo WHITE so it is visible
+    scale: 1.12,
     invert: true 
   },
   { 
@@ -39,8 +38,14 @@ const sponsorsList = [
     logo: insforgeLogo, 
     url: 'https://insforge.dev', 
     alt: 'InsForge Logo',
-    // Increased from 1.75 to 1.9 to match Devfolio's size
     scale: 1.9  
+  },
+  { 
+    name: 'Interview Cake', 
+    logo: interviewcakeLogo, 
+    url: 'https://interviewcake.com', 
+    alt: 'Interview Cake Logo',
+    scale: 1.3 
   },
 ];
 
