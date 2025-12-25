@@ -25,14 +25,14 @@ const sponsorsList = [
     alt: 'EthIndia Logo',
     scale: 1 ,
   },
-  { 
-    name: 'Balsamiq', 
-    logo: balsamiqLogo, 
-    url: 'https://balsamiq.com', 
-    alt: 'Balsamiq Logo',
-    scale: 1.12,
-    invert: true 
-  },
+  {
+  name: 'Balsamiq', 
+  logo: balsamiqLogo, 
+  url: 'https://balsamiq.com', 
+  alt: 'Balsamiq Logo',
+  scale: 1.12,
+  invert: true 
+},
   { 
     name: 'InsForge', 
     logo: insforgeLogo, 
