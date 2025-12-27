@@ -42,9 +42,10 @@ export default function Countdown({ targetDate = "2025-03-01T23:59:59" }) {
   }, [targetDate]);
 
   return (
+    
     <div
       className="
-    absolute bottom-[10vh] left-1/2
+    absolute bottom-[6vh] left-1/2
     -translate-x-1/2
     z-20
     origin-bottom
