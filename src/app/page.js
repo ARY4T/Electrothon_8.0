@@ -8,12 +8,20 @@ import Timeline from "@/components/Timeline/timeline";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import FAQList from "@/components/FAQList";
 import Footer from "@/components/Footer";
+import AboutUsAchievementWith3D from "@/components/MissionBriefing/AboutUsAchievementWith3D";
 
 export default function Page() {
   return (
     <>
       <MainPage />
-      <MissionBriefing />
+      <div
+  style={{
+    minHeight: "100vh",
+    background: "url('/sections/mission-briefing-bg.png') center / cover no-repeat",
+  }}
+>
+  <AboutUsAchievementWith3D />
+</div>
       <GalleryPage />
       <Themes />
       <ComingSoon />
