@@ -6,6 +6,10 @@
     min-height: 100vh;
     padding-bottom: 40px;
   }
+  .contentWrap {
+    max-width: 620px;
+    text-align: left;
+  }
   
   /* overlay + padding */
   .missionOverlay {
@@ -25,7 +29,7 @@
   letter-spacing: 0.1em; 
   text-transform: uppercase;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 60px;
   margin-bottom: 40px;
   white-space: normal; 
   line-height: 1.5; 
@@ -64,15 +68,22 @@
     gap: 24px;
     align-items: center;
   }
+  .aboutSection {
+    min-height: 100vh;
+    padding-top: 60px;
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+
   
   .subheading {
     color: #fdf9ff;
     font-family: "Press Start 2P", cursive;
     
-    letter-spacing: 0.2em;
-    white-space: nowrap;
+    letter-spacing: 0.25em;
+    
     text-transform: uppercase;
-    text-align: center;
+    
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     margin-left: 0px;
     margin-top: 0px;
@@ -81,26 +92,35 @@
   .subheading2 {
     color: #fdf9ff;
     font-family: "Press Start 2P", cursive;
+    white-space: nowrap; 
+    letter-spacing: 0.22em;
     
-    letter-spacing: 0.2em;
-    white-space: nowrap;
     text-transform: uppercase;
-    text-align: center;
+    
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     margin-left: 0px;
-    margin-top: 10px;
+    margin-top: 60px;
     margin-bottom: 5px;
+  }
+  @media (max-width: 640px) {
+    .subheading2 {
+      white-space: normal;
+      text-align: left;
+    }
+  }
+  
+  .aboutBlock {
+    max-width: 720px;
+    margin-top: 80px;   /* breathing space from mission title */
   }
   
   .aboutText {
     font-family: "Anonymous Pro", monospace;
-    font-size: 17px;
+    font-size: 19px;
     line-height: 1.5;
-    margin-left: 50px;
-    text-align: center;
-    max-width: 1100px;
+   
     color: #f3ebff;
-    margin: 0px auto 17px auto;   
+    
     text-shadow: 
     0 0 15px rgb(255, 255, 255),
     0 0 25px rgba(170, 120, 255, 0.25);
@@ -110,7 +130,20 @@
     margin-top: 14px;
   }
   
-  /* OUR ACHIEVEMENTS ke bilkul niche laane ke liye */
+  .achievementSection {
+    min-height: 100vh;
+    padding-top: 190px;
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+  .achievementBlock {
+    margin-left: auto;     /* 🔑 pushes block to the right */
+    max-width: 420px;      /* matches figma visual width */
+  }
+  .achievementInline {
+    margin-top: 10px;
+  }
+  
   .achievementsRow {
     display: flex;
     gap: 24px;
@@ -142,14 +175,24 @@
     }
   }
 
+  .achievementsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 260px);
+    gap: 40px 120px;
+  }
   
   
   .achievementCard {
-    width: 150px;
-    height: 110px;
+    display: flex;
+  flex-direction: row;          
+  align-items: center;          
+  justify-content: flex-start;
+  gap: 18px;                 
+    width: 320px;
+    height: 100px;
     border-radius: 18px;
   
-    background: rgba(51, 20, 112, 0.75);
+    background: rgba(70, 40, 132, 0.772);
     border: 2px solid rgba(226, 188, 255, 0.8);
   
     box-shadow:
@@ -213,9 +256,6 @@
         
   
   
-  .achievementFrame {
-    display: none;
-  }
   
   /* text centre me hi rahega */
   .achievementContent {
@@ -223,19 +263,25 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    text-align: left; 
+    
     padding: 16px 12px;
   }
   
   .achievementNumber {
     font-family: "Press Start 2P", cursive;
-    font-size: 20px;
+    font-size: 25px;
+    text-align: center;
+    white-space: nowrap;
+    text-align: center;
     color: #ffffff;
     margin-bottom: 8px;
+    
   }
   
   .achievementLabel {
-    font-size: 14px;
+    font-size: 17px;
+    white-space: nowrap;
     text-shadow: 
     0 0 10px rgba(255, 255, 255, 0.7),
     0 0 22px rgba(180, 140, 255, 0.6);
@@ -265,3 +311,15 @@
   }
   
   
+  .mission-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 65% 45%,
+      rgba(140, 90, 255, 0.18),
+      rgba(20, 10, 40, 0.85) 55%,
+      #000 75%
+    );
+  z-index: -1;
+}
