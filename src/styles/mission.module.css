@@ -183,16 +183,15 @@
   
   
   .achievementCard {
+    width: 150px;
+    height: 110px;
     display: flex;
-  flex-direction: row;          
-  align-items: center;          
-  justify-content: flex-start;
-  gap: 18px;                 
-    width: 320px;
-    height: 100px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border-radius: 18px;
   
-    background: rgba(70, 40, 132, 0.772);
+    background: rgba(51, 20, 112, 0.75);
     border: 2px solid rgba(226, 188, 255, 0.8);
   
     box-shadow:
@@ -263,24 +262,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: left; 
-    
+    text-align: center;
     padding: 16px 12px;
   }
   
   .achievementNumber {
     font-family: "Press Start 2P", cursive;
-    font-size: 25px;
-    text-align: center;
+    font-size: 20px;
     white-space: nowrap;
     text-align: center;
     color: #ffffff;
     margin-bottom: 8px;
-    
   }
   
   .achievementLabel {
-    font-size: 17px;
+    font-size: 14px;
     white-space: nowrap;
     text-shadow: 
     0 0 10px rgba(255, 255, 255, 0.7),

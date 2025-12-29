@@ -1,7 +1,6 @@
 // src/components/MissionBriefing.jsx
 
 import Image from "next/image";
-import ArcadeModel from "@/components/ArcadeModel";
 import styles from "../styles/mission.module.css";
 
 const achievements = [
@@ -95,7 +94,7 @@ export default function MissionBriefing() {
 
           {/* RIGHT COLUMN */}
           <div className="flex justify-center lg:justify-end w-full lg:w-auto ">
-            {/* <Image
+            <Image
               src="/sections/arcade-machine.png"
               alt="Arcade machine"
               width={420}
@@ -107,19 +106,7 @@ export default function MissionBriefing() {
     `}
               unoptimized
               priority
-            /> */}
-            <div
-    className={`${styles.arcadeImage} 
-      w-56 sm:w-72 md:w-80 lg:w-[420px]
-      h-[800px]
-      mx-auto
-      lg:ml-auto
-      translate-x-0
-      -translate-y-8
-    `}
-  >
-    <ArcadeModel />
-  </div>
+            />
           </div>
         </div>
       </div>

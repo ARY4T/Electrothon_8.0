@@ -282,7 +282,9 @@ const targetRotY = baseY + mouseRef.current.x * 0.25;
       ScrollTrigger.getAll().forEach((t) => t.kill());
       renderer.dispose();
       scene.clear();
-      mountRef.current.innerHTML = "";
+      if (mountRef.current) {
+        mountRef.current.innerHTML = "";
+      }
     };
   }, []);
 
