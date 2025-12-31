@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import specLogo from '@/assets/images/spec-logo.png'; 
+import TargetCursor from "@/components/TargetCursor";
 import { Press_Start_2P } from 'next/font/google';
 // 1. IMPORT THE GRID IMAGE (Same as Hacker Guide)
 import gridBg from '@/assets/images/gridbg.webp';
@@ -15,6 +16,8 @@ const pressStart2P = Press_Start_2P({
 
 export default function CodeOfConduct() {
   return (
+    <>
+     <TargetCursor targetSelector=".cursor-target" />
     <div 
       // 2. Updated base color to Dark Purple
       className={`relative min-h-screen w-full overflow-x-hidden bg-[#0f0720] text-gray-200 ${pressStart2P.className}`}
@@ -77,8 +80,8 @@ export default function CodeOfConduct() {
             <h2 className="text-lg md:text-2xl text-cyan-400 mb-8 text-center md:text-left">
               The Covenant
             </h2>
-            <div className=" text-cyan 400grid gap-8">
-              <PolicyItem title="Harassment Definition">
+            <div className=" text-cyan 400grid gap-8  ">
+              <PolicyItem title="Harassment Definition ">
                 Harassment encompasses any offensive remarks or actions related to gender, identity, age, sexual orientation, disability, appearance, body size, race, ethnicity, nationality, or religious beliefs. This includes, but is not limited to, sexual imagery, threats, intimidation, stalking, photographing or recording individuals without consent, disruptive behaviour, inappropriate physical contact, and unwelcome attention.
               </PolicyItem>
               
@@ -113,13 +116,13 @@ export default function CodeOfConduct() {
               If you witness or experience a potential violation of the code of conduct, report it immediately. All reporters have the right to remain anonymous. You can contact the following representatives:
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
               <ContactCard name="Kritika Singh" phone="+91 78768 26882" email="23bec055@nith.ac.in" />
               <ContactCard name="Soham Juneja" phone="+91 70181 33694" email="23bcs110@nith.ac.in" />
             </div>
 
-        <div className="mt-10 p-6 bg-white/5 rounded-lg border border-purple-500/20 text-xs md:text-sm text-center leading-loose">
-          General Email: <a href="mailto:community.spec@gmail.com" className="text-purple-400 hover:text-purple-300 transition-colors ml-2">community.spec@gmail.com</a>
+        <div className="mt-10 p-4 bg-white/5 rounded-lg border border-purple-500/20 text-xs md:text-sm text-center leading-loose flex flex-col md:block">
+          General Email: <a href="mailto:community.spec@gmail.com" className="text-purple-400  break-all hover:text-purple-300 transition-colors ml-2">community.spec@gmail.com</a>
         </div>
           </section>
 
@@ -131,6 +134,7 @@ export default function CodeOfConduct() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
