@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import specLogo from '@/assets/images/spec-logo.png'; 
+import TargetCursor from "@/components/TargetCursor";
 import { Press_Start_2P } from 'next/font/google';
 // 1. IMPORT THE GRID IMAGE FROM ASSETS
 import gridBg from '@/assets/images/gridbg.webp';
@@ -15,6 +16,8 @@ const pressStart2P = Press_Start_2P({
 
 export default function HackerGuide() {
   return (
+    <>
+     <TargetCursor targetSelector=".cursor-target" />
     <div 
       // Changed base color to a very dark purple/blue for better blending
       className={`relative min-h-screen w-full overflow-x-hidden bg-[#0f0720] text-gray-200 ${pressStart2P.className}`}
@@ -138,6 +141,7 @@ export default function HackerGuide() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
