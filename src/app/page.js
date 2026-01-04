@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import MainPage from "../components/MainPage/MainPage";
 import MissionBriefing from "@/components/MissionBriefing";
+import Prizes from "@/components/prizes/prizes";
 import GalleryPage from "@/components/gallery/gallery";
 import Themes from "@/components/ThemesSection/ThemesSection";
 import ComingSoon from "@/components/ComingSoon";
@@ -42,6 +43,7 @@ export default function Page() {
           <AboutUsAchievementWith3D />
         </div>
       )}
+      <Prizes />
       <GalleryPage />
       <Themes />
       <ComingSoon />
