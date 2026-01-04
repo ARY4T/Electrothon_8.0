@@ -151,25 +151,7 @@
     flex-wrap: nowrap;
   }
   
-  /* 📱 MOBILE: 2×2 GRID */
-  @media (max-width: 640px) {
-    .achievementsRow {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      justify-items: center;
-      width: 100%;
-    }
-  
-    .achievementCard {
-      width: 140px;
-      height: 105px;
-    }
-  
-  }
-  
-
-  @media (min-width: 641px) and (max-width: 900px) {
+   @media (min-width: 641px) and (max-width: 900px) {
     .achievementsRow {
       flex-wrap: wrap;
       justify-content: center;
@@ -215,6 +197,41 @@
     position: relative;
     overflow: hidden;
   }
+  /* 📱 MOBILE: 2×2 GRID */
+  @media (max-width: 640px) {
+
+.achievementBlock {
+    margin-left: 0;       /* Stops pushing content to the right */
+    width: 100%;
+    max-width: 100%;      /* Uses full screen width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Centers the grid on the screen */
+  }
+  .achievementSection {
+    padding-top: 100px;   /* Reduced from 190px */
+  }
+    .achievementsRow {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      justify-items: center;
+      width: 100%;
+    }
+  
+    .achievementCard {
+      width: 140px;
+      height: 105px;
+    }
+  .subheading2 {
+     white-space: normal;
+     text-align: center; /* Centers "OUR ACHIEVEMENTS" text */
+     width: 100%;
+  }
+  }
+  
+
+ 
   .achievementCard:hover {
     transform: translateY(-6px) scale(1.08);
   
