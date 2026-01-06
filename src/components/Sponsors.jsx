@@ -11,7 +11,8 @@ import ethLogo from '@/assets/images/ethindia-light.png';
 import balsamiqLogo from '@/assets/images/balsamiq.png'; 
 import insforgeLogo from '@/assets/images/insforge.svg';
 import interviewcakeLogo from '@/assets/images/interviewcake.png';
-
+import xyzLogo from '@/assets/images/xyz-logo-white.png';
+import codeCraftersLogo from '@/assets/images/CodeCraftersLogo.png';
 const sponsorsList = [
   { 
     name: 'Devfolio', 
@@ -49,6 +50,21 @@ const sponsorsList = [
     alt: 'Interview Cake Logo',
     scale: 1.3 
   },
+  { 
+    name: '.XYZ', 
+    logo: xyzLogo, 
+    url: 'https://gen.xyz/', 
+    alt: '.xyz Logo',
+    scale: 1.3 
+  },
+  { 
+    name: 'Codecrafters', 
+    logo: codeCraftersLogo, 
+    url: 'https://codecrafters.io/', 
+    alt: 'Codecrafters Logo',
+    scale: 1.3 
+  },
+  
 ];
 
 export default function Sponsors() {
