@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import PillNav from "@/components/MainPage/Navbar";
 import TargetCursor from "@/components/TargetCursor";
@@ -9,6 +10,32 @@ import Countdown from "@/components/MainPage/Countdown";
 
 
 export default function MainPage() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // iOS video loop fix
+    const handleVideoEnd = () => {
+      video.currentTime = 0;
+      video.play().catch(console.error);
+    };
+
+    video.addEventListener('ended', handleVideoEnd);
+    
+    // Ensure video plays on iOS
+    const playVideo = () => {
+      video.play().catch(console.error);
+    };
+    
+    // Try to play after a short delay
+    setTimeout(playVideo, 100);
+
+    return () => {
+      video.removeEventListener('ended', handleVideoEnd);
+    };
+  }, []);
   return (
     <>
       <TargetCursor targetSelector=".cursor-target" />
@@ -16,12 +43,15 @@ export default function MainPage() {
       <div className="relative w-full min-h-[100svh] flex flex-col items-center overflow-x-hidden font-['Press_Start_2P']">
         {/* Background video */}
         <video
+          ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover z-0"
           src="/videos/bg.mp4"
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
+          webkit-playsinline="true"
         />
 
         {/* Overlay */}
