@@ -9,36 +9,44 @@ import {
   useVelocity
 } from "framer-motion";
 
-// Replace this with your actual image path
+// Replace with your image path
 import marioRunGif from "./mario.gif"; 
 
-// --- MEMOIZED STATIC ICONS (No changes needed, these are efficient) ---
+// --- 1. HELPER HOOK FOR RESPONSIVE JS LOGIC ---
+const useScreenSize = () => {
+  const [size, setSize] = useState({ isMobile: false, width: 1200 });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSize({
+        isMobile: window.innerWidth < 768,
+        width: window.innerWidth
+      });
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return size;
+};
+
+// --- MEMOIZED ICONS ---
 const IconMushroom = memo(() => (
-  <svg viewBox="0 0 24 24" className="w-12 h-12 drop-shadow-[0_0_10px_rgba(239,68,68,0.8)]">
+  <svg viewBox="0 0 24 24" className="w-8 h-8 md:w-12 md:h-12 drop-shadow-[0_0_10px_rgba(239,68,68,0.8)]">
     <path fill="#ef4444" d="M4 8h16v8h-16z M6 4h12v4h-12z M8 2h8v2h-8z" /><path fill="#ffffff" d="M6 8h4v4h-4z M14 8h4v4h-4z" /><path fill="#fcd34d" d="M6 16h12v6h-12z" /><path fill="#000" d="M8 18h2v2h-2z M14 18h2v2h-2z" />
   </svg>
 ));
 const IconFireFlower = memo(() => (
-  <svg viewBox="0 0 24 24" className="w-12 h-12 drop-shadow-[0_0_10px_rgba(249,115,22,0.8)]">
+  <svg viewBox="0 0 24 24" className="w-8 h-8 md:w-12 md:h-12 drop-shadow-[0_0_10px_rgba(249,115,22,0.8)]">
     <path fill="#22c55e" d="M10 16h4v8h-4z M6 18h4v2h-4z M14 18h4v2h-4z" /><path fill="#f97316" d="M4 6h16v8h-16z M6 4h12v2h-12z M8 2h8v2h-8z" /><path fill="#fcd34d" d="M8 8h8v4h-8z" /><path fill="#000" d="M10 9h1v2h-1z M13 9h1v2h-1z" />
   </svg>
 ));
 const IconStar = memo(() => (
-  <svg viewBox="0 0 24 24" className="w-12 h-12 drop-shadow-[0_0_10px_rgba(234,179,8,0.8)]">
+  <svg viewBox="0 0 24 24" className="w-8 h-8 md:w-12 md:h-12 drop-shadow-[0_0_10px_rgba(234,179,8,0.8)]">
     <path fill="#fbbf24" d="M10 0h4v4h4v4h6v4h-6v4h-4v8h-4v-8h-4v-4h-6v-4h6v-4h4z" /><path fill="#000" d="M10 8h1v3h-1z M13 8h1v3h-1z" />
   </svg>
-));
-
-const SmallKelp = memo(({ style }) => (
-  <div style={{ ...style, transform: "scale(0.6)", transformOrigin: "bottom center" }}>
-    <Kelp style={{ width: "20px", height: "35px" }} />
-  </div>
-));
-
-const SmallSeaweed = memo(({ style }) => (
-  <div style={{ ...style, transform: "scale(0.5)", transformOrigin: "bottom center" }}>
-    <Seaweed style={{ width: "20px", height: "40px" }} height={40} />
-  </div>
 ));
 
 const PRIZE_ICONS = {
@@ -48,16 +56,13 @@ const PRIZE_ICONS = {
 };
 
 // --- CONFIG ---
-const TRIGGER_POINTS = [0.20, 0.50, 0.80];
-const MAX_DISTANCE_VW = 90;
-const JUMP_DURATION_PCT = 0.12;
+const JUMP_DURATION_PCT = 0.12; 
 
 // --- UTILS & COMPONENTS ---
 const useCountUp = (end, triggerPoint, scrollProgress) => {
   const [count, setCount] = useState(0);
   useEffect(() => {
     const unsub = scrollProgress.on("change", (latest) => {
-      // Simple optimization: only update state if value actually changes significantly
       if (latest < triggerPoint) { setCount(0); return; }
       const countDuration = 0.05;
       const progress = Math.min((latest - triggerPoint) / countDuration, 1);
@@ -89,6 +94,7 @@ const PrizeBar = memo(({ leftVW, scrollProgress, triggerPoint, prize, baseBottom
   }, [scrollProgress, triggerPoint]);
 
   const heightPx = (prize.value / prize.maxValue) * maxBarHeightPx;
+  
   const colors = {
     bronze: { bar: "from-orange-900/90 via-amber-800/85 to-orange-700/90", glow: "0 0 25px rgba(180, 83, 9, 0.4)" },
     gold: { bar: "from-yellow-400/90 via-amber-300/90 to-orange-200/95", glow: "0 0 32px rgba(251,191,36,0.55)" },
@@ -96,32 +102,52 @@ const PrizeBar = memo(({ leftVW, scrollProgress, triggerPoint, prize, baseBottom
   };
 
   return (
+    // leftVW is now passed directly (e.g., "50vw")
     <div style={{ position: "absolute", left: leftVW, bottom: `${baseBottomPx}px`, transform: "translateX(-50%)", zIndex: 12 }}>
-      <div className="flex flex-col items-center gap-3">
+      
+      <div className="flex flex-col-reverse items-center gap-2">
+        {/* Fixed Height Text Container */}
+        <div className="h-16 md:h-20 flex flex-col justify-end items-center">
+            <motion.div 
+              animate={{ y: active ? 0 : 8, opacity: active ? 1 : 0.4 }} 
+              transition={{ duration: 0.3 }} 
+              className="text-white font-extrabold text-lg md:text-2xl drop-shadow-lg mb-1"
+            >
+              ${count}
+            </motion.div>
+            <div className="text-center text-white/80 font-mono text-[10px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.24em] max-w-[80px] md:max-w-none leading-tight">
+              {prize.label}
+            </div>
+        </div>
+
+        {/* The Bar */}
+        <motion.div
+          animate={{ 
+            height: active ? heightPx : 10, 
+            boxShadow: active ? colors[prize.tier].glow : "0 0 0 rgba(0,0,0,0)", 
+            filter: active ? "saturate(1)" : "grayscale(0.8)" 
+          }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className={`w-14 md:w-24 rounded-t-lg rounded-b-md md:rounded-t-2xl md:rounded-b-xl border border-white/15 bg-gradient-to-t ${colors[prize.tier].bar} backdrop-blur-md relative overflow-hidden`}
+        >
+          <motion.div animate={{ opacity: active ? [0.15, 0.75, 0.15] : 0 }} transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }} className="absolute inset-x-0 top-0 h-5 md:h-7 bg-white/15" />
+          <motion.div animate={{ opacity: active ? 0.2 : 0, y: active ? 0 : 10 }} transition={{ duration: 0.4 }} className="absolute inset-x-0 bottom-0 h-full bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.3),transparent_55%)]" />
+        </motion.div>
+
+        {/* Icon */}
         <motion.div
           animate={{ y: active ? [-6, 0] : 0, opacity: active ? 1 : 0.4, scale: active ? 1.15 : 1 }}
           transition={{ duration: 0.6, ease: "easeOut", y: { duration: 1, repeat: active ? Infinity : 0, repeatType: "reverse", ease: "easeInOut" } }}
-          className="mb-1"
+          className="pb-1"
         >
-          <div className="w-12 h-12 grid place-items-center">{PRIZE_ICONS[prize.tier]}</div>
+          <div className="w-10 h-10 md:w-12 md:h-12 grid place-items-center">{PRIZE_ICONS[prize.tier]}</div>
         </motion.div>
-        <motion.div
-          animate={{ height: active ? heightPx : 10, boxShadow: active ? colors[prize.tier].glow : "0 0 0 rgba(0,0,0,0)", filter: active ? "saturate(1)" : "grayscale(0.8)" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className={`w-24 rounded-3xl border border-white/15 bg-gradient-to-t ${colors[prize.tier].bar} backdrop-blur-md relative overflow-hidden`}
-        >
-          <motion.div animate={{ opacity: active ? [0.15, 0.75, 0.15] : 0 }} transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }} className="absolute inset-x-0 top-0 h-7 bg-white/15" />
-          <motion.div animate={{ opacity: active ? 0.2 : 0, y: active ? 0 : 10 }} transition={{ duration: 0.4 }} className="absolute inset-x-0 bottom-0 h-full bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.3),transparent_55%)]" />
-        </motion.div>
-        <motion.div animate={{ y: active ? 0 : 8, opacity: active ? 1 : 0.4 }} transition={{ duration: 0.3 }} className="text-white font-extrabold text-2xl drop-shadow-lg">${count}</motion.div>
-        <div className="text-center text-white/80 font-mono text-xs uppercase tracking-[0.24em]">{prize.label}</div>
       </div>
     </div>
   );
 });
 
-// --- DECORATIVE COMPONENTS ---
-// Using will-change: transform to promote these to GPU layers
+// --- DECORATIVE COMPONENTS (Unchanged) ---
 const Bubble = memo(({ style, size = 8, delay = 0 }) => (
   <motion.div
     style={{ ...style, position: "absolute", width: `${size}px`, height: `${size}px`, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)", border: "2px solid rgba(180, 200, 255, 0.6)", boxShadow: "inset -2px -2px 4px rgba(255, 255, 255, 0.5)", willChange: "transform" }}
@@ -252,67 +278,87 @@ const PixelCrab = memo(({ style }) => (
   </motion.div>
 ));
 
+const SmallKelp = memo(({ style }) => (
+  <div style={{ ...style, transform: "scale(0.6)", transformOrigin: "bottom center" }}>
+    <Kelp style={{ width: "20px", height: "35px" }} />
+  </div>
+));
+
+const SmallSeaweed = memo(({ style }) => (
+  <div style={{ ...style, transform: "scale(0.5)", transformOrigin: "bottom center" }}>
+    <Seaweed style={{ width: "20px", height: "40px" }} height={40} />
+  </div>
+));
+
 const AchievementsLevel = () => {
   const targetRef = useRef(null);
+  const { isMobile } = useScreenSize();
   const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start start", "end end"] });
   
-  // OPTIMIZATION 1: Tighter Spring Physics
-  // Low mass + high stiffness = fast response. High damping = no jitter.
+  // --- LAYOUT LOGIC UPDATE ---
+  // To ensure the middle bar is EXACTLY centered, we hardcode the target positions in VW units.
+  // [Left Bar, Middle Bar, Right Bar]
+  const VISUAL_POSITIONS = isMobile ? [18, 50, 82] : [25, 50, 75]; 
+  
+  // How far Mario runs in total (in VW).
+  // 105vw means he runs just past the screen edge, ensuring the last bar (at 82vw) is comfortably reached.
+  const MAX_DISTANCE_VW = 105;
+
+  // We reverse-calculate the "Scroll Trigger Point" based on the desired visual position.
+  // Formula: Trigger = VisualPosition / MaxDistance
+  const DYNAMIC_TRIGGERS = VISUAL_POSITIONS.map(pos => pos / MAX_DISTANCE_VW);
+
   const smoothScroll = useSpring(scrollYProgress, { 
-    stiffness: 250, 
-    damping: 35, 
-    mass: 0.5, 
-    restDelta: 0.0001 // Higher precision to stop micro-movements
+    stiffness: 100,  
+    damping: 30,     
+    mass: 1,         
+    restDelta: 0.001 
   });
 
   const xMove = useTransform(smoothScroll, (value) => `${value * MAX_DISTANCE_VW}vw`);
   
-  // OPTIMIZATION 2: Removed setState/re-renders for flip logic.
-  // We use Velocity MotionValue mapped directly to Scale MotionValue.
-  // This happens purely in the animation frame, not the React render cycle.
   const scrollVelocity = useVelocity(smoothScroll);
   const scaleX = useTransform(scrollVelocity, (latestVelocity) => {
-    // Threshold of -0.01 to prevent flickering when stopped
-    if (latestVelocity < -0.01) return -1;
+    if (latestVelocity < -0.005) return -1;
+    if (latestVelocity > 0.005) return 1;
     return 1;
   });
 
   const stickyTop = 0;
-  const stickyHeight = "100vh";
-  const plantBottomPx = 100;
-  const marioBottomPx = 90;
-  const barBaseBottomPx = 150;
-  const groundHeightPx = 100;
+  const stickyHeight = "100dvh"; 
+  
+  const plantBottomPx = isMobile ? 70 : 100;
+  const marioBottomPx = isMobile ? 65 : 90;
+  const barBaseBottomPx = isMobile ? 85 : 110; 
+  const groundHeightPx = isMobile ? 75 : 100;
   const sandTopHeightPx = 15;
-  const floorDecorBottomPx = 15;
-  const maxBarHeightPx = 240;
+  const floorDecorBottomPx = 10;
+  const maxBarHeightPx = isMobile ? 160 : 240; 
+  const marioWidthPx = isMobile ? 45 : 60;     
 
   const prizeData = [
-    { label: "2nd Runner-Up", value: 220, tier: "bronze" }, // Index 0 (Left)
-    { label: "Winner", value: 445, tier: "gold" },          // Index 1 (Middle)
-    { label: "1st Runner-Up", value: 330, tier: "silver" }, // Index 2 (Right)
+    { label: "1st Runner-Up", value: 330, tier: "silver" }, 
+    { label: "Winner", value: 445, tier: "gold" },          
+    { label: "2nd Runner-Up", value: 220, tier: "bronze" }, 
   ];
   
   const maxPrizeValue = Math.max(...prizeData.map((p) => p.value));
 
   const yMove = useTransform(smoothScroll, (latest) => {
-    // Loop through triggers to find if we are in a jump zone
-    // This calculation is cheap enough to run per frame
-    for (let i = 0; i < TRIGGER_POINTS.length; i++) {
-      const trigger = TRIGGER_POINTS[i];
+    for (let i = 0; i < DYNAMIC_TRIGGERS.length; i++) {
+      const trigger = DYNAMIC_TRIGGERS[i];
       const half = JUMP_DURATION_PCT / 2;
-      
-      // Check distance from trigger point
       const dist = latest - trigger;
+      
       if (Math.abs(dist) <= half) {
         const prize = prizeData[i];
         const barHeight = (prize.value / maxPrizeValue) * maxBarHeightPx;
-        const jumpHeight = (barBaseBottomPx + barHeight) - marioBottomPx;
+        const textContainerHeight = isMobile ? 64 : 80;
+        const jumpHeight = (barBaseBottomPx + textContainerHeight + barHeight) - marioBottomPx;
 
-        // Normalized progress 0 to 1 over the jump duration
-        const progress = (dist + half) / (half * 2);
+        const rawProgress = (dist + half) / (half * 2);
+        const progress = Math.max(0, Math.min(1, rawProgress));
         
-        // Sine wave for smooth arc
         return -Math.sin(progress * Math.PI) * jumpHeight;
       }
     }
@@ -322,20 +368,20 @@ const AchievementsLevel = () => {
   const bgPlantsX = useTransform(smoothScroll, [0, 1], ["0%", "-50%"]);
   const bgForegroundX = useTransform(smoothScroll, [0, 1], ["0%", "-66.66%"]);
 
-const [bubbles, setBubbles] = useState([]);
+  const [bubbles, setBubbles] = useState([]);
   const [swimmingCreatures, setSwimmingCreatures] = useState([]);
   const [floorCreatures, setFloorCreatures] = useState([]);
   const [coralHeights, setCoralHeights] = useState([]);
   
-  // New state for generated plant positions
   const [plants, setPlants] = useState({
     coral: [], seaweed: [], kelp: [], pixelSeaweed: [], pixelCactus: [], fgCoral: []
   });
 
   useEffect(() => {
-    // 1. Generate Bubbles
+    // 1. Bubbles
+    const bubbleCount = window.innerWidth < 768 ? 8 : 15;
     const bubbleArray = [];
-    for (let i = 0; i < 15; i++) { 
+    for (let i = 0; i < bubbleCount; i++) { 
       for (let j = 0; j < 4; j++) {
         bubbleArray.push({
           left: `${i * 10 + Math.random() * 8}%`,
@@ -347,14 +393,14 @@ const [bubbles, setBubbles] = useState([]);
     }
     setBubbles(bubbleArray);
 
-    // 2. Generate Swimming Creatures
+    // 2. Swimming Creatures
     const weightedTypes = [
       OrangeFish, OrangeFish, OrangeFish, OrangeFish, 
       PixelFish, Pufferfish, Pufferfish, BlueShell, BlueShell
     ];
     const fishItems = [];
     let lastComponent = null;
-    const rows = 6; const cols = 6;
+    const rows = 6; const cols = window.innerWidth < 768 ? 3 : 6;
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
         let selectedType;
@@ -377,18 +423,19 @@ const [bubbles, setBubbles] = useState([]);
     }
     setSwimmingCreatures(fishItems);
 
-    // 3. GENERATE FLOOR DECOR (New Greenery Added Here)
+    // 3. Floor Decor
     const floorTypes = [
       Shell, TealShell, Starfish, Starfish, BlueShell, 
       PixelCrab, PinkCoral, 
-      SmallKelp, SmallKelp, SmallKelp, // Grass patches
-      SmallSeaweed, SmallSeaweed       // Grass patches
+      SmallKelp, SmallKelp, SmallKelp, 
+      SmallSeaweed, SmallSeaweed 
     ];
     
     const floorItems = [];
-    for (let i = 0; i < 60; i++) { // Increased count
+    const decorCount = window.innerWidth < 768 ? 30 : 60;
+    for (let i = 0; i < decorCount; i++) { 
         const Type = floorTypes[Math.floor(Math.random() * floorTypes.length)];
-        const positionBase = (i / 60) * 300; 
+        const positionBase = (i / decorCount) * 300; 
         const jitter = (Math.random() * 15) - 7.5;
         
         floorItems.push({ 
@@ -400,17 +447,18 @@ const [bubbles, setBubbles] = useState([]);
     }
     setFloorCreatures(floorItems);
 
-    // 4. GENERATE BACKGROUND PLANTS
+    // 4. Background Plants
     const generatePlantPos = (count, width) => 
       Array.from({ length: count }, () => Math.random() * width).sort((a, b) => a - b);
 
+    const plantMultiplier = window.innerWidth < 768 ? 0.6 : 1;
     setPlants({
-      coral: generatePlantPos(25, 300),
-      seaweed: generatePlantPos(35, 300), 
-      kelp: generatePlantPos(30, 300),
-      pixelSeaweed: generatePlantPos(20, 300),
-      pixelCactus: generatePlantPos(15, 300),
-      fgCoral: generatePlantPos(20, 300),
+      coral: generatePlantPos(25 * plantMultiplier, 300),
+      seaweed: generatePlantPos(35 * plantMultiplier, 300), 
+      kelp: generatePlantPos(30 * plantMultiplier, 300),
+      pixelSeaweed: generatePlantPos(20 * plantMultiplier, 300),
+      pixelCactus: generatePlantPos(15 * plantMultiplier, 300),
+      fgCoral: generatePlantPos(20 * plantMultiplier, 300),
     });
 
     const heights = Array.from({ length: 50 }, () => 15 + Math.random() * 25);
@@ -418,19 +466,9 @@ const [bubbles, setBubbles] = useState([]);
 
   }, []);
 
-  const plantPositions = useMemo(() => ({
-    coral: [5, 28, 55, 78, 108, 140, 170, 200, 240, 280],
-    seaweed: [10, 35, 60, 82, 112, 148, 178, 210, 250],
-    kelp: [12, 52, 92, 132, 172, 210, 250],
-    pixelSeaweed: [15, 75, 135, 200, 270],
-    pixelCactus: [25, 95, 160, 250],
-    fgCoral: [8, 38, 64, 95, 125, 152, 190, 230, 270]
-  }), []);
-
   return (
-    // OPTIMIZATION 3: translate3d forces hardware acceleration on the container
     <div style={{ backgroundColor: "#000000", position: "relative", isolation: "isolate", transform: "translate3d(0,0,0)" }}>
-      <div ref={targetRef} style={{ height: "300vh", position: "relative" }}>
+      <div ref={targetRef} className="h-[400vh] md:h-[300vh]" style={{ position: "relative" }}>
         
         <div style={{ position: "sticky", top: stickyTop, height: stickyHeight, width: "100%", overflow: "hidden", background: "linear-gradient(to bottom, #000000 0%, #0a0514 15%, #1a0f2e 35%, #2d1b4e 55%, #3d2570 75%, #4a2d7c 100%)", boxShadow: "inset 0 0 120px rgba(0,0,0,0.45)" }}>
           
@@ -440,27 +478,15 @@ const [bubbles, setBubbles] = useState([]);
             ))}
           </div>
 
-          {/* --- RENDER FISH --- */}
           {swimmingCreatures.map((fish, i) => (
             <div 
               key={`fish-${i}`}
-              style={{ 
-                  position: "absolute",
-                  top: fish.top, 
-                  left: fish.left, 
-                  zIndex: fish.zIndex,
-              }} 
+              style={{ position: "absolute", top: fish.top, left: fish.left, zIndex: fish.zIndex }} 
             >
-              <fish.Component 
-                style={{ 
-                    transform: `scale(${fish.scale})`,
-                    opacity: fish.opacity
-                }} 
-              />
+              <fish.Component style={{ transform: `scale(${fish.scale})`, opacity: fish.opacity }} />
             </div>
           ))}
 
-          {/* PLANTS (zIndex 6) */}
           <motion.div style={{ position: "absolute", bottom: `${plantBottomPx}px`, width: "300%", height: "150px", zIndex: 6, x: bgPlantsX, willChange: "transform" }}>
             {plants.coral.map((leftPos, i) => (
               <CoralPlant key={`coral-${i}`} style={{ left: `${leftPos}%`, bottom: 0 }} segments={3} baseColor={i % 2 === 0 ? "#6b46c1" : "#ec4899"} customHeights={coralHeights} />
@@ -479,13 +505,15 @@ const [bubbles, setBubbles] = useState([]);
             ))}
           </motion.div>
 
-          {/* PRIZES (zIndex 12) */}
-          {TRIGGER_POINTS.map((triggerPoint, index) => {
+          {/* PRIZES */}
+          {DYNAMIC_TRIGGERS.map((triggerPoint, index) => {
             const prize = prizeData[index];
+            const visualPosition = VISUAL_POSITIONS[index];
             return (
               <PrizeBar
                 key={prize.tier} 
-                leftVW={`${triggerPoint * MAX_DISTANCE_VW}vw`}
+                // Explicitly define position so "50vw" is exact center
+                leftVW={`${visualPosition}vw`}
                 scrollProgress={smoothScroll}
                 triggerPoint={triggerPoint}
                 prize={{ ...prize, maxValue: maxPrizeValue }}
@@ -498,23 +526,22 @@ const [bubbles, setBubbles] = useState([]);
           <motion.img
             src={typeof marioRunGif === "string" ? marioRunGif : marioRunGif.src}
             alt="Mario"
-            // OPTIMIZATION 4: Add decoding=async to prevent main-thread blocking during image decode
             decoding="async"
             style={{
               position: "absolute",
               bottom: `${marioBottomPx}px`,
               left: 0,
-              width: "60px",
+              width: `${marioWidthPx}px`,
               x: xMove,  
               y: yMove,
-              scaleX: scaleX, // Directly controlled by MotionValue now!
+              scaleX: scaleX, 
               zIndex: 20,
               willChange: "transform", 
               filter: "drop-shadow(0 0 12px rgba(255,255,255,0.15))",
             }}
           />
 
-          {/* GROUND LAYER (zIndex 15) */}
+          {/* GROUND LAYER */}
           <motion.div 
             style={{ 
               position: "absolute", 
@@ -550,24 +577,17 @@ const [bubbles, setBubbles] = useState([]);
             />
           </motion.div>
 
-          {/* FLOOR DECOR (zIndex 16) */}
           <motion.div style={{ position: "absolute", bottom: `${floorDecorBottomPx}px`, width: "300%", height: "50px", zIndex: 16, x: bgForegroundX, willChange: "transform" }}>
             {floorCreatures.map((item, i) => (
                <div 
                  key={i} 
-                 style={{ 
-                   position: "absolute", 
-                   left: item.left, 
-                   bottom: `${item.bottomOffset}px`, 
-                   transform: `scale(${item.scale})`
-                 }}
+                 style={{ position: "absolute", left: item.left, bottom: `${item.bottomOffset}px`, transform: `scale(${item.scale})` }}
                >
                  <item.Component style={{}} />
                </div>
             ))}
           </motion.div>
 
-         {/* FOREGROUND PLANTS (zIndex 17) */}
           <motion.div style={{ position: "absolute", bottom: 0, width: "300%", height: "120px", zIndex: 17, x: bgForegroundX, willChange: "transform" }}>
             {plants.fgCoral.map((leftPos, i) => (
               <CoralPlant
