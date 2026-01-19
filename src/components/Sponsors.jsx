@@ -13,6 +13,8 @@ import insforgeLogo from '@/assets/images/insforge.svg';
 import interviewcakeLogo from '@/assets/images/interviewcake.png';
 import xyzLogo from '@/assets/images/xyz-logo-white.png';
 import codeCraftersLogo from '@/assets/images/CodeCraftersLogo.png';
+import nullshot_logo from '@/assets/images/nullshot_logo.png';
+import neosapien_logo from '@/assets/images/neosapien_logo.png';
 const sponsorsList = [
   { 
     name: 'Devfolio', 
@@ -64,7 +66,20 @@ const sponsorsList = [
     alt: 'Codecrafters Logo',
     scale: 1.3 
   },
-  
+  { 
+    name: 'Nullshot', 
+    logo: nullshot_logo, 
+    url: 'https://nullshot.ai', 
+    alt: 'Nullshot Logo',
+    scale: 1.3 
+  },
+  { 
+    name: 'Neosapien', 
+    logo: neosapien_logo,
+    url: 'https://neosapien.xyz/', 
+    alt: 'Neosapien Logo',
+    scale: 2.0 
+  },
 ];
 
 export default function Sponsors() {
