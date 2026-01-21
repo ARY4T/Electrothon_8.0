@@ -15,6 +15,7 @@ import xyzLogo from '@/assets/images/xyz-logo-white.png';
 import codeCraftersLogo from '@/assets/images/CodeCraftersLogo.png';
 import nullshot_logo from '@/assets/images/nullshot_logo.png';
 import neosapien_logo from '@/assets/images/neosapien_logo.png';
+import mastra_logo from '@/assets/images/mastra_logo.png';
 const sponsorsList = [
   { 
     name: 'Devfolio', 
@@ -80,6 +81,13 @@ const sponsorsList = [
     alt: 'Neosapien Logo',
     scale: 2.0 
   },
+  {
+    name: 'Mastra',
+    logo: mastra_logo,
+    url: 'https://mastra.ai/',
+    alt: 'Mastra Logo',
+    scale: 4.5
+  }
 ];
 
 export default function Sponsors() {
