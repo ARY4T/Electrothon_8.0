@@ -10,6 +10,7 @@ import ComingSoon from "@/components/ComingSoon";
 import Sponsors from "@/components/Sponsors";
 import Timeline from "@/components/Timeline/timeline";
 import Testimonials from "@/components/Testimonials/Testimonials";
+import Organizers from "@/components/Organizers/Organizers";
 import FAQList from "@/components/FAQList";
 import Footer from "@/components/Footer";
 import AboutUsAchievementWith3D from "@/components/MissionBriefing/AboutUsAchievementWith3D";
@@ -50,6 +51,7 @@ export default function Page() {
       <Sponsors />
       <Timeline />
       <Testimonials />
+      <Organizers />
       <FAQList />
       <Footer />
     </>
