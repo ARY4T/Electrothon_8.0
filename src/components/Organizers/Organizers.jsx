@@ -14,8 +14,8 @@ export default function Organizers() {
     "organizer5.webp","organizer6.webp","organizer7.webp","organizer8.jpg",
     "organizer9.webp","organizer10.webp","organizer11.webp","organizer12.webp",
     "organizer13.jpeg","organizer14.jpg","organizer15.webp","organizer16.jpg",
-    "organizer17.webp","organizer18.webp","organizer19.webp",
-    "organizer21.webp","organizer22.webp","organizer23.webp","organizer24.jpg",
+    "organizer17.webp","organizer18.webp",
+    "organizer19.webp","organizer21.webp","organizer23.webp","organizer24.jpg",
   ];
 
   const sliderANames = [
@@ -38,7 +38,6 @@ export default function Organizers() {
     "Shivansh Bhatnagar",
     "Shreshth Sharma",
     "Sona",
-    "Tejasv Singh Hada",
     "Vaibhav Sharma",
     "Vyom Sharma"
   ];
@@ -100,6 +99,11 @@ export default function Organizers() {
       name: "Soham Juneja",
       role: "Lead Organizer",
       image: "/assets/images/organizers/organizer20.webp"
+    },
+    {
+      name: "Tejasv Singh Hada",
+      role: "Lead Organizer",
+      image: "/assets/images/organizers/organizer22.webp"
     }
   ];
 
