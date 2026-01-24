@@ -15,6 +15,29 @@ export default function Footer() {
       className="relative w-full py-24 flex items-center justify-center text-gray-800 overflow-hidden"
     >
       <TargetCursor targetSelector=".cursor-target" />
+      {/* MLH Trust Badge (fixed) */}
+      <a
+        id="mlh-trust-badge"
+        href="https://mlh.io/apac?utm_source=apac-hackathon&utm_medium=TrustBadge&utm_campaign=2026-season&utm_content=white"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'block',
+          maxWidth: '100px',
+          minWidth: '60px',
+          position: 'fixed',
+          right: '50px',
+          top: 0,
+          width: '10%',
+          zIndex: 10000
+        }}
+      >
+        <img
+          src="https://s3.amazonaws.com/logged-assets/trust-badge/2026/mlh-trust-badge-2026-white.svg"
+          alt="Major League Hacking 2026 Hackathon Season"
+          style={{ width: '100%' }}
+        />
+      </a>
       
       {/* Background Image */}
       <div 
@@ -110,6 +133,16 @@ export default function Footer() {
                     </a>
                   </li>
                   {/* NEW LINK ADDED HERE */}
+                  <li>
+                    <a
+                      href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf?utm_campaign=Member+Event+-+Onboarding+Reminder&utm_content=Onboarding+Needed&utm_medium=Email&utm_source=Customer.io" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-target hover:text-gray-300"
+                    >
+                      MLH Code of Conduct
+                    </a>
+                  </li>
                   <li>
                     <a
                       href="/hackersguide" 
