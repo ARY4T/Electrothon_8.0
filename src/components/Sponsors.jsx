@@ -17,6 +17,7 @@ import nullshot_logo from "@/assets/images/nullshot_logo.png";
 import neosapien_logo from "@/assets/images/neosapien_logo.png";
 import mastra_logo from "@/assets/images/mastra_logo.png";
 import iqai_logo from "@/assets/images/iqai_logo.png";
+import eventopia_logo from "@/assets/images/eventopia_logo.png";
 
 // ─── TIERS (LOCKED) ──────────────────────────────────
 
@@ -114,6 +115,17 @@ const INKIND = [
   },
 ];
 
+// 📢 MEDIA PARTNERS
+const MEDIA = [
+  {
+    name: "Eventopia",
+    logo: eventopia_logo,
+    url: "https://eventopia.in/",
+    alt: "Eventopia Logo",
+    scale: 1.2,
+  },
+];
+
 // ─── GRID COMPONENT ──────────────────────────────────
 function SponsorGrid({ list }) {
   return (
@@ -152,7 +164,7 @@ export default function Sponsors() {
     <div id="sponsors" className="timeline-container">
       <TargetCursor targetSelector=".cursor-target" />
 
-      {/* PAGE HEADER */}
+      {/* HEADER */}
       <div
         className="header-section flex flex-col items-center justify-center"
         style={{ position: "relative", paddingTop: 90 }}
@@ -178,6 +190,33 @@ export default function Sponsors() {
           IN-KIND SPONSORS
         </div>
         <SponsorGrid list={INKIND} />
+
+        {/* MEDIA PARTNERS */}
+        <div className={styles.tierLabel}>MEDIA PARTNERS</div>
+
+        <div className={styles.mediaGrid}>
+          {MEDIA.map((s, i) => (
+            <a
+              key={s.name}
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`cursor-target holo-card ${styles.tile} ${styles.mediaTile}`}
+              style={{ animationDelay: `${i * 100}ms` }}
+            >
+              <div className={styles.tileLogo}>
+                <Image
+                  src={s.logo}
+                  alt={s.alt}
+                  width={300}
+                  height={150}
+                  className={styles.tileImage}
+                  style={{ transform: `scale(${s.scale || 1})` }}
+                />
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );
