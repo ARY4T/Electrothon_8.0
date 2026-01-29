@@ -12,12 +12,12 @@ export default function Organizers() {
   // Sorted alphabetically by name (case-insensitive)
   const sliderAImages = [
     "organizer3.webp","organizer4.webp","organizer6.webp",
-    "organizer5.webp","organizer7.webp","organizer8.jpg",
+    "organizer5.webp","organizer7.webp","organizer8.webp",
     "organizer9.webp","organizer10.webp","organizer11.webp",
-    "organizer12.webp","organizer13.jpeg","organizer14.jpg",
-    "organizer2.webp","organizer15.webp","organizer16.jpg",
+    "organizer12.webp","organizer13.webp","organizer14.webp",
+    "organizer2.webp","organizer15.webp","organizer16.webp",
     "organizer17.webp","organizer18.webp","organizer19.webp",
-    "organizer21.webp","organizer23.webp","organizer24.jpg",
+    "organizer21.webp","organizer23.webp","organizer24.webp",
   ];
 
   const sliderANames = [
@@ -58,26 +58,26 @@ export default function Organizers() {
     { name: "Arpit Tyagi", image: "organizer27.webp" },
     { name: "Arya Thakur", image: "organizer28.webp" },
     { name: "Avaneesh", image: "organizer29.webp" },
-    { name: "Gauri Sharma", image: "organizer30.jpg" },
+    { name: "Gauri Sharma", image: "organizer30.webp" },
     { name: "Harsh Verma", image: "organizer31.webp" },
-    { name: "Kaustav Rana", image: "organizer32.jpg" },
+    { name: "Kaustav Rana", image: "organizer32.webp" },
     { name: "Manan Gupta", image: "organizer38.webp" },
     { name: "Mayank Koundal", image: "organizer33.webp" },
     { name: "Medha Sharma", image: "organizer34.webp" },
     { name: "Nishita", image: "organizer35.webp" },
     { name: "Peeyush Gautam", image: "organizer39.webp" },
-    { name: "Prakul Chandra", image: "organizer40.png" },
+    { name: "Prakul Chandra", image: "organizer40.webp" },
     { name: "Pratham Lodha", image: "organizer41.webp" },
     { name: "Rijul Rangta", image: "organizer42.webp" },
-    { name: "Ronak Dotasara", image: "organizer43.jpg" },
+    { name: "Ronak Dotasara", image: "organizer43.webp" },
     { name: "Shreya Dhawan", image: "organizer44.webp" },
-    { name: "Vaishali Bhatt", image: "organizer45.jpg" },
-    { name: "Vaishnavi Sharma", image: "organizer46.jpg" },
-    { name: "Vanni Chauhan", image: "organizer47.jpg" },
-    { name: "Vanya Sharma", image: "organizer48.jpg" },
-    { name: "Vidhi", image: "organizer49.jpeg" },
-    { name: "Vyom Pant", image: "organizer50.jpg" },
-    { name: "Yash Verma", image: "organizer51.jpg" }
+    { name: "Vaishali Bhatt", image: "organizer45.webp" },
+    { name: "Vaishnavi Sharma", image: "organizer46.webp" },
+    { name: "Vanni Chauhan", image: "organizer47.webp" },
+    { name: "Vanya Sharma", image: "organizer48.webp" },
+    { name: "Vidhi", image: "organizer49.webp" },
+    { name: "Vyom Pant", image: "organizer50.webp" },
+    { name: "Yash Verma", image: "organizer51.webp" }
   ];
   const sliderB = sliderBData.map(d => ({
     name: d.name,
