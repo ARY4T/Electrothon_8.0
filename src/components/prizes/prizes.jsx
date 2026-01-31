@@ -13,7 +13,7 @@ import {
 import marioRunGif from "./mario.gif"; 
 
 // --- CONFIG ---
-const JUMP_DURATION_PCT = 0.15; // How long the jump lasts relative to scroll width
+const JUMP_DURATION_PCT = 0.18; 
 
 // --- 1. SCREEN SIZE HOOK ---
 const useScreenSize = () => {
@@ -150,7 +150,7 @@ const PrizeBar = memo(({ leftVW, scrollProgress, triggerPoint, prize, baseBottom
   );
 });
 
-// --- LIGHTWEIGHT DECOR ---
+// --- DECORATION COMPONENTS ---
 const Bubble = memo(({ style, size = 8, delay = 0 }) => (
   <motion.div
     style={{ ...style, position: "absolute", width: `${size}px`, height: `${size}px`, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)", border: "2px solid rgba(180, 200, 255, 0.6)", boxShadow: "inset -2px -2px 4px rgba(255, 255, 255, 0.5)", willChange: "transform" }}
@@ -227,6 +227,33 @@ const PixelCrab = memo(({ style }) => (
   </motion.div>
 ));
 
+// --- PROFESSIONAL HUD OVERLAY ---
+const PrizeStatsOverlay = () => (
+  <div className="absolute top-[85px] md:top-[120px] left-0 right-0 z-40 flex flex-col md:flex-row justify-center items-center gap-3 md:gap-32 px-4 pointer-events-none">
+     
+     <div className="relative group">
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-[2.2rem] blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+        <div className="relative flex flex-col justify-center items-center px-6 py-2.5 md:px-10 md:py-4 rounded-[2rem] bg-gradient-to-b from-slate-700 to-slate-800 border border-white/20 shadow-xl min-w-[160px] md:min-w-[220px]">
+            <span className="text-slate-300 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] mb-0.5">Cash Prizes</span>
+            <span className="text-2xl md:text-3xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-500 drop-shadow-sm">
+                $5,000
+            </span>
+        </div>
+     </div>
+
+     <div className="relative group">
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-[2.2rem] blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+        <div className="relative flex flex-col justify-center items-center px-6 py-2.5 md:px-10 md:py-4 rounded-[2rem] bg-gradient-to-b from-slate-700 to-slate-800 border border-white/20 shadow-xl min-w-[160px] md:min-w-[220px]">
+            <span className="text-slate-300 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] mb-0.5">Total Pool</span>
+            <span className="text-2xl md:text-3xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-cyan-400 to-blue-500 drop-shadow-sm">
+                $60,000
+            </span>
+        </div>
+     </div>
+
+  </div>
+);
+
 const AchievementsLevel = () => {
   const targetRef = useRef(null);
   const { isMobile } = useScreenSize();
@@ -236,13 +263,10 @@ const AchievementsLevel = () => {
   const MAX_DISTANCE_VW = 105;
   const DYNAMIC_TRIGGERS = VISUAL_POSITIONS.map(pos => pos / MAX_DISTANCE_VW);
 
-  // --- DUAL MODE PHYSICS ---
-  // Mobile: 0.05 mass (Instant/Snappy)
-  // Desktop: 0.1 mass (Smoother for jumps)
   const smoothScroll = useSpring(scrollYProgress, { 
-    stiffness: 800,  
-    damping: 50,     
-    mass: isMobile ? 0.05 : 0.1,       
+    stiffness: 120,  
+    damping: 25,     
+    mass: isMobile ? 0.2 : 0.2,       
     restDelta: 0.001 
   });
 
@@ -253,8 +277,8 @@ const AchievementsLevel = () => {
   
   const scrollVelocity = useVelocity(smoothScroll);
   const scaleX = useTransform(scrollVelocity, (latestVelocity) => {
-    if (latestVelocity < -0.005) return -1;
-    if (latestVelocity > 0.005) return 1;
+    if (latestVelocity < -0.02) return -1;
+    if (latestVelocity > 0.02) return 1;
     return 1;
   });
 
@@ -264,7 +288,7 @@ const AchievementsLevel = () => {
   const groundHeightPx = isMobile ? 75 : 100;
   const sandTopHeightPx = 15;
   const floorDecorBottomPx = 10;
-  const maxBarHeightPx = isMobile ? 160 : 240; 
+  const maxBarHeightPx = isMobile ? 140 : 240; 
   const marioWidthPx = isMobile ? 45 : 60;     
 
   const prizeData = [
@@ -275,7 +299,6 @@ const AchievementsLevel = () => {
   
   const maxPrizeValue = Math.max(...prizeData.map((p) => p.value));
 
-  // --- RESTORED JUMPING LOGIC (Desktop Only) ---
   const yMove = useTransform(effectiveScroll, (latest) => {
     if (isMobile) return 0;
 
@@ -284,19 +307,13 @@ const AchievementsLevel = () => {
       const half = JUMP_DURATION_PCT / 2;
       const dist = latest - trigger;
       
-      // If we are within the jump window
       if (Math.abs(dist) <= half) {
         const prize = prizeData[i];
-        
-        // Calculate height of the bar we are jumping over
         const barHeight = (prize.value / maxPrizeValue) * maxBarHeightPx;
-        const textContainerHeight = 112; // Approximate height of the text/money above bar
-        const buffer = 40; // Clearance
-        
-        // Total height Mario needs to reach
+        const textContainerHeight = 112; 
+        const buffer = 40; 
         const jumpTargetPx = (barBaseBottomPx + textContainerHeight + barHeight + buffer) - marioBottomPx;
 
-        // Sine wave math: 0 -> 1 -> 0
         const rawProgress = (dist + half) / (half * 2);
         const progress = Math.max(0, Math.min(1, rawProgress));
         
@@ -411,6 +428,8 @@ const AchievementsLevel = () => {
         
         <div style={{ position: "sticky", top: 0, height: "100svh", width: "100%", overflow: "hidden", background: "linear-gradient(to bottom, #000000 0%, #0a0514 15%, #1a0f2e 35%, #2d1b4e 55%, #3d2570 75%, #4a2d7c 100%)", boxShadow: "inset 0 0 120px rgba(0,0,0,0.45)" }}>
           
+          <PrizeStatsOverlay />
+
           <div style={{ position: "absolute", inset: 0, zIndex: 5, pointerEvents: "none" }}>
             {bubbles.map((bubble, i) => (
               <Bubble key={i} style={{ left: bubble.left, bottom: bubble.bottom }} size={bubble.size} delay={bubble.delay} />
@@ -480,7 +499,7 @@ const AchievementsLevel = () => {
             }}
           />
 
-          {/* GROUND LAYER - with will-change */}
+          {/* GROUND LAYER */}
           <motion.div 
             style={{ 
               position: "absolute", 
@@ -511,19 +530,30 @@ const AchievementsLevel = () => {
                   linear-gradient(45deg, #3d3457 25%, transparent 25%, transparent 75%, #3d3457 75%)
                 `,
                 backgroundSize: "20px 20px",
-                backgroundPosition: "0 0, 10px 10px"
+                backgroundPosition: "0 0, 10px 10px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                position: "relative"
               }} 
-            />
+            >
+                {/* BOTTOM TEXT: Fixed width to w-1/3 so it sits in the final screen segment */}
+                <div className="absolute right-0 top-0 h-full w-1/3 flex items-center justify-center pointer-events-none">
+                    <p className="text-white/90 font-mono font-black text-sm md:text-4xl tracking-widest uppercase drop-shadow-lg text-center px-1 md:px-4 whitespace-nowrap">
+                        Many more prizes to come...
+                    </p>
+                </div>
+            </div>
           </motion.div>
 
           <motion.div style={{ position: "absolute", bottom: `${floorDecorBottomPx}px`, width: "300%", height: "50px", zIndex: 16, x: bgForegroundX, willChange: "transform" }}>
             {floorCreatures.map((item, i) => (
-               <div 
-                 key={i} 
-                 style={{ position: "absolute", left: item.left, bottom: `${item.bottomOffset}px`, transform: `scale(${item.scale})` }}
-               >
-                 <item.Component style={{}} />
-               </div>
+                <div 
+                  key={i} 
+                  style={{ position: "absolute", left: item.left, bottom: `${item.bottomOffset}px`, transform: `scale(${item.scale})` }}
+                >
+                  <item.Component style={{}} />
+                </div>
             ))}
           </motion.div>
 
