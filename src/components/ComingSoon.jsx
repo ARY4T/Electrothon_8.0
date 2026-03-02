@@ -67,8 +67,6 @@ const TRACK_DATA = [
     link: "https://ethindia-villa.devfolio.co/",
     btnText: "START BUILDING"
   },
- 
-
   {
     id: 5,
     logo: "/LOGOS/beginner.webp", 
@@ -108,10 +106,6 @@ const TRACK_DATA = [
     link: "https://electrothon-8.devfolio.co/prizes", 
     btnText: "VIEW DETAILS"
   }
-  
-  
- 
-  
 ];
 
 export default function Challenges() {
@@ -130,7 +124,6 @@ export default function Challenges() {
       id="challenges" 
       className={`min-h-screen bg-[#090014] text-white overflow-hidden relative cursor-none ${pressStart.className}`}
     >
-
       <TargetCursor targetSelector=".cursor-target" />
 
       <style jsx global>{`
@@ -139,7 +132,7 @@ export default function Challenges() {
           100% { transform: translateX(-50%); }
         }
         .animate-marquee {
-          animation: marquee 30s linear infinite; /* Slowed down slightly for more cards */
+          animation: marquee 30s linear infinite; 
           width: max-content; 
         }
         .group:hover .animate-marquee {
@@ -150,7 +143,7 @@ export default function Challenges() {
             0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
             100% { transform: perspective(500px) rotateX(60deg) translateY(40px); }
         }
-
+        
         .theme-text-shadow { text-shadow: 4px 4px 0px #000000; }
         .gold-shadow { text-shadow: 4px 4px 0px #000, -1px -1px 0 #ca8a04; }
       `}</style>
@@ -263,7 +256,7 @@ function ArcadeWindowCard({ data }) {
           <div className="relative w-full flex flex-col items-center justify-center grow">
             {/* Conditional logic for text sizing on "Multiple" vs short cash amounts */}
             <div className="text-6xl mb-[-10px] filter drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">🎁</div>
-<br />
+            <br />
             <div className={`text-yellow-400 font-extrabold gold-shadow ${data.prize.length > 6 ? 'text-3xl' : 'text-5xl'}`}>
               {data.prize}
             </div>
