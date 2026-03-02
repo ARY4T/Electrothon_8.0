@@ -20,7 +20,7 @@ const TRACK_DATA = [
     trackTitle: "Requestly",
     trackSubtitle: "BEST USE OF REQUESTLY",
     prize: "$200",
-    themeColor: "cyan",
+    themeColor: "fuchsia",
     bgStyle: { 
       background: 'radial-gradient(circle at center, #1e1b4b 0%, #000000 100%)' 
     },
@@ -33,7 +33,7 @@ const TRACK_DATA = [
     trackTitle: "Nullshot",
     trackSubtitle: "BEST USE OF NULLSHOT",
     prize: "$200",
-    themeColor: "orange",
+    themeColor: "cyan",
     bgStyle: { 
       background: 'linear-gradient(45deg, #271a0c 25%, #431407 25%, #431407 50%, #271a0c 50%, #271a0c 75%, #431407 75%, #431407 100%)',
       backgroundSize: '20px 20px'
@@ -73,7 +73,7 @@ const TRACK_DATA = [
     trackTitle: "Beginner",
     trackSubtitle: "BEST BEGINNER HACK",
     prize: "$50",
-    themeColor: "cyan",
+    themeColor: "fuchsia",
     bgStyle: { 
       background: 'radial-gradient(circle at center, #0f172a 0%, #000000 100%)' 
     },
@@ -86,7 +86,7 @@ const TRACK_DATA = [
     trackTitle: "All-Girls",
     trackSubtitle: "BEST ALL-GIRLS TEAM",
     prize: "$50",
-    themeColor: "fuchsia",
+    themeColor: "cyan",
     bgStyle: { 
       background: 'linear-gradient(to bottom, #701a75, #4a044e)' 
     },
@@ -99,7 +99,7 @@ const TRACK_DATA = [
     trackTitle: "Hardware",
     trackSubtitle: "BEST HARDWARE TRACK",
     prize: "$50",
-    themeColor: "orange",
+    themeColor: "fuchsia",
     bgStyle: { 
       background: 'linear-gradient(45deg, #451a03 25%, #78350f 100%)',
     },
@@ -256,6 +256,7 @@ function ArcadeWindowCard({ data }) {
           <div className="relative w-full flex flex-col items-center justify-center grow">
             {/* Conditional logic for text sizing on "Multiple" vs short cash amounts */}
             <div className="text-6xl mb-[-10px] filter drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">🎁</div>
+            <br />
             <br />
             <div className={`text-yellow-400 font-extrabold gold-shadow ${data.prize.length > 6 ? 'text-3xl' : 'text-5xl'}`}>
               {data.prize}
