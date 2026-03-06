@@ -151,22 +151,30 @@ In case you are submitting a project that has been previously made, make sure th
                 {/* Themes Section */}
                 <section>
                   <h2 className="text-[11px] text-[#fbbf24] mb-6 text-center uppercase tracking-widest">🎯 Select Your Theme</h2>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    {[
-                     
-                    "Travel & Tourism",
-                    "Climate Emergency",
-                    "Healthcare",
-                    "Cybesecurity & Blockchain",
-                    "EdTech",
-                    "Open Innovation",
-                    "AI & Agentic Systems"
-                ].map((theme) => (
-                      <div key={theme} className="border border-purple-500/20 bg-purple-500/5 p-3 rounded text-center text-[11px] text-gray-300 hover:bg-purple-500/20 transition-all cursor-default">
-                        {theme}
-                      </div>
-                    ))}
-                  </div>
+                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+  {[
+    "Travel & Tourism",
+    "Climate Emergency",
+    "Healthcare",
+    "Cybersecurity & Blockchain",
+    "EdTech",
+    "Open Innovation",
+    "AI & Agentic Systems",
+  ].map((theme, index) => (
+    <div
+      key={theme}
+      className={`
+        border border-purple-500/20 bg-purple-500/5 
+        rounded text-center text-[10px] sm:text-[11px] text-gray-300 
+        hover:bg-purple-500/20 transition-all cursor-default
+        p-2 sm:p-3 md:p-4
+        ${index === 6 ? "sm:col-span-2 md:col-span-1 lg:col-span-2" : ""}
+      `}
+    >
+      {theme}
+    </div>
+  ))}
+</div>
                 </section>
 
               </div>

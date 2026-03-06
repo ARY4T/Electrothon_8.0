@@ -105,6 +105,71 @@ const TRACK_DATA = [
     },
     link: "https://electrothon-8.devfolio.co/prizes", 
     btnText: "VIEW DETAILS"
+  },
+  {
+    id: 8,
+    logo: "/LOGOS/googlecloud.webp", 
+    trackTitle: "Major League Hacking",
+    trackSubtitle: " BEST USE OF GEMINI API",
+    prize: "Google Swag Kits ",
+    themeColor: "cyan",
+    bgStyle: { 
+      background: 'linear-gradient(45deg, #451a03 25%, #78350f 100%)',
+    },
+    link: "https://mlh.link/gemini", 
+    btnText: "VIEW DETAILS"
+  },
+  {
+    id: 9,
+    logo: "/LOGOS/elevenlabs.jpg", 
+    trackTitle: "Major League Hacking",
+    trackSubtitle: "BEST USE OF ELEVENLABS ",
+    prize: " A chance to win some wireless earbuds.",
+    themeColor: "fuchsia",
+    bgStyle: { 
+      background: 'linear-gradient(45deg, #451a03 25%, #78350f 100%)',
+    },
+    link: "https://www.mlh.com/partners/elevenlabs", 
+    btnText: "VIEW DETAILS"
+  },
+  {
+    id: 10,
+    logo: "/LOGOS/solanaa.webp", 
+    trackTitle: "Major League Hacking",
+    trackSubtitle: "BEST USE OF SOLANA",
+    prize: "Multiple Prizes",
+    themeColor: "cyan",
+    bgStyle: { 
+      background: 'linear-gradient(45deg, #451a03 25%, #78350f 100%)',
+    },
+    link: "https://www.mlh.com/partners/solana", 
+    btnText: "VIEW DETAILS"
+  },
+  {
+    id: 11,
+    logo: "/LOGOS/vultr.webp", 
+    trackTitle: "Major League Hacking",
+    trackSubtitle: "BEST USE OF VULTR",
+    prize: "A chance to win some awesome portable screens",
+    themeColor: "fuchsia",
+    bgStyle: { 
+      background: 'linear-gradient(45deg, #451a03 25%, #78350f 100%)',
+    },
+    link: "https://mlh.link/vultr", 
+    btnText: "VIEW DETAILS"
+  },
+  {
+    id: 12,
+    logo: "/LOGOS/snowflake.webp", 
+    trackTitle: "Major League Hacking",
+    trackSubtitle: "BEST USE OF SNOWFLAKE API",
+    prize: "A chance to win a M5Stack Tab5",
+    themeColor: "cyan",
+    bgStyle: { 
+      background: 'linear-gradient(45deg, #451a03 25%, #78350f 100%)',
+    },
+    link: "https://mlh.link/snowflake", 
+    btnText: "VIEW DETAILS"
   }
 ];
 
@@ -204,68 +269,66 @@ export default function Challenges() {
   );
 }
 
-// --- CARD COMPONENT ---
 function ArcadeWindowCard({ data }) {
   const theme = {
-    cyan: { border: "border-cyan-400", shadow: "shadow-[0_0_15px_rgba(34,211,238,0.6)]", titleBarBg: "bg-cyan-900", btnBg: "bg-cyan-500 hover:bg-cyan-400", btnShadow: "shadow-[0_0_10px_rgba(34,211,238,0.5)]" },
-    orange: { border: "border-orange-500", shadow: "shadow-[0_0_15px_rgba(249,115,22,0.6)]", titleBarBg: "bg-orange-900", btnBg: "bg-orange-500 hover:bg-orange-400", btnShadow: "shadow-[0_0_10px_rgba(249,115,22,0.5)]" },
-    fuchsia: { border: "border-fuchsia-500", shadow: "shadow-[0_0_15px_rgba(217,70,239,0.6)]", titleBarBg: "bg-fuchsia-900", btnBg: "bg-fuchsia-500 hover:bg-fuchsia-400", btnShadow: "shadow-[0_0_10px_rgba(217,70,239,0.5)]" },
+    cyan: { border: "border-cyan-400", shadow: "shadow-[0_0_10px_rgba(34,211,238,0.5)]", titleBarBg: "bg-cyan-900", btnBg: "bg-cyan-500 hover:bg-cyan-400", btnShadow: "shadow-[0_0_8px_rgba(34,211,238,0.4)]" },
+    orange: { border: "border-orange-500", shadow: "shadow-[0_0_10px_rgba(249,115,22,0.5)]", titleBarBg: "bg-orange-900", btnBg: "bg-orange-500 hover:bg-orange-400", btnShadow: "shadow-[0_0_8px_rgba(249,115,22,0.4)]" },
+    fuchsia: { border: "border-fuchsia-500", shadow: "shadow-[0_0_10px_rgba(217,70,239,0.5)]", titleBarBg: "bg-fuchsia-900", btnBg: "bg-fuchsia-500 hover:bg-fuchsia-400", btnShadow: "shadow-[0_0_8px_rgba(217,70,239,0.4)]" },
   }[data.themeColor];
 
   return (
-    <div className={`cursor-target relative w-[380px] md:w-[420px] shrink-0 rounded-lg transition-transform duration-300 hover:scale-105 hover:z-30 p-[4px] ${theme.border} ${theme.shadow} bg-[#0f0518]`}>
+    <div className={`cursor-target relative w-[280px] md:w-[300px] shrink-0 rounded-lg transition-transform duration-300 hover:scale-105 hover:z-30 p-[3px] ${theme.border} ${theme.shadow} bg-[#0f0518]`}>
       
-      <div className="w-full h-full border-2 border-white/80 rounded-lg overflow-hidden relative">
+      <div className="w-full h-full border-2 border-white/70 rounded-md overflow-hidden relative">
 
-        {/* TITLE BAR */}
-        <div className={`h-12 w-full ${theme.titleBarBg} border-b-2 border-white/50 flex items-center justify-between px-3 relative`}>
+        {/* TITLE BAR - Fixed: Removed truncate to show full name */}
+        <div className={`h-10 w-full ${theme.titleBarBg} border-b-2 border-white/40 flex items-center justify-between px-2 relative`}>
 
-          {/* LEFT SIDE (LOGO + TITLE) */}
-          <div className="flex items-center gap-4">
-            <div className="relative w-10 h-10 flex-shrink-0 bg-white rounded-sm overflow-hidden flex items-center justify-center">
+          <div className="flex items-center gap-2">
+            <div className="relative w-6 h-6 flex-shrink-0 bg-white rounded-sm overflow-hidden flex items-center justify-center">
               <Image
                 src={data.logo}
                 alt={data.trackTitle}
                 fill
                 className="object-cover"
-                sizes="40px"
+                sizes="24px"
               />
             </div>
-            <span className="text-xs text-white tracking-widest drop-shadow-[1px_1px_0_black]">
+            {/* Reduced font size slightly and removed truncate to let text breathe */}
+            <span className="text-[10px] font-bold text-white tracking-tight drop-shadow-[1px_1px_0_black] leading-none">
               {data.trackTitle}
             </span>
           </div>
 
           {/* WINDOW BUTTONS */}
-          <div className="flex gap-1">
-            <div className="w-3 h-3 bg-gray-400 border-2 border-b-gray-600 border-r-gray-600"></div>
-            <div className="w-3 h-3 bg-gray-400 border-2 border-b-gray-600 border-r-gray-600"></div>
-            <div className="w-3 h-3 bg-red-500 border-2 border-b-red-700 border-r-red-700"></div>
+          <div className="flex gap-1 flex-shrink-0">
+            <div className="w-2 h-2 bg-gray-400 border border-b-gray-600 border-r-gray-600"></div>
+            <div className="w-2 h-2 bg-gray-400 border border-b-gray-600 border-r-gray-600"></div>
+            <div className="w-2 h-2 bg-red-500 border border-b-red-700 border-r-red-700"></div>
           </div>
         </div>
 
-        {/* BODY */}
-        <div className="relative p-6 flex flex-col items-center text-center h-[320px] justify-between bg-[#1e1b4b]/80">
+        {/* BODY - Changed h to min-h to prevent data from cutting off */}
+        <div className="relative p-4 flex flex-col items-center text-center min-h-[260px] justify-between bg-[#1e1b4b]/80">
 
           <div className="absolute inset-0 -z-10 opacity-60 mix-blend-screen" style={data.bgStyle}></div>
 
-          <p className="text-[11px] text-white/80 tracking-widest uppercase mt-4">
+          <p className="text-[11px] text-white/80 tracking-widest uppercase mb-2">
             {data.trackSubtitle}
           </p>
 
-          <div className="relative w-full flex flex-col items-center justify-center grow">
-            {/* Conditional logic for text sizing on "Multiple" vs short cash amounts */}
-            <div className="text-6xl mb-[-10px] filter drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">🎁</div>
+          <div className="relative w-full flex flex-col items-center justify-center grow py-2">
+            {/* Reduced Prize sizes as requested */}
+            <div className="text-3xl mb-2 filter drop-shadow-[0_3px_3px_rgba(0,0,0,0.5)]">🎁</div>
             <br />
-            <br />
-            <div className={`text-yellow-400 font-extrabold gold-shadow ${data.prize.length > 6 ? 'text-3xl' : 'text-5xl'}`}>
+            <div className={`text-yellow-400 font-black gold-shadow leading-tight ${data.prize.length > 12 ? 'text-sm' : 'text-lg'}`}>
               {data.prize}
             </div>
           </div>
 
-          <Link href={data.link} target="_blank" className="w-full mt-4">
-            <button className={`cursor-target w-full py-3 px-6 uppercase text-sm font-bold text-white rounded-lg border-b-4 border-black/30 ${theme.btnBg} ${theme.btnShadow} hover:translate-y-[2px] hover:border-b-2 active:translate-y-[4px] active:border-b-0 transition-all duration-100 ease-in-out flex items-center justify-center gap-2`}>
-              {data.btnText} <span className="text-lg">→</span>
+          <Link href={data.link} target="_blank" className="w-full mt-3">
+            <button className={`cursor-target w-full py-2 px-4 uppercase text-[10px] font-bold text-white rounded-md border-b-4 border-black/30 ${theme.btnBg} ${theme.btnShadow} hover:translate-y-[1px] hover:border-b-2 active:translate-y-[3px] active:border-b-0 transition-all duration-100 ease-in-out flex items-center justify-center gap-2`}>
+              {data.btnText} <span className="text-xs">→</span>
             </button>
           </Link>
 
