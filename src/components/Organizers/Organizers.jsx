@@ -112,9 +112,12 @@ export default function Organizers() {
     <section className={styles.section}>
       <div className={styles.container}>
         {/* Lead Organizers Section */}
-        <h1 className="text-white text-center mb-8 mt-2 text-4xl" style={{ fontFamily: '"Press Start 2P", cursive', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-          LEAD ORGANIZERS
-        </h1>
+      <h2
+  className="w-full px-4 text-center leading-relaxed text-[clamp(1.2rem,5vw,3.75rem)] text-white drop-shadow-[0_4px_0_rgba(0,0,0,1)]"
+  style={{ fontFamily: "'Press Start 2P', cursive" }}
+>
+  LEAD ORGANIZERS
+</h2>
         <div className={styles.leadGrid}>
           {leadOrganizers.map((org, i) => (
             <div className={styles.leadCard} key={i}>
@@ -125,9 +128,12 @@ export default function Organizers() {
         <div className={styles.leadSpacer} />
 
         {/* Main Organizers Section */}
-        <h1 className="text-white text-center mb-10 text-4xl" style={{ fontFamily: '"Press Start 2P", cursive' }}>
-          ORGANIZERS
-        </h1>
+         <h3
+            className="text-[clamp(1.6rem,5vw,3.75rem)] text-white drop-shadow-[0_4px_0_rgba(0,0,0,1)]"
+            style={{ fontFamily: "'Press Start 2P', cursive" }}
+          >
+           ORGANIZERS
+          </h3>
 
         {/* SLIDER 1 */}
         <div className={styles.slider} onMouseEnter={() => setHoveredSlider("a")} onMouseLeave={() => setHoveredSlider(null)}>
