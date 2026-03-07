@@ -185,10 +185,10 @@ export default function Challenges() {
   }, []);
 
   return (
-    <section 
-      id="challenges" 
-      className={`min-h-screen bg-[#090014] text-white overflow-hidden relative cursor-none ${pressStart.className}`}
-    >
+  <section 
+  id="challenges" 
+  className={`bg-[#090014] text-white overflow-hidden relative cursor-none ${pressStart.className}`}
+>
       <TargetCursor targetSelector=".cursor-target" />
 
       <style jsx global>{`
@@ -237,7 +237,8 @@ export default function Challenges() {
       <div className="absolute inset-0 pointer-events-none -z-10 bg-[radial-gradient(circle_at_center,transparent_0%,#000000_100%)] opacity-80"></div>
 
       {/* MAIN CONTENT */}
-      <div className="relative z-10 flex flex-col pt-10 min-h-screen">
+  
+<div className="relative z-10 flex flex-col pt-10 pb-10">
         <div className="w-full max-w-7xl mx-auto px-4 mb-8 flex flex-col items-center justify-center py-6 relative">
             <div className="absolute top-0 left-4 md:left-[15%] text-4xl animate-bounce duration-[3000ms] opacity-90 drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]">👾</div>
             <div className="absolute bottom-2 right-4 md:right-[15%] text-4xl animate-bounce duration-[3500ms] delay-700 opacity-90 drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]">👾</div>
@@ -252,8 +253,7 @@ export default function Challenges() {
               Select your mission below
             </p>
         </div>
-
-        <div className="group relative w-full overflow-hidden py-10 mt-4">
+<div className="group relative w-full overflow-hidden py-6">
           <div className="flex animate-marquee gap-8 px-4">
             {TRACK_DATA.map((track, index) => (
               <ArcadeWindowCard key={`set1-${index}`} data={track} />
