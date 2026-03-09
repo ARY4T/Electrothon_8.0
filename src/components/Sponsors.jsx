@@ -204,7 +204,7 @@ function SponsorGrid({ list }) {
               height={150}
               className={styles.tileImage}
               style={{
-                transform: `scale(${s.scale || 1})`,
+                "--img-scale": s.scale || 1,
                 filter: s.invert ? "brightness(0) invert(1)" : "none",
               }}
             />
@@ -277,7 +277,7 @@ export default function Sponsors() {
                   width={300}
                   height={150}
                   className={styles.tileImage}
-                  style={{ transform: `scale(${s.scale || 1})` }}
+                  style={{ "--img-scale": s.scale || 1 }}
                 />
               </div>
             </a>
