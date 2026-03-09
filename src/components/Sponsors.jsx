@@ -23,6 +23,7 @@ import Stockedge_logo from "@/assets/images/Stockedge.webp";
 import RQ_Logo from "@/assets/images/RQ-Logo.webp";
 import Deepmind_logo from "@/assets/images/google-deepmind.png";
 import MLH_logo from "@/assets/images/mlh_logo.png";
+import NHPC_logo from "@/assets/images/NHPC_logo.png";
 // ─── TIERS (LOCKED) ──────────────────────────────────
 
 //  Title Sponsor
@@ -73,6 +74,13 @@ const SILVER = [
     logo: ethLogo,
     url: "https://ethindia.co",
     alt: "ETH India Logo",
+    scale: 1.2,
+  },
+   {
+    name: "NHPC",
+    logo: NHPC_logo,
+    url: "https://www.nhpcindia.com/",
+    alt: "NHPC Logo",
     scale: 1.2,
   },
 ];
