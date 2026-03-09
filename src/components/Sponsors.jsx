@@ -24,6 +24,7 @@ import RQ_Logo from "@/assets/images/RQ-Logo.webp";
 import Deepmind_logo from "@/assets/images/google-deepmind.png";
 import MLH_logo from "@/assets/images/mlh_logo.png";
 import NHPC_logo from "@/assets/images/NHPC_logo.png";
+import Github_logo from "@/assets/images/github.webp";
 // ─── TIERS (LOCKED) ──────────────────────────────────
 
 //  Title Sponsor
@@ -56,6 +57,13 @@ const GOLD = [
     logo: iqai_logo,
     url: "https://iqai.com/",
     alt: "IQAI Logo",
+    scale: 1.2,
+  },
+  {
+    name: "Github",
+    logo: Github_logo,
+    url: "https://github.com/",
+    alt: "Github Logo",
     scale: 1.2,
   },
 ];
