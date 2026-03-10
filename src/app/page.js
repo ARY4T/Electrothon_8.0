@@ -23,6 +23,7 @@ const Timeline = dynamic(() => import("@/components/Timeline/timeline"));
 const Testimonials = dynamic(() => import("@/components/Testimonials/Testimonials"));
 const Organizers = dynamic(() => import("@/components/Organizers/Organizers"));
 const FAQList = dynamic(() => import("@/components/FAQList"));
+const CommunitySponsors = dynamic(() => import("@/components/community_list"));
 const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Page() {
@@ -61,6 +62,7 @@ export default function Page() {
       <Themes />
       <ComingSoon />
       <Sponsors />
+      <CommunitySponsors />
       <Timeline />
       <Testimonials />
       <Organizers />
