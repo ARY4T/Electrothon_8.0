@@ -1,0 +1,172 @@
+import React from 'react';
+import './Timeline/timeline.css';
+
+import logo1 from '@/assets/images/community_parnter_logo/1.png';
+import logo2 from '@/assets/images/community_parnter_logo/2.png';
+import logo3 from '@/assets/images/community_parnter_logo/3.png';
+import logo4 from '@/assets/images/community_parnter_logo/4.png';
+import logo5 from '@/assets/images/community_parnter_logo/5.png';
+import logo6 from '@/assets/images/community_parnter_logo/6.png';
+import logo7 from '@/assets/images/community_parnter_logo/7.png';
+import logo8 from '@/assets/images/community_parnter_logo/8.png';
+import logo9 from '@/assets/images/community_parnter_logo/9.png';
+import logo10 from '@/assets/images/community_parnter_logo/10.png';
+import logo11 from '@/assets/images/community_parnter_logo/11.png';
+import logo12 from '@/assets/images/community_parnter_logo/12.png';
+import logo13 from '@/assets/images/community_parnter_logo/13.png';
+import logo14 from '@/assets/images/community_parnter_logo/14.png';
+import logo15 from '@/assets/images/community_parnter_logo/15.png';
+
+
+// -------------------------------------------------------------------------
+// 1. DATA FILE SIMULATION
+// In your actual project, you would export this from a file like `data.ts`
+// and import your local images like: import logo1 from '../assets/logo1.png'
+// -------------------------------------------------------------------------
+export interface Sponsor {
+  id: string;
+  name: string;
+  imageUrl: any; // Support Next.js imported images
+  url?: string;
+}
+
+const localSponsorsData: Sponsor[] = [
+  { id: '1', name: 'The Elites', imageUrl: logo1, url: 'https://theelites.in/' },
+  { id: '2', name: 'Technest', imageUrl: logo2, url: 'https://technest.es/' },
+  { id: '3', name: 'Partner 3', imageUrl: logo3, url: '#' },
+  { id: '4', name: 'GDG VIT', imageUrl: logo4, url: 'https://gdg.community.dev/gdg-on-campus-vellore-institute-of-technology-chennai-india/' },
+  { id: '5', name: 'Gwalior DAO', imageUrl: logo5, url: '' },
+  { id: '6', name: 'Partner 6', imageUrl: logo6, url: '#' },
+  { id: '7', name: 'PECK hacks', imageUrl: logo7, url: 'https://pechacks.org/' },
+  { id: '8', name: 'hydrabad DAO', imageUrl: logo8, url: 'https://share.google/qMnKtTJVEOlkKdxAu' },
+  { id: '9', name: 'Lucknow DAO', imageUrl: logo9, url: 'https://solstice-cairnsmore-9d5.notion.site/Lucknow-DAO-Community-1f0d2c45310a80119bade3d0421d3ccb?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRzdgQc95ZleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacwPhLMWamJm24m-3_9juT8t_n_wsnstVD47jNCKk_vOH2DEdCsb8vw6qfl1g_aem_ulr1oukEi9nW0fkzWcHZjQ' },
+  { id: '10', name: 'SESA', imageUrl: logo10, url: 'https://sesa.org.nz/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRzdgQc-WRleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadDwBiy45AcXmfzDEFv1xSKi-tgRCXZfxiI98bQJIttQGxPiN2VhbiC-DZIUQ_aem_n---AtsTgqTJr3JcwflngA' },
+  { id: '11', name: 'D4', imageUrl: logo11, url: 'https://www.d4community.com/' },
+  { id: '12', name: 'Guru Nanak', imageUrl: logo12, url: 'https://gdg.community.dev/gdg-on-campus-guru-nanak-dev-university-amritsar-india/' },
+  { id: '13', name: ' IIT UNA', imageUrl: logo13, url: '#' },
+  { id: '14', name: 'IIIT UNA', imageUrl: logo14, url: 'https://iiitu.ac.in/clubs/AAVESH' },
+  { id: '15', name: 'GDG NITH', imageUrl: logo15, url: '#' },
+];
+
+
+// -------------------------------------------------------------------------
+// 2. MARQUEE ROW COMPONENT
+// Handles the infinite scrolling logic for a single row
+// -------------------------------------------------------------------------
+interface MarqueeRowProps {
+  items: Sponsor[];
+  direction?: 'left' | 'right';
+  speed?: number; // Duration in seconds
+}
+
+const MarqueeRow: React.FC<MarqueeRowProps> = ({
+  items,
+  direction = 'left',
+  speed = 30
+}) => {
+  // We duplicate the items array twice to create a seamless infinite loop
+  const duplicatedItems = [...items, ...items];
+
+  return (
+    <div className="flex overflow-hidden group w-full">
+      <div
+        className={`flex w-max items-center gap-4 sm:gap-6 px-2 ${direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'
+          }`}
+        style={{ animationDuration: `${speed}s` }}
+      >
+        {duplicatedItems.map((item, index) => (
+          <a
+            key={`${item.id}-${index}`}
+            href={item.url || '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-40 h-20 sm:w-56 sm:h-28 md:w-64 md:h-32 bg-white/5 border border-white/10 rounded-2xl p-0 overflow-hidden backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-105 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src={typeof item.imageUrl === 'string' ? item.imageUrl : item.imageUrl.src}
+              alt={item.name}
+              className="w-full h-full object-cover rounded-2xl transition-transform"
+              onError={(e) => {
+                // Fallback text if image fails to load
+                e.currentTarget.style.display = 'none';
+                if (e.currentTarget.parentElement) {
+                  e.currentTarget.parentElement.innerHTML = `<span class="text-zinc-400 font-bold tracking-wider text-[10px] sm:text-xs text-center line-clamp-1">${item.name}</span>`;
+                }
+              }}
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// -------------------------------------------------------------------------
+// 3. MAIN COMMUNITY SPONSORS COMPONENT
+// -------------------------------------------------------------------------
+interface CommunitySponsorsProps {
+  sponsors: Sponsor[];
+}
+
+const CommunitySponsors: React.FC<CommunitySponsorsProps> = ({ sponsors = localSponsorsData }) => {
+  // Split the sponsors array in half to create two rows moving in opposite directions
+  const items = sponsors.length > 0 ? sponsors : localSponsorsData;
+  const halfIdx = Math.ceil(items.length / 2);
+  const topRow = items.slice(0, halfIdx);
+  const bottomRow = items.slice(halfIdx);
+
+  return (
+    <section className="relative py-24 bg-[#0a0a0a] text-white overflow-hidden font-sans">
+      {/* Background ambient glows */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-indigo-600/20 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="container mx-auto px-4 relative z-10 mb-16 flex flex-col items-center text-center">
+        {/* Section Header */}
+        <div className="flex flex-col items-center gap-4">
+          <h2 className="modern-title text-center uppercase">
+            COMMUNITY PARTNERS
+          </h2>
+        </div>
+      </div>
+
+      {/* Marquee Container */}
+      <div className="relative w-full flex flex-col gap-6 sm:gap-8 overflow-hidden py-4">
+        {/* Top Row - Moves Left */}
+        <MarqueeRow items={topRow} direction="left" speed={25} />
+
+        {/* Bottom Row - Moves Right */}
+        <MarqueeRow items={bottomRow} direction="right" speed={20} />
+
+        {/* Gradient overlays to create a fading effect on the left and right edges */}
+        <div className="absolute inset-y-0 left-0 w-1/6 sm:w-1/4 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-1/6 sm:w-1/4 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10" />
+      </div>
+
+      {/* INJECTED CSS FOR MARQUEE ANIMATIONS */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        @keyframes marquee-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-right {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .animate-marquee-left {
+          animation: marquee-left linear infinite;
+        }
+        .animate-marquee-right {
+          animation: marquee-right linear infinite;
+        }
+        /* Pause animations on hover */
+        .group:hover .animate-marquee-left,
+        .group:hover .animate-marquee-right {
+          animation-play-state: paused;
+        }
+      `}} />
+    </section>
+  );
+};
+
+export default CommunitySponsors;
