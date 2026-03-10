@@ -227,30 +227,45 @@ const PixelCrab = memo(({ style }) => (
   </motion.div>
 ));
 
-// --- PROFESSIONAL HUD OVERLAY ---
+// --- UPDATED HUD OVERLAY (REFINED POSITIONS) ---
 const PrizeStatsOverlay = () => (
-  <div className="absolute top-[85px] md:top-[120px] left-0 right-0 z-40 flex flex-col md:flex-row justify-center items-center gap-3 md:gap-32 px-4 pointer-events-none">
-     
-     <div className="relative group">
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-[2.2rem] blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
-        <div className="relative flex flex-col justify-center items-center px-6 py-2.5 md:px-10 md:py-4 rounded-[2rem] bg-gradient-to-b from-slate-700 to-slate-800 border border-white/20 shadow-xl min-w-[160px] md:min-w-[220px]">
-            <span className="text-slate-300 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] mb-0.5">Cash Prizes</span>
-            <span className="text-2xl md:text-3xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-500 drop-shadow-sm">
-                $5,000
-            </span>
-        </div>
-     </div>
+  // top adjusted slightly higher than middle-ground (from 80/120 to 60/90)
+  <div className="absolute top-[60px] md:top-[90px] left-0 right-0 z-40 flex flex-col items-center pointer-events-none">
+    
+    <style jsx>{`
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+      .pixel-font {
+        font-family: 'Press Start 2P', cursive;
+        text-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+      }
+    `}</style>
+    
+    {/* mb-6/mb-12 to pull boxes closer up to the header */}
+    <h2 className="pixel-font text-white text-xl md:text-5xl mb-6 md:mb-12 tracking-wider">
+      PRIZES SECTION
+    </h2>
 
-     <div className="relative group">
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-[2.2rem] blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
-        <div className="relative flex flex-col justify-center items-center px-6 py-2.5 md:px-10 md:py-4 rounded-[2rem] bg-gradient-to-b from-slate-700 to-slate-800 border border-white/20 shadow-xl min-w-[160px] md:min-w-[220px]">
-            <span className="text-slate-300 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] mb-0.5">Total Pool</span>
-            <span className="text-2xl md:text-3xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-cyan-400 to-blue-500 drop-shadow-sm">
-                $60,000
-            </span>
-        </div>
-     </div>
+    <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-32 px-4">
+      <div className="relative group">
+         <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-[2.2rem] blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+         <div className="relative flex flex-col justify-center items-center px-6 py-2.5 md:px-10 md:py-4 rounded-[2rem] bg-gradient-to-b from-slate-700 to-slate-800 border border-white/20 shadow-xl min-w-[160px] md:min-w-[220px]">
+             <span className="text-slate-300 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] mb-0.5">Cash Prizes</span>
+             <span className="text-2xl md:text-3xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-500 drop-shadow-sm">
+                 $5,000
+             </span>
+         </div>
+      </div>
 
+      <div className="relative group">
+         <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-[2.2rem] blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+         <div className="relative flex flex-col justify-center items-center px-6 py-2.5 md:px-10 md:py-4 rounded-[2rem] bg-gradient-to-b from-slate-700 to-slate-800 border border-white/20 shadow-xl min-w-[160px] md:min-w-[220px]">
+             <span className="text-slate-300 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] mb-0.5">Total Pool</span>
+             <span className="text-2xl md:text-3xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-cyan-400 to-blue-500 drop-shadow-sm">
+                 $60,000
+             </span>
+         </div>
+      </div>
+    </div>
   </div>
 );
 
@@ -537,7 +552,6 @@ const AchievementsLevel = () => {
                 position: "relative"
               }} 
             >
-                {/* BOTTOM TEXT: Fixed width to w-1/3 so it sits in the final screen segment */}
                 <div className="absolute right-0 top-0 h-full w-1/3 flex items-center justify-center pointer-events-none">
                     <p className="text-white/90 font-mono font-black text-sm md:text-4xl tracking-widest uppercase drop-shadow-lg text-center px-1 md:px-4 whitespace-nowrap">
                         Many more prizes to come...
