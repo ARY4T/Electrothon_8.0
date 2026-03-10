@@ -17,6 +17,24 @@ import logo13 from '@/assets/images/community_parnter_logo/13.png';
 import logo14 from '@/assets/images/community_parnter_logo/14.png';
 import logo15 from '@/assets/images/community_parnter_logo/15.png';
 
+import logo16 from '@/assets/images/community_parnter_logo/Hack JKLU.png';
+import logo17 from '@/assets/images/community_parnter_logo/anant.png';
+import logo18 from '@/assets/images/community_parnter_logo/avinya.png';
+import logo19 from '@/assets/images/community_parnter_logo/elite coders.png';
+import logo20 from '@/assets/images/community_parnter_logo/gb rbu.png';
+import logo21 from '@/assets/images/community_parnter_logo/gdg lllm university.png';
+import logo22 from '@/assets/images/community_parnter_logo/hack nitr.png';
+import logo23 from '@/assets/images/community_parnter_logo/hack with gdg.png';
+import logo24 from '@/assets/images/community_parnter_logo/hackinnovation.png';
+import logo25 from '@/assets/images/community_parnter_logo/hacktu.png';
+import logo26 from '@/assets/images/community_parnter_logo/meraki.png';
+import logo27 from '@/assets/images/community_parnter_logo/microsoft fabric group.png';
+import logo28 from '@/assets/images/community_parnter_logo/nerds.png';
+import logo29 from '@/assets/images/community_parnter_logo/realhack.png';
+import logo30 from '@/assets/images/community_parnter_logo/rootsprout.png';
+import logo31 from '@/assets/images/community_parnter_logo/singularity.png';
+import logo32 from '@/assets/images/community_parnter_logo/ssn coding club.png';
+
 
 // -------------------------------------------------------------------------
 // 1. DATA FILE SIMULATION
@@ -46,6 +64,23 @@ const localSponsorsData: Sponsor[] = [
   { id: '13', name: ' IIT UNA', imageUrl: logo13, url: '#' },
   { id: '14', name: 'IIIT UNA', imageUrl: logo14, url: 'https://iiitu.ac.in/clubs/AAVESH' },
   { id: '15', name: 'GDG NITH', imageUrl: logo15, url: '#' },
+  { id: '16', name: 'Hack JKLU', imageUrl: logo16, url: '#' },
+  { id: '17', name: 'Anant', imageUrl: logo17, url: '#' },
+  { id: '18', name: 'Avinya', imageUrl: logo18, url: '#' },
+  { id: '19', name: 'Elite Coders', imageUrl: logo19, url: '#' },
+  { id: '20', name: 'GB RBU', imageUrl: logo20, url: '#' },
+  { id: '21', name: 'GDG LLLM University', imageUrl: logo21, url: '#' },
+  { id: '22', name: 'Hack NITR', imageUrl: logo22, url: '#' },
+  { id: '23', name: 'Hack With GDG', imageUrl: logo23, url: '#' },
+  { id: '24', name: 'HackInnovation', imageUrl: logo24, url: '#' },
+  { id: '25', name: 'HackTU', imageUrl: logo25, url: '#' },
+  { id: '26', name: 'Meraki', imageUrl: logo26, url: '#' },
+  { id: '27', name: 'Microsoft Fabric', imageUrl: logo27, url: '#' },
+  { id: '28', name: 'Nerds', imageUrl: logo28, url: '#' },
+  { id: '29', name: 'RealHack', imageUrl: logo29, url: '#' },
+  { id: '30', name: 'RootSprout', imageUrl: logo30, url: '#' },
+  { id: '31', name: 'Singularity', imageUrl: logo31, url: '#' },
+  { id: '32', name: 'SSN Coding Club', imageUrl: logo32, url: '#' },
 ];
 
 
