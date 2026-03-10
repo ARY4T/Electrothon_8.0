@@ -162,7 +162,12 @@ const Bubble = memo(({ style, size = 8, delay = 0 }) => (
 const Seaweed = memo(({ style, height = 60, color = "#2a5a4a" }) => (
   <div style={{ ...style, position: "absolute", display: "flex", flexDirection: "column", alignItems: "center" }}>
     {Array.from({ length: Math.min(4, Math.floor(height / 10)) }).map((_, i) => (
-      <motion.div key={i} style={{ width: i % 2 === 0 ? "8px" : "12px", height: "12px", background: color, marginBottom: "0px" }} animate={{ x: [0, 2, -2, 0] }} transition={{ duration: 2 + i * 0.2, repeat: Infinity, ease: "easeInOut", delay: i * 0.1 }} />
+      <motion.div 
+        key={i} 
+        style={{ width: i % 2 === 0 ? "8px" : "12px", height: "12px", background: color, marginBottom: "0px" }} 
+        animate={{ x: [0, 2, -2, 0] }} 
+        transition={{ duration: 2 + i * 0.2, repeat: Infinity, ease: "easeInOut", delay: i * 0.1 }} 
+      />
     ))}
   </div>
 ));
@@ -227,9 +232,8 @@ const PixelCrab = memo(({ style }) => (
   </motion.div>
 ));
 
-// --- UPDATED HUD OVERLAY (REFINED POSITIONS) ---
+// --- UPDATED HUD OVERLAY (MODERATED "PRIZES" HEADER) ---
 const PrizeStatsOverlay = () => (
-  // top adjusted slightly higher than middle-ground (from 80/120 to 60/90)
   <div className="absolute top-[60px] md:top-[90px] left-0 right-0 z-40 flex flex-col items-center pointer-events-none">
     
     <style jsx>{`
@@ -240,9 +244,9 @@ const PrizeStatsOverlay = () => (
       }
     `}</style>
     
-    {/* mb-6/mb-12 to pull boxes closer up to the header */}
-    <h2 className="pixel-font text-white text-xl md:text-5xl mb-6 md:mb-12 tracking-wider">
-      PRIZES SECTION
+    {/* Header updated to "PRIZES" - Reduced to 2xl mobile / 6xl desktop */}
+    <h2 className="pixel-font text-white text-2xl md:text-6xl mb-6 md:mb-10 tracking-widest uppercase">
+      PRIZES
     </h2>
 
     <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-32 px-4">
