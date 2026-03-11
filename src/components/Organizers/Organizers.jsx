@@ -17,7 +17,7 @@ export default function Organizers() {
     "organizer12.jpeg","organizer13.jpeg","organizer14.jpeg",
     "organizer2.jpeg","organizer15.jpeg","organizer16.jpeg",
     "organizer17.jpeg","organizer18.jpeg","organizer19.jpeg",
-    "organizer21.jpeg","organizer23.jpeg","organizer24.jpeg",
+    "organizer21.jpeg","organizer23.jpeg","organizer24.jpeg","Organiserleft.webp",
   ];
 
   const sliderANames = [
@@ -41,7 +41,8 @@ export default function Organizers() {
     "Shreshth Sharma",
     "Sona",
     "Vaibhav Sharma",
-    "Vyom Sharma"
+    "Vyom Sharma",
+    "Rajvil Choudhary"
   ];
 
   const sliderA = sliderAImages.map((img, idx) => ({
