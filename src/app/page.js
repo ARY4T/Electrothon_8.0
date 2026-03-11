@@ -14,16 +14,36 @@ const MissionBriefing = dynamic(() => import("@/components/MissionBriefing"), {
 const AboutUsAchievementWith3D = dynamic(() => import("@/components/MissionBriefing/AboutUsAchievementWith3D"), {
   loading: () => <div className="min-h-screen" />
 });
-const Prizes = dynamic(() => import("@/components/prizes/prizes"));
-const GalleryPage = dynamic(() => import("@/components/gallery/gallery"));
-const Themes = dynamic(() => import("@/components/ThemesSection/ThemesSection"));
-const ComingSoon = dynamic(() => import("@/components/ComingSoon"));
-const Sponsors = dynamic(() => import("@/components/Sponsors"));
-const Timeline = dynamic(() => import("@/components/Timeline/timeline"));
-const Testimonials = dynamic(() => import("@/components/Testimonials/Testimonials"));
-const Organizers = dynamic(() => import("@/components/Organizers/Organizers"));
-const FAQList = dynamic(() => import("@/components/FAQList"));
-const Footer = dynamic(() => import("@/components/Footer"));
+const Prizes = dynamic(() => import("@/components/prizes/prizes"), {
+  loading: () => <div className="min-h-screen" />
+});
+const GalleryPage = dynamic(() => import("@/components/gallery/gallery"), {
+  loading: () => <div className="min-h-screen" />
+});
+const Themes = dynamic(() => import("@/components/ThemesSection/ThemesSection"), {
+  loading: () => <div className="min-h-screen" />
+});
+const ComingSoon = dynamic(() => import("@/components/ComingSoon"), {
+  loading: () => <div className="min-h-screen" />
+});
+const Sponsors = dynamic(() => import("@/components/Sponsors"), {
+  loading: () => <div className="min-h-screen" />
+});
+const Timeline = dynamic(() => import("@/components/Timeline/timeline"), {
+  loading: () => <div className="min-h-screen" />
+});
+const Testimonials = dynamic(() => import("@/components/Testimonials/Testimonials"), {
+  loading: () => <div className="min-h-screen" />
+});
+const Organizers = dynamic(() => import("@/components/Organizers/Organizers"), {
+  loading: () => <div className="min-h-screen" />
+});
+const FAQList = dynamic(() => import("@/components/FAQList"), {
+  loading: () => <div className="min-h-screen" />
+});
+const Footer = dynamic(() => import("@/components/Footer"), {
+  loading: () => <div className="min-h-screen" />
+});
 
 export default function Page() {
   const [isMobile, setIsMobile] = useState(false);
@@ -51,7 +71,7 @@ export default function Page() {
             alt="Mission Briefing Background"
             fill
             className="object-cover object-center -z-10"
-            priority
+            loading="lazy"
           />
           <AboutUsAchievementWith3D />
         </div>
