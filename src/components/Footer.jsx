@@ -47,7 +47,7 @@ export default function Footer() {
           alt="Footer Background"
           fill
           className="object-cover object-center"
-          priority
+          loading="lazy"
         />
       </div>
 

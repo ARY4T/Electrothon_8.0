@@ -64,7 +64,7 @@ export default function ThemeSection() {
         src="/backgrounds/themes.webp"
         alt="Themes Background"
         fill
-        priority
+        loading="lazy"
         className="object-cover object-top z-0"
       />
       <TargetCursor targetSelector=".cursor-target" />
