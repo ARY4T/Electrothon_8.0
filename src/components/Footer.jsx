@@ -153,6 +153,7 @@ export default function Footer() {
                       Hacker Guide
                     </a>
                   </li>
+                  
                 </ul>
               </div>
 
@@ -181,6 +182,16 @@ export default function Footer() {
                   </li>
                   <li>Hamirpur, Himachal Pradesh</li>
                   <li>India - 177005</li>
+                    <li>
+                    <a
+                      href="/venueguide"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-target hover:text-gray-300"
+                    >
+                      Venue Guide
+                    </a>
+                  </li>
                 </ul>
               </div>
 

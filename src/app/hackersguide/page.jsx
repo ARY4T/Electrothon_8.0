@@ -78,17 +78,27 @@ export default function HackerGuide() {
             </p>
           </section>
 
-          {/* Overview Grid */}
-          <section>
-             <h2 className="text-base md:text-xl text-[#fbbf24] mb-8 text-center md:text-left">
-              🔎 Overview
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <InfoCard icon="⚙️" title="How will it work?" />
-              <InfoCard icon="📩" title="Submission" />
-              <InfoCard icon="👩🏻‍⚖️" title="Judging" />
-            </div>
-          </section>
+{/* Overview Grid */}
+<section>
+  <h2 className="text-base md:text-xl text-[#fbbf24] mb-8 text-center md:text-left flex items-center gap-2">
+    🔎 Overview
+  </h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+    
+    <Link href="/how-it-works" className="h-full">
+      <InfoCard icon="⚙️" title="How will it work?" />
+    </Link>
+
+    <Link href="/submission" className="h-full">
+      <InfoCard icon="📩" title="Submission" />
+    </Link>
+
+    <Link href="/judging" className="h-full">
+      <InfoCard icon="👩🏻‍⚖️" title="Judging" />
+    </Link>
+
+  </div>
+</section>
 
           {/* Event Checklist Section */}
           <section className="border-t border-purple-500/20 pt-10">
@@ -148,9 +158,13 @@ export default function HackerGuide() {
 // --- Helper Components (Updated with purple accents) ---
 
 const InfoCard = ({ icon, title }) => (
-  <div className="bg-white/5 p-6 rounded-xl border border-purple-500/10 flex flex-col items-center justify-center text-center hover:bg-purple-500/10 hover:border-purple-500/30 transition-all cursor-default group">
-    <div className="text-4xl mb-4 group-hover:scale-110 transition-transform group-hover:drop-shadow-[0_0_10px_rgba(192,132,252,0.5)]">{icon}</div>
-    <h3 className="text-xs md:text-sm text-gray-200">{title}</h3>
+  <div className="bg-white/5 p-6 rounded-xl border border-purple-500/10 flex flex-col items-center justify-center text-center hover:bg-purple-500/10 hover:border-purple-500/30 transition-all cursor-pointer group h-full min-h-[160px] md:min-h-[200px]">
+    <div className="text-4xl mb-4 group-hover:scale-110 transition-transform group-hover:drop-shadow-[0_0_10px_rgba(192,132,252,0.5)]">
+      {icon}
+    </div>
+    <h3 className="text-[10px] md:text-xs text-gray-200 leading-relaxed uppercase tracking-wider">
+      {title}
+    </h3>
   </div>
 );
 const ChecklistItem = ({ number, children }) => (
