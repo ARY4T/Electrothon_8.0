@@ -261,7 +261,7 @@ left-1/2 -translate-x-1/2 z-[1000] w-full max-w-[calc(100vw-24px)] md:w-auto
                             height: "var(--nav-h)",
                             background: "var(--base, #000)",
                             visibility: "hidden",
-                            pointerEvents: "none",
+                           
                         }}
                     >
                         <img
