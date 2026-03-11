@@ -12,26 +12,7 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        cacheGroups: {
-          three: {
-            test: /[\\/]node_modules[\\/](three|globe\.gl)[\\/]/,
-            name: 'three',
-            priority: 10,
-          },
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            priority: 5,
-          },
-        },
-      };
-    }
-    return config;
-  },
+  turbopack: {},
 };
 
 export default nextConfig;
