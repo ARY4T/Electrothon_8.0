@@ -24,7 +24,7 @@ import RQ_Logo from "@/assets/images/RQ-Logo.webp";
 import Deepmind_logo from "@/assets/images/google-deepmind.png";
 import MLH_logo from "@/assets/images/mlh_logo.png";
 import NHPC_logo from "@/assets/images/NHPC_logo.png";
-import Github_logo from "@/assets/images/github.webp";
+import Github_logo from "@/assets/images/github.png";
 // ─── TIERS (LOCKED) ──────────────────────────────────
 
 //  Title Sponsor
