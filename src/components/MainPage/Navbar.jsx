@@ -3,7 +3,7 @@
 import PillNav from "@/components/MainPage/PillNav.js";
 
 const navItems = [
-  { label: "Home", href: "/" },          // first item is logo link
+  { label: "Home", href: "#" },          // first item is logo link
   { label: "Schedule", href: "#schedule" },
   { label: "Sponsors", href: "#sponsors" },
   { label: "Themes", href: "#themes" },

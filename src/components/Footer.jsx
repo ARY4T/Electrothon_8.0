@@ -47,7 +47,7 @@ export default function Footer() {
           alt="Footer Background"
           fill
           className="object-cover object-center"
-          priority
+          loading="lazy"
         />
       </div>
 
@@ -63,7 +63,7 @@ export default function Footer() {
             style={{ fontFamily: "'Press Start 2P', cursive" }}
           >
             {/* allow wrap on very small screens, but keep on one line from sm+ */}
-            <span className="block sm:whitespace-nowrap">Let's talk about</span>
+            <span className="block sm:whitespace-nowrap">Let&apos;s talk about</span>
             <span className="block">everything!</span>
           </h1>
         </div>

@@ -21,7 +21,34 @@ import eventopia_logo from "@/assets/images/eventopia_logo.png";
 import n8n_logo from "@/assets/images/n8n_logo.svg";
 import Stockedge_logo from "@/assets/images/Stockedge.webp";
 import RQ_Logo from "@/assets/images/RQ-Logo.webp";
+import Deepmind_logo from "@/assets/images/google-deepmind.png";
+import MLH_logo from "@/assets/images/mlh_logo.png";
+import NHPC_logo from "@/assets/images/NHPC_logo.png";
+import Github_logo from "@/assets/images/github.png";
 // ─── TIERS (LOCKED) ──────────────────────────────────
+
+//  Title Sponsor
+const TITLE = [
+  {
+    name: "Deepmind",
+    logo: Deepmind_logo,
+    url: "https://deepmind.com/",
+    alt: "Deepmind Logo",
+    scale: 3.5,
+  },
+];
+
+
+//  Event Partner
+const Event_Partner = [
+  {
+    name: "MLH",
+    logo: MLH_logo,
+    url: "https://mlh.io/",
+    alt: "MLH Logo",
+    scale: 2.2,
+  },
+];
 
 // 🥇 ARCANCELLAR
 const GOLD = [
@@ -30,7 +57,14 @@ const GOLD = [
     logo: iqai_logo,
     url: "https://iqai.com/",
     alt: "IQAI Logo",
-    scale: 1.6,
+    scale: 1.2,
+  },
+  {
+    name: "Github",
+    logo: Github_logo,
+    url: "https://github.com/",
+    alt: "Github Logo",
+    scale: 1.2,
   },
 ];
 
@@ -48,6 +82,13 @@ const SILVER = [
     logo: ethLogo,
     url: "https://ethindia.co",
     alt: "ETH India Logo",
+    scale: 1.2,
+  },
+   {
+    name: "NHPC",
+    logo: NHPC_logo,
+    url: "https://www.nhpcindia.com/",
+    alt: "NHPC Logo",
     scale: 1.2,
   },
 ];
@@ -171,7 +212,7 @@ function SponsorGrid({ list }) {
               height={150}
               className={styles.tileImage}
               style={{
-                transform: `scale(${s.scale || 1})`,
+                "--img-scale": s.scale || 1,
                 filter: s.invert ? "brightness(0) invert(1)" : "none",
               }}
             />
@@ -197,6 +238,15 @@ export default function Sponsors() {
       </div>
 
       <div className="game-layout" style={{ padding: "3rem 1rem 4rem" }}>
+
+        {/* TITLE SPONSOR */}
+        <div className={styles.tierLabel}>TITLE SPONSOR</div>
+        <SponsorGrid list={TITLE} />
+
+        {/* EVENT PARTNER */}
+        <div className={styles.tierLabel}>EVENT PARTNER</div>
+        <SponsorGrid list={Event_Partner} />
+
         {/* ARCANCELLAR */}
         <div className={styles.tierLabel}>ARCANCELLAR SPONSORS</div>
         <SponsorGrid list={GOLD} />
@@ -235,7 +285,7 @@ export default function Sponsors() {
                   width={300}
                   height={150}
                   className={styles.tileImage}
-                  style={{ transform: `scale(${s.scale || 1})` }}
+                  style={{ "--img-scale": s.scale || 1 }}
                 />
               </div>
             </a>
@@ -245,3 +295,4 @@ export default function Sponsors() {
     </div>
   );
 }
+

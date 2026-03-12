@@ -68,7 +68,7 @@ export default function GalleryPage() {
             alt="Gallery Header Background"
             fill
             className="object-cover -z-10"
-            priority
+            loading="lazy"
           />
           <div className="gallery-decor" aria-hidden />
           {/* Blend: gradient to mix header with gallery section beneath */}

@@ -8,7 +8,7 @@ const pressStart = Press_Start_2P({
   subsets: ["latin"],
 });
 
-export default function Countdown({ targetDate = "2026-02-15T23:59:59" }) {
+export default function Countdown({ targetDate = "2026-03-13T23:59:59" }) {
   const [timeLeft, setTimeLeft] = useState({
     d: "00",
     h: "00",
@@ -71,7 +71,7 @@ export default function Countdown({ targetDate = "2026-02-15T23:59:59" }) {
           mb-2
         `}
       >
-        TIME LEFT TO REGISTER
+        HACKATHON BEGINS IN
       </div>
 
       {/* NUMBERS */}

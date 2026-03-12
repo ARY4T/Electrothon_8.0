@@ -46,6 +46,21 @@
   
   max-width: 80%;          /* Adds space on the sides too */
   object-fit: contain;     
+  transform: scale(var(--img-scale, 1));
+}
+
+@media (max-width: 768px) {
+  .tileImage {
+    /* Prevent very large scalable logos from spilling over layout limits on tablets */
+    transform: scale(min(var(--img-scale, 1), 2.2));
+  }
+}
+
+@media (max-width: 450px) {
+  .tileImage {
+    /* Lower clamp for narrow phones like S8+ to fit completely */
+    transform: scale(min(var(--img-scale, 1), 1.6));
+  }
 }
 
 /* -------------------- */

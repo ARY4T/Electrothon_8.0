@@ -60,7 +60,7 @@ export default function HackerGuide() {
         <h1 
           className="text-center mb-16 text-2xl md:text-4xl lg:text-5xl text-white drop-shadow-[0_4px_0_rgba(0,0,0,1)] leading-normal"
         >
-          Hacker's Guide to<br />
+          Hacker&apos;s Guide to<br />
           {/* Changed highlight color to purple/pink to match bg */}
           <span className="text-white drop-shadow-[0_0_10px_rgba(192,132,252,0.8)]">ELECTROTHON 8.0</span>
         </h1>

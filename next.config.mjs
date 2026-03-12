@@ -4,9 +4,10 @@ const nextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true,
+    formats: ['image/webp'],
   },
   experimental: {
-    optimizePackageImports: ['framer-motion', 'lucide-react', '@tabler/icons-react', 'gsap'],
+    optimizePackageImports: ['framer-motion', 'lucide-react', '@tabler/icons-react', 'gsap', 'three'],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
