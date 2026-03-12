@@ -7,9 +7,9 @@ import Image from "next/image";
 // Critical components - load immediately
 import MainPage from "../components/MainPage/MainPage";
 
-// Lazy load below-fold components
+// Lazy load below-fold components with loading skeletons
 const MissionBriefing = dynamic(() => import("@/components/MissionBriefing"), {
-  loading: () => <div className="min-h-screen" />
+  loading: () => <div className="min-h-screen" />,
 });
 
 const AboutUsAchievementWith3D = dynamic(
@@ -18,47 +18,51 @@ const AboutUsAchievementWith3D = dynamic(
 );
 
 const Prizes = dynamic(() => import("@/components/prizes/prizes"), {
-  loading: () => <div className="min-h-screen" />
+  loading: () => <div className="min-h-screen" />,
+});
+
+const Assortedprizes = dynamic(() => import("@/components/assortedprizes/assorted"), {
+  loading: () => <div className="min-h-screen" />,
 });
 
 const GalleryPage = dynamic(() => import("@/components/gallery/gallery"), {
-  loading: () => <div className="min-h-screen" />
+  loading: () => <div className="min-h-screen" />,
 });
 
 const Themes = dynamic(() => import("@/components/ThemesSection/ThemesSection"), {
-  loading: () => <div className="min-h-screen" />
+  loading: () => <div className="min-h-screen" />,
 });
 
 const ComingSoon = dynamic(() => import("@/components/ComingSoon"), {
-  loading: () => <div className="min-h-screen" />
+  loading: () => <div className="min-h-screen" />,
 });
 
 const Sponsors = dynamic(() => import("@/components/Sponsors"), {
-  loading: () => <div className="min-h-screen" />
+  loading: () => <div className="min-h-screen" />,
 });
 
 const CommunitySponsors = dynamic(() => import("@/components/community_list"), {
-  loading: () => <div className="min-h-screen" />
+  loading: () => <div className="min-h-screen" />,
 });
 
 const Timeline = dynamic(() => import("@/components/Timeline/timeline"), {
-  loading: () => <div className="min-h-screen" />
+  loading: () => <div className="min-h-screen" />,
 });
 
 const Testimonials = dynamic(() => import("@/components/Testimonials/Testimonials"), {
-  loading: () => <div className="min-h-screen" />
+  loading: () => <div className="min-h-screen" />,
 });
 
 const Organizers = dynamic(() => import("@/components/Organizers/Organizers"), {
-  loading: () => <div className="min-h-screen" />
+  loading: () => <div className="min-h-screen" />,
 });
 
 const FAQList = dynamic(() => import("@/components/FAQList"), {
-  loading: () => <div className="min-h-screen" />
+  loading: () => <div className="min-h-screen" />,
 });
 
 const Footer = dynamic(() => import("@/components/Footer"), {
-  loading: () => <div className="min-h-screen" />
+  loading: () => <div className="min-h-screen" />,
 });
 
 export default function Page() {
@@ -78,6 +82,7 @@ export default function Page() {
   return (
     <>
       <MainPage />
+      
       {isMobile ? (
         <MissionBriefing />
       ) : (
@@ -92,7 +97,9 @@ export default function Page() {
           <AboutUsAchievementWith3D />
         </div>
       )}
+
       <Prizes />
+      <Assortedprizes />
       <GalleryPage />
       <Themes />
       <ComingSoon />
