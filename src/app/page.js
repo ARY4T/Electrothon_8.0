@@ -64,6 +64,9 @@ const FAQList = dynamic(() => import("@/components/FAQList"), {
 const Footer = dynamic(() => import("@/components/Footer"), {
   loading: () => <div className="min-h-screen" />,
 });
+const Runshow = dynamic(() => import("@/components/Runshow/Runshow"), {
+  loading: () => <div className="min-h-screen" />,
+});
 
 export default function Page() {
   const [isMobile, setIsMobile] = useState(false);
@@ -99,17 +102,19 @@ export default function Page() {
       )}
 
       <Prizes />
-      <Assortedprizes />
       <GalleryPage />
       <Themes />
       <ComingSoon />
+      <Assortedprizes />
       <Sponsors />
       <CommunitySponsors />
       <Timeline />
+      <Runshow />
       <Testimonials />
       <Organizers />
       <FAQList />
       <Footer />
+
     </>
   );
 }

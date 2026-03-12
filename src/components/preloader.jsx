@@ -15,9 +15,11 @@ export default function Preloader({ children }) {
       // 2. Scan for CSS Background Images
       const allElements = document.querySelectorAll("*");
       const bgImages = Array.from(allElements)
-        .map(el => getComputedStyle(el).backgroundImage)
-        .filter(bg => bg !== "none" && bg.includes("url"))
-        .map(bg => bg.match(/url\(["']?([^"']+)["']?\)/)[1]);
+      .map(el => getComputedStyle(el).backgroundImage)
+      .filter(bg => bg !== "none" && bg.includes("url"))
+      .map(bg => bg.match(/url\(["']?([^"']+)["']?\)/)) // Get the match array
+      .filter(match => match !== null)                 // Only keep successful matches
+      .map(match => match[1]);
 
       // 3. Combine and Deduplicate
       const allAssetUrls = [...new Set([...imgElements.map(img => img.src), ...bgImages])];

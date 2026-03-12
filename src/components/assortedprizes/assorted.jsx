@@ -46,7 +46,7 @@ const PRIZES = [
     category: "NAVAN AI", 
     title: "SKOOL COMMUNITY ACCESS", 
     points: "600 PRIZES", 
-    logo: "/logos/navanai.jpg"
+    logo: "/LOGOS/navanai.jpg"
   },
   { 
     id: 2, 
