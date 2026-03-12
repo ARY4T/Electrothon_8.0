@@ -15,11 +15,13 @@ const AboutUsAchievementWith3D = dynamic(() => import("@/components/MissionBrief
   loading: () => <div className="min-h-screen" />
 });
 const Prizes = dynamic(() => import("@/components/prizes/prizes"));
+  const Assortedprizes = dynamic(() => import("@/components/assortedprizes/assorted"));
 const GalleryPage = dynamic(() => import("@/components/gallery/gallery"));
 const Themes = dynamic(() => import("@/components/ThemesSection/ThemesSection"));
 const ComingSoon = dynamic(() => import("@/components/ComingSoon"));
 const Sponsors = dynamic(() => import("@/components/Sponsors"));
 const Timeline = dynamic(() => import("@/components/Timeline/timeline"));
+//  const RunfShow = dynamic(() => import("@/components/Runshow/Runshow"));
 const Testimonials = dynamic(() => import("@/components/Testimonials/Testimonials"));
 const Organizers = dynamic(() => import("@/components/Organizers/Organizers"));
 const FAQList = dynamic(() => import("@/components/FAQList"));
@@ -57,11 +59,14 @@ export default function Page() {
         </div>
       )}
       <Prizes />
+      <Assortedprizes />
       <GalleryPage />
       <Themes />
       <ComingSoon />
       <Sponsors />
       <Timeline />
+     
+      {/* <RunfShow /> */}
       <Testimonials />
       <Organizers />
       <FAQList />
