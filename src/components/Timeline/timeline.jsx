@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "./timeline.css"; 
 import { Orbitron } from "next/font/google";
 import { Press_Start_2P } from "next/font/google";
-import TargetCursor from '../TargetCursor'; 
+import TargetCursor from '../TargetCursor';
 
 /* --- ASSETS --- */
 const GhostIcon = ({ color, isEaten }) => {

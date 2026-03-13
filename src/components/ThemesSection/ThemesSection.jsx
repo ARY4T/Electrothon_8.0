@@ -60,49 +60,8 @@ export default function ThemeSection() {
       id="themes"
       className="relative py-28 w-screen min-h-screen lg:min-h-[1000px] pt-[18vh] text-white overflow-hidden"
     >
-      <Image
-        src="/backgrounds/themes.webp"
-        alt="Themes Background"
-        fill
-        loading="lazy"
-        className="object-cover object-top z-0"
-      />
+      {/* Background is provided by parent (page) to avoid duplication */}
       <TargetCursor targetSelector=".cursor-target" />
-
-      {/* ========= GRADIENTS & OVERLAYS ========= */}
-      {isSmallScreen && (
-        <div
-          aria-hidden
-          className="absolute inset-0 z-[0]"
-          style={{
-            background: `
-              radial-gradient(circle at 20% 15%, rgba(180,0,255,0.28), transparent 42%),
-              radial-gradient(circle at 80% 25%, rgba(0,255,255,0.2), transparent 48%),
-              linear-gradient(to bottom, #2a0045 0%, #1a0030 35%, #0b0018 65%, #020004 100%)
-            `,
-          }}
-        />
-      )}
-      <div
-        aria-hidden
-        className="absolute top-0 left-0 w-full h-[22vh] z-[1] pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(180,80,255,0.45), rgba(120,40,200,0.18), rgba(0,0,0,0))",
-        }}
-      />
-      <div
-        aria-hidden
-        className="absolute bottom-0 left-0 w-full h-[22vh] z-[1] pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0))",
-        }}
-      />
-      <div
-        className={`absolute inset-0 z-[0] ${isSmallScreen ? "bg-black/5" : "bg-black/10"
-          }`}
-      />
 
       {/* ================= CONTENT ================= */}
       <div className="relative z-10 max-w-[1400px] mx-auto px-6">

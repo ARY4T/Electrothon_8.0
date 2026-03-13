@@ -124,7 +124,6 @@ const questions = [
 ];
 
 const categories = [
-  { id: 'all', label: 'All' },
   { id: 'general', label: 'General' },
   { id: 'eligibility', label: 'Eligibility' },
   { id: 'prizes', label: 'Prizes' },
@@ -133,12 +132,10 @@ const categories = [
 ];
 
 const FAQList = () => {
-  const [activeCategory, setActiveCategory] = React.useState('all');
+  // Default to the first category (now 'general') since 'All' was removed
+  const [activeCategory, setActiveCategory] = React.useState(categories[0].id);
 
-  const filteredFaqs =
-    activeCategory === 'all'
-      ? questions
-      : questions.filter((q) => q.category === activeCategory);
+  const filteredFaqs = questions.filter((q) => q.category === activeCategory);
 
   return (
     <section

@@ -67,6 +67,9 @@ const Footer = dynamic(() => import("@/components/Footer"), {
 const Runshow = dynamic(() => import("@/components/Runshow/Runshow"), {
   loading: () => <div className="min-h-screen" />,
 });
+const JudgesSection = dynamic(() => import("@/components/Judges/JudgesSection"), {
+  loading: () => <div className="min-h-screen" />,
+});
 
 export default function Page() {
   const [isMobile, setIsMobile] = useState(false);
@@ -103,7 +106,40 @@ export default function Page() {
 
       <Prizes />
       <GalleryPage />
-      <Themes />
+      {/* Judges + Themes share a single background */}
+      <div className="relative w-full">
+        <Image
+          src="/backgrounds/themes.webp"
+          alt="Judges and Themes Background"
+          fill
+          priority
+          className="object-cover object-top z-0"
+        />
+        {/* Gradient overlays */}
+        <div
+          aria-hidden
+          className="absolute top-0 left-0 w-full h-[22vh] z-[1] pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(180,80,255,0.45), rgba(120,40,200,0.18), rgba(0,0,0,0))",
+          }}
+        />
+        <div
+          aria-hidden
+          className="absolute bottom-0 left-0 w-full h-[22vh] z-[1] pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0))",
+          }}
+        />
+        <div className="absolute inset-0 z-[0] bg-black/10" />
+        
+        {/* Content */}
+        <div className="relative z-10">
+          <JudgesSection />
+          <Themes />
+        </div>
+      </div>
       <ComingSoon />
       <Assortedprizes />
       <Sponsors />
