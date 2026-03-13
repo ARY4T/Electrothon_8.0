@@ -3,6 +3,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { Press_Start_2P, Orbitron } from "next/font/google";
+import TargetCursor from "../TargetCursor";
 
 // Dynamic import to avoid SSR issues
 const JudgesGallery = dynamic(() => import("./JudgesGallery"), {
@@ -28,35 +29,53 @@ const orbitron = Orbitron({
 // Then update the paths below (e.g., "/judges/judge1.png")
 const judgesData = [
   {
-    image: "/judges/gojo.png",
-    title: "Judge 1",
-    caption: "CEO, Tech Corp",
+    image: "/judges/Adhiraj.webp",
+    name: "Adhiraj",
+    
+    
   },
   {
-    image: "/judges/sukuna.webp",
-    title: "Judge 2",
-    caption: "CTO, Startup Inc",
+    image: "/judges/EeshaanSawant.webp",
+    name: "Eeshaan Sawant",
+    
+    
   },
   {
-    image: "/judges/gojo.png",
-    title: "Judge 3",
-    caption: "Founder, Innovation Labs",
+    image: "/judges/KanishkTyagi.webp",
+    name: "Kanishk Tyagi",
+    
+    
   },
   {
-    image: "/judges/sukuna.webp",
-    title: "Judge 4",
-    caption: "Director, AI Research",
+    image: "/judges/Mahen.webp",
+    name: "Mahen",
+    
+    
   },
   {
-    image: "/judges/gojo.png",
-    title: "Judge 5",
-    caption: "VP Engineering, DevCo",
+    image: "/judges/Manav.webp",
+    name: "Manav",
+    
+    
+  },
+  {
+    image: "/judges/mohitbhat.webp",
+    name: "Mohit Bhat",
+    
+    
+  },
+  {
+    image: "/judges/UdayveerSingh.webp",
+    name: "Udayveer Singh",
+    
+    
   },
 ];
 
 export default function JudgesSection() {
   return (
     <section className="judges-section relative w-full py-16 text-white">
+      <TargetCursor targetSelector=".cursor-target" />
       {/* Content */}
       <div className="relative z-10">
         {/* Title */}
